@@ -1,0 +1,273 @@
+   +---------------------------------------------------------------------+
+   | phpTournois                                                         |
+   +---------------------------------------------------------------------+
+   | Copyright (c) 2005 RV, Li0n, Gougou (http://www.phptournois.com)    |
+   +---------------------------------------------------------------------+
+   | This file is part of phpTournois.                                   |
+   |                                                                     |
+   | phpTournois may be distributed under the terms of the QPL Public    |
+   | License as defined by Trolltech AS of Norway and appearing in       |
+   | the file LICENSE.QPL included in the packaging of this file.        |
+   |                                                                     |
+   | phpTournois is distributed in the hope that it will be useful,      |
+   | but WITHOUT ANY WARRANTY; without even the implied warranty of      |
+   | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the QPL   |
+   | Public License for more details.                                    |
+   |                                                                     |
+   +---------------------------------------------------------------------+
+   | Authors: RV <rv@phptournois.com>                                    |
+   |          Li0n  <li0n@phptournois.com>                               |
+   |          Gougou                                                     |
+   | Mods :                                                              |
+   |          Gectou4 <Gectou4@hotmail.com>                              |
+   | Contributors:                                                       |
+   |          Nono                                                       |
+   |          Ben64                                                      |
+   +---------------------------------------------------------------------+
+   | phpTournoisG4                                                       |
+   +---------------------------------------------------------------------+
+   | Copyright (c) 2005 Li0n, RV, Gougou, Gectou4                        |
+   +---------------------------------------------------------------------+
+
+Legende :
+
+[-] Bug en moins
+[+] Fonctionnalite en plus
+[*] Changement
+
+----------------------
+phpTG4 1.0 : 16/03/2006
+
+Pré-Compatibilitée en php 5.3.0 et 5.3.1 (mode muet, merci de me repporter les erreurs importante que générerais PHP lors de l'utilisation de phpTournois en php 5.3.x)
+Correction de la fonction goto (devenu un mot clef)
+Correction du module "qui est en ligne" ne comptant pas bien les membres
+
+----------------------
+phpTG4 RC1 : 16/03/2006
+
+Cf forum xD
+
+----------------------
+phpTG4v 1.6 : 4/09/2005
+
+[*] enorme
+[+] pas mal
+[-] Beaucoup
+
+----------------------
+phpTG4v - : 16/04/2005
+
+[-] Fix diffusés sur le forum
+[+] Mods forums
+[*] Optimisation pour une combinaison des mods
+[+] Beaucoup beaucoup de choses (cf. forum)
+[+] Edition status des joueurs
+[+] Ladder
+[+] Forum
+[+] conception de page/menu online
+[+] Outil de recherge
+[*] Multi rang admin
+[+] Mod last result
+[+] Mod 10 dernière news
+[-] BBocde Java 
+[+] utilisation d'un BBcode simplifier de  lalex@lalex.com - http://www.lalex.com/
+[+] Ajout de Fckeditor
+[+] Admin panel
+[+] Mod panel
+[+] Mod commande
+[+] FAQ
+[+] Rechercher un joueur page joueur
+[+] Mod plan de salle
+[+] Mod carton
+[+] Mod en ligne
+[+] Mod 'top'
+[+] Mod shoutbox (iframe)
+[*] Correction de diverse erreurs dans le code où illogisme (double where ..etc)
+
+
+Note : Cette version est une Pre-Modded de la 3.5 avec certains FIX et/ou améliorations.
+
+----------------------
+v 3.5 : 16/04/2004
+
+[-] Bug dans l'affection random des finales
+[-] Suppresion des serveurs par défaut pour ne pas avoir de décalage avec les M4 SERVEUR_INFO
+[*] Correction de typos
+[*] Ajout de la transparence sur les images (Loki)
+[-] Bugs dans l'upload des fichiers attachés à un match
+[-] Bug d'affichage dans le report des resultats si on n'est pas manager
+[*] Changement de images des arbres pour respecter le copyright CyberLeagues 
+[*] Masquage du nom et prénom des joueurs (plaintes sur la confidentialité)
+[+] Ajout de la saisie du login/mot passe/email de l'administrateur a l'installation
+[*] Changement de indication de participation aux tournois 
+[*] Changement de licence QPL vers GNU/GPL
+
+----------------------
+v 3.5 RC2 : 15/03/2004
+
+
+[*] La compression zlib est plus efficace mais n'est supportée qu'à partir de php 4.0.4pl1
+[-] La barre de progression des inscriptions etait bien buggée :)
+[+] Seul les tournois par équipe peuvent utiliser M4 ou Adminbot
+[-] Le password n'etait pas affiché lors d'un reset password par l'admin si la fonction mail n'etait pas activée :/
+[-] Erreur de variables pour la gestion de admin $dbm4 à la place de $dbab
+[-] Le tableau des équipes était foiré: rajout d'une reinit pour pas avoir des "validée" dans les "en attente"
+[-] Impossibilité de se logguer avec des redirection ULIMIT (.fr.st etc) & co (ajout d'une politique P3P pour eviter de passer la sécurité IE6 à 'Bas')
+[-] Impossibilité de se logguer avec certaines versions de php (probleme d'ordonancement de session_start, du cache-limiter et setcookie).
+[-] Changement du fichier javascript de .php en .js car il etait interprété comme du code (et donc modifié avec des balises HTML et des scripts) chez lycos pour sa pub de merde.
+
+
+----------------------
+v 3.5 RC1 : 29/02/2004
+
+[+] Nouveau moteur plus efficace et plus sécurisé (inclusion des pages).
+[+] Gestion des themes (enfin!!).
+[*] Nouveau design plus sobre.
+[+] Gestion des match en fragaverage pur / roundaverage puis fragaverage / roundaverage pur.
+[+] Commentaires sur les matchs par les joueurs concernés.
+[+] Fonctions d'upload screeshoot & demo pour un match par les managers & admins.
+[+] Nouvel installeur plus convivial !!
+[+] Gestion du grade des joueurs dans les équipes (Leader, Waranger, membre, recrue, inactif).
+[+] Refonte des listes de joueurs & d'équipes (plus de contrôle sur les inscriptions et sur les tris).
+[+] Rajout de fonctions d'admin de changements des status des joueurs/equipes par lot.
+[+] Methode de gestion des sessions dans mysql.
+[+] Mise en place d'un état sur les équipes (Cachée, En attente, Validée).
+[*] Inscriptions: avec ou sans validation par l'admin pour les équipes et les joueurs (en attente, validée).
+[+] Fonction pour rejoindre une équipe par mot de passe.
+[+] Génération des finales par poules croisées (façon coupe du monde)
+[+] Intégration d'un anti-flood (code by S4ruman)
+[+] Récupération auto des scores en boucle
+[+] Enregistrement des scores par joueurs (enfin!! elle m'aura fait chier cette fonction ^^)
+[+] Ajout d'une décharge à accepter pour pouvoir s'inscrire
+[*] Amélioration de la navigation dans les matchs des tournois (plus de choix possibles).
+[+] Gestion des champs customizés pour les joueurs et les equipes (format ext_xxx dans les tables).
+[+] Gestion des mails par des fonctions SMTP et Mail désactivable (pour certains hébergeur).
+[+] Nouveau lien vers une page de stats pour chaque serveur.
+[+] Nouveau lien vers M4/Adminbot dans le bloc administration.
+[*] Refonte totale du systeme de compteur (prise en compte des connectés).
+[*] Meilleure gestion des mots de passe (perdu, reset, md5).
+[+] Gestion des avatars pour les joueurs & les equipes.
+[+] Mailing par equipes (Oly :x).
+[+] Gestion des galeries.
+[+] Gestion des partenaires.
+[*] Mise à jour de la page IRC (page intermédiaire avc choix du pseudo)
+[*] Mise à jour des downloads & liens (classement par catégories).
+[+] Rajout de plusieurs bloc de Tournois : En cours/Terminés (debrayable dans le theme)
+[*] Refonte totale des Sponsors.
+[+] Fonctions d'editions des liens et des downloads.
+[+] Mise en place de fonctions de navigation dans les news/commentaires/livre d'or.
+[+] Ajout des paramètres de l'affichage des arbres (delta x colonnes).
+[+] Sélection de la page de démarrage (news, accueil ou presentation par défaut).
+[+] Ajout de l'envoi des news à un ami.
+[+] Ajout de l'impression des news.
+[*] Changement des fonctions de contact (AIM, YIM, MSN, et ICQ).
+[+] Mise en place d'un systeme de changement de langage a la volée pour nos amis non FR :).
+[*] Seul les gens enregistrés peuvent poster des commentaires dans les news.
+Et pleins de petites choses pour améliorer l'ergonomie
+[-] Les champs d'inscriptions prennent en compte les caractères spéciaux!  (killercool/fatboy).
+[-] Les poules ne sont pas classées correctement dans certains cas avec des forfaits (Oly).
+[-] Changement de la ereg qui, dans des versions antérieures de php, renvoi toujours le meme nombre de paramètres.
+[-] Problème lors de la création des équipes si la manager est nul.
+[-] Les cookies n'etaient pas associés au bon domaine (impossibilité de se loguer).
+
+
+----------------------
+v 3.0 RC2 : 04/11/2003
+
+[+] Mailing list (par mail ou dans la messagerie)
+[+] Gestion des inscriptions plus fine(ajout d'un compteur de place pour un tournois/pour une LAN)
+[+] Gestion de fichiers attachés pour un match (ex: demos et screenshots)
+[+] Ajout du steamid
+[+] Ajout d'un bloc de statistiques
+
+
+----------------------
+v 3.0 RC1 : 19/10/2003
+
+[*] Nouveau design plus personalisable
+[+] Gestion avancée de plusieurs manches par matchs (et donc de plusieurs maps)
+[+] Gestion des serveurs de jeux (grace à Qstat)
+[+] Mode Online/Lan pour la pré-inscription, validation des joueurs et composition des teams
+[+] Gestion des sorties de poules pour creation des phases finales 
+[+] Support de l'adminBot-Mx (au meme titre ke M4) pour la creation des matchs CS 
+[+] Gestion de l'horodatage des matchs
+[+] Gestion du retroprojecteur (gestion de l'autorefresh, du scroling, du cache du menu) pour l'utilisateur -1
+[+] Gestion du calendrier (pour les matchs actifs ou démarré)
+[+] Gestion fine de la disqualification générale 
+[*] Refonte du système de gestion de matchs (notamment les etats)
+[+] Messagerie intégrée (option)
+[+] Nouveau systeme de news avec commentaires et gestion des newseurs (option)
+[+] IRC intégré (option)
+[+] Système de gestion d'erreurs
+[+] Affichage de l'heure du serveur (option)
+[+] Ajout des pages de dotations, d'informations, de stats, de règlements généraux ou par tournois (option)
+[+] Système de téléchargment (option)
+[+] Système de contact (option)
+[+] Gestion des sponsors (option)
+[+] Lien vers forum (option)
+[+] Affichage de consignes pour ne plus être perdu (à défaut d'aide complete)
+[+] Support du BBCode un peu partout :)
+[+] Nouveau système de configuration (dans la base mysql)
+[+] Gestion du prefixage de toutes les tables
+[*] Gestion amélioré des affichage pour les joueurs (leur matchs, leurs poules, leur calendrier, etc.)
+[*] Cleanup du code (25% de code en moins, mysql +rapide)
+
+
+----------------------
+v 2.0 : 19/05/2003
+
+[+] Gestion des phases finales en double élimination (looser bracket)
+[+] Gestion des tournois par joueurs ou par equipes (Team Mode)
+[+] Gestion des inscriptions aux tournois (par les joueurs/manager ou par l'admin du tournois)
+[+] Gestions avancée des têtes de séries (seed défini lors de l'inscription)
+[+] Ajout des modes de tournois "Championnat" et "Coupe"
+[+] Récupération des scores manuelle (admin) ou via MatchMod (m4)
+[+] Gestion de l'equipe par son manager (inscriptions, joueurs)
+[+] Support de plusieurs equipes pour un joueur
+[+] Génération séparée du debut de l'arbre des finales (suivant seed,poules,random)
+[+] Gestion des maps par tours/finales pour le tournois (par l'admin du tournois)
+[+] Ajout de la nationalité des joeurs/equipes (drapeaux)
+[+] Gestion de jeux les plus courants (par l'admin général)
+[+] Ajout d'une installation automatique
+[*] Meilleur logique de déroulement des tournois et modifications des menus
+[*] Génération des matchs de poules pour n équipes par poules
+[*] Meilleure gestion des equipes/joueurs 
+[*] Meilleure gestion des maps par jeux (par l'admin général) 
+[*] Configuration plus aisée de l'affichage
+[*] Classement des poules
+[*] Internationalisation par joueur et non plus globale
+
+
+----------------------
+v 1.1 : 10/09/2002
+
+[+] Possibilité d'affecter les tetes de series dans chacune des poules avant le tirage au sort
+[+] Génération des matchs de poules (poules de 4,5 ou 6 teams)
+[+] Creation automatique des matchs de phase finale
+[+] Integration de la gestion de MatchMod pour le tournoi nommé "Counter Strike"
+[+] Lancement tour par tour des matchs
+
+
+----------------------
+v 1.1pre : 10/01/2002
+
+[+] Ajout de boutons back()
+[+] Ajout de focus() sur les champs de formulaires
+[*] Le tour du matchs de poules a creer est par defaut le dernier	
+[*] Les matchs de poules peuvent etre supprime que si ils ont le status C
+[*] Le status d'un matchs passe a T quand on remplit les champs scores
+
+
+----------------------
+v 1.0rc1 : 23/08/2001
+
+[+] Ajout des informations maps, serveur et password pour les matchs
+[+] Gestion des maps
+[+] Logo personnalisable
+[*] Nouvelle interface graphique
+[-] Chaines restees codees en dur passees en variable
+[-] Probleme lors de la suppression du tournois en cours
+[-] Bugs diverses et varies...
+
+----------------------
+v 0.9b : 14/08/2001
