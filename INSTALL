@@ -1,0 +1,109 @@
+ +--------------------------------------------------------------------------+
+ | phpTournois                                                              |
+ +--------------------------------------------------------------------------+
+ | Copyright (c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.com)    |
+ |                                                                          |
+ | phpTournois is free software; you can redistribute it and/or modify      |
+ | it under the terms of the GNU General Public License as published by     |
+ | the Free Software Foundation; either version 2 of the License, or        |
+ | (at your option) any later version.                                      |
+ |                                                                          |
+ +--------------------------------------------------------------------------+
+ +--------------------------------------------------------------------------+
+ | phpTournoisG4                                                            |
+ +--------------------------------------------------------------------------+
+ | Copyright (c) 2005 Li0n, RV, Gougou, Gectou4 (http://www.phptournois.com)|
+ |                                                                          |
+ | phpTournois is free software; you can redistribute it and/or modify      |
+ | it under the terms of the GNU General Public License as published by     |
+ | the Free Software Foundation; either version 2 of the License, or        |
+ | (at your option) any later version.                                      |
+ |                                                                          |
+ +--------------------------------------------------------------------------+
+	     
+
+------------
+PREREQUIS
+------------
+- phpTournois nécessite le support de PHP 4 ainsi qu'une base de données MySQL. 
+  > Assurez vous donc d'avoir la derniere version de PHP 4.x et un MySQL récent qui tourne
+    sur votre machine serveur (avec un utilisateur qui a le droit de créer une base de données)
+
+- Si vous etes familier avec phpMyAdmin, cela peut etre un plus de l'installer au cas ou... :)
+
+Note: phpTournois fonctionne sous IIS, Apache et tout autre serveur WEB supportant le PHP 4.
+Note2: EasyPHP fonctionne parfaitement avec phpTournois si vous etes sous windows.
+Note3: LAMPP ou WAMPP sont bien plus performant que Easyphp -> www.apachefriends.org
+Note4: Attention aux versions des logiciels de gestion des matchs !
+- version de M4 -> 0.90d
+- version de AdminBot-MX -> Beta MX de juillet 2003
+
+------------
+INSTALLATION
+------------
+
+1) Décompresser l'archive dans un répertoire de votre serveur web (par ftp par exemple).
+2) Lancez votre navigateur web et aller sur l'url de votre phpTournois.
+3) Suivez les insctructions à l'écran pour installer phpTournois.
+(Attention, si l'install automatique ne parvient pas à effacer le fichier install.php,
+ vous devrez le faire manuellement)
+5) Revenez sur l'url de phpTournois et logger vous en tant que :
+ utilisateur : 'admin' 
+ mot de passe : 'admin'
+6) Changez le mot de passe admin dans 'Ma fiche/Changer mot de passe' !!!
+
+Vous pouvez maintenant utiliser phpTournois!!
+
+-------------
+CONFIGURATION
+-------------
+1) Modifiez le nom de votre LAN dans le menu "Admin Générale - Configuration" 
+(si vous ne l'aviez pas fait durant l'install)
+2) Indiquez le nom du fichier image de votre logo 
+(que vous aurez préalablement placé dans le répertoire /images)
+3) Sélectionnez la langue par défaut à utiliser.
+
+-------------
+COMPLEMENTS
+-------------
+1) un utilisateur 'retroproj' permet de diffuser les pages de phpTournois sur un videoprojecteur.
+Logger vous en tant que 'retroproj' (mot de passe 'retroproj') pour découvrir les possibilités de 
+videoprojection.
+
+2) phpTournois ne supporte que PARTIELLEMENT AdminBot-Mx. En effet, les prolongations générées par 
+AdminBot-MX Beta ne permetent pas d'être tracées par des programmes externes (AdminBot gère les 
+prolongations comme de nouveaux matchs sans lien direct et fiable avec le match précédent).
+Expérons que pour la prochaine version, les prolongations soient gérées dans le AMX comme avec M4.
+
+3) Les serveurs utilisent le programme Qstat se trouvant dans le repertoire Qstat pour recuperer leur status. 
+2 versions compilées (Windows et Linux) sont disponibles mais il se peut que des hebergeurs gratuits 
+ne supportent pas l'exécution de programmes externes (fonction 'exec' désactivée). Vous devrez alors
+désactiver la fonction 'serveur' dans la configuration.
+
+4) Lorsque vous utilisez M4 ou AdminBot, n'oublier pas de cocher 'publier' ces serveurs pour les ajouter
+dans les bases de données M4 ou AdminBot. Faites attention quand vous utilisez les memes serveurs pour 
+des tournois différents (pour eviter que les matchs se chevauchent), ou si il n'y a pas assez de serveurs
+pour lancer un tour complet (ex: 1/8 de finales -> 8 serveurs différents si possible). 
+
+5) Le format des horaires sont de la forme : 'hh:mm' (ex: '18:18') ou 'jj/mm/aaaa hh:mm' (ex '19/10/2003 18:18')
+
+6) L'arborescence du systeme de fichiers attachés pour un match donné (demos et screenshots par exemple)
+se trouve dans les répertoires /matchs/id_du_matchs/
+Attention à la taille des fichiers à uploader (il faudra passer par un ftp classique pour ajouter des gros fichiers)
+
+
+-------
+BUGS
+-------
+1) avec easyphp 1.7, il faut que vous ayez dans le php.ini:
+  - register_globals = On
+  - error_reporting = E_ALL & ~E_NOTICE
+  
+  et ne pas avoir la compression GZIP dans la configuration de phpTournois!
+
+
+-------
+CONTACT
+-------
+Pour toute aide consultez le forum: http://www.phptournois.com
+Pour tout autre problème: contact@phptournois.com

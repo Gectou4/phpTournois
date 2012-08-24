@@ -1,0 +1,78 @@
+<bbcode>
+	<tag name="tab" close="no">
+		<begin><![CDATA[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]]></begin>
+		<finish><![CDATA[]]></finish>
+	</tag>
+	<tag name="readmore">
+		<begin><![CDATA[]]></begin>
+		<finish><![CDATA[]]></finish>
+	</tag>
+	<tag name="color" param="yes">
+		<begin><![CDATA[<span style="color:{PARAM}">]]></begin>
+		<finish><![CDATA[</span>]]></finish>
+	</tag>
+	<tag name="size" param="yes">
+		<begin><![CDATA[<span style="font-size:{PARAM}px">]]></begin>
+		<finish><![CDATA[</span>]]></finish>
+	</tag>
+	<tag name="b">
+		<begin><![CDATA[<span style="font-weight:bold">]]></begin>
+		<finish><![CDATA[</span>]]></finish>
+	</tag>
+	<tag name="i">
+		<begin><![CDATA[<span style="font-style:italic">]]></begin>
+		<finish><![CDATA[</span>]]></finish>
+	</tag>
+	<tag name="u">
+		<begin><![CDATA[<span style="text-decoration:underline">]]></begin>
+		<finish><![CDATA[</span>]]></finish>
+	</tag>
+	<tag name="nobbcode" render="no">
+		<begin></begin>
+		<finish></finish>
+	</tag>
+	<tag name="nohtml" function="htmlspecialchars">
+		<begin></begin>
+		<finish></finish>
+	</tag>
+	<tag name="url" param="yes">
+		<begin><![CDATA[<a href="{PARAM}" target="_blank">]]></begin>
+		<finish><![CDATA[</a>]]></finish>
+	</tag>
+	<tag name="img" keepvalue="no">
+		<begin><![CDATA[<img src="{VALUE}" border="0" />]]></begin>
+		<finish><![CDATA[]]></finish>
+	</tag>
+	<tag name="img" keepvalue="no" param="yes">
+		<begin><![CDATA[<img src="{VALUE}" border="0" align="{PARAM}"/>]]></begin>
+		<finish><![CDATA[ ]]></finish>
+	</tag>
+	<tag name="*" close="no" parent="list">
+		<begin><![CDATA[<li>]]></begin>
+		<finish><![CDATA[]]></finish>
+	</tag>
+	<tag name="list">
+		<begin><![CDATA[<ul>]]></begin>
+		<finish><![CDATA[</ul>]]></finish>
+	</tag>
+	<tag name="list" param="yes">
+		<begin><![CDATA[<ol type="{PARAM}">]]></begin>
+		<finish><![CDATA[</ol>]]></finish>
+	</tag>
+	<tag name="quote">
+		<begin><![CDATA[<table width="95%" cellpadding="5" border="1" align="center"><tr><td bgcolor="#FAFAFA">]]></begin>
+		<finish><![CDATA[</td></tr></table>]]></finish>
+	</tag>
+	<tag name="code">
+		<begin><![CDATA[<table width="95%" cellpadding="5" border="1" align="center"><tr><td bgcolor="#FAFAFA"><pre>]]></begin>
+		<finish><![CDATA[</pre></td></tr></table>]]></finish>
+	</tag>
+	<tag name="align" param="yes">
+		<begin><![CDATA[<div align="{PARAM}">]]></begin>
+		<finish><![CDATA[</div>]]></finish>
+	</tag>
+	<tag name="bgcolor" param="yes">
+		<begin><![CDATA[<span style="background-color:{PARAM}">]]></begin>
+		<finish><![CDATA[</span>]]></finish>
+	</tag>
+</bbcode>
