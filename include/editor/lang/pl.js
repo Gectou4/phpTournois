@@ -125,7 +125,7 @@ FontFormats			: "Normalny;Tekst sformatowany;Adres;Nagłówek 1;Nagłówek 2;Nag
 
 // Alerts and Messages
 ProcessingXHTML		: "Przetwarzanie XHTML. Proszę czekać...",
-Done				: "Gotowe",
+Done				: "js_gotowe",
 PasteWordConfirm	: "Tekst, który chcesz wkleić, prawdopodobnie pochodzi z programu Word. Czy chcesz go wyczyścic przed wklejeniem?",
 NotCompatiblePaste	: "Ta funkcja jest dostępna w programie Internet Explorer w wersji 5.5 lub wyższej. Czy chcesz wkleić tekst bez czyszczenia?",
 UnknownToolbarItem	: "Nieznany element paska narzędzi \"%1\"",

@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -32,7 +32,7 @@
    +---------------------------------------------------------------------+
 */
 
-if (strpos($_SERVER['PHP_SELF'],'kernel.php')!==false) {
+if (strpos(strtolower($_SERVER['PHP_SELF']), 'kernel.php')  !== false) {
 	die ('You cannot open this page directly');
 }
 
@@ -58,7 +58,7 @@ function verif($var){
 /*** chargement de la configuration statique***/
 $config=array();
 $mods=array();
-$grade=array();
+$garde=array();
 //$garde=array("a" => "",    "b" => "",    "c" => "","d" => "",    "e" => "","f" => "",	"g" => "",    "h" => "",    "i" => "",	"j" => "",    "k" => "",    "l" => "",	"m" => "",    "n" => "",    "o" => "","p" => "",	"q" => "",	"r" => "",	"s" => "",	"t" => "",	"u" => "",	"v" => "",	"w" => "",	"x" => "",	"y" => "",	"z" => "",);
 //$is_grade=grade_s($s_joueur);
 
@@ -216,142 +216,127 @@ if(isset($s_tournois) && !empty($s_tournois)) {
 }
 
 /*** chargement de la variable des 'gardes' de l'utilisateur  ***/
-	if ($s_joueur)
-	{
+	if ($s_joueur){
 	
 	$db->select("id,grade");
 	$db->from("${dbprefix}joueurs");
 	$db->where("id = $s_joueur");
 	$res=$db->exec();
 
-	while ($grade_ch = $db->fetch($res)) {
-		
-		$strGrade = 'abcdefghijklmnopqrstuvwxyz';
-		$iGrade   = 0;
-		do
-		{
-			if (strpos($grade_ch->grade,$strGrade{$iGrade})!== false) 
-			{
-		   		$grade[$strGrade{$iGrade}] = $strGrade{$iGrade}; 
-		    }
-		}
-		while ( isset( $strGrade{++$iGrade} ) );
+	
+while ($grade_ch = $db->fetch($res)) {
+	 //  A est 'le' chef
+	if (eregi('a', $grade_ch->grade)) {
+   $grade['a'] = 'a'; 
+    }
+	// B peut tout faire sauf modifier 'le chef'
+	if (eregi('b', $grade_ch->grade)) {
+   $grade['b'] = 'b'; 
+    }
+	// C peut modifier la configuration (mods comprit)
+	if (eregi('c', $grade_ch->grade)) {
+   $grade['c'] = 'c'; 
+    }
+	// D gère les downloads
+	if (eregi('d', $grade_ch->grade)) {
+   $grade['d'] = 'd'; 
+    }
+	//E peut gèrer les &eacute;quipe
+	if (eregi('e', $grade_ch->grade)) {
+   $grade['e'] = 'e'; 
+    }
+	//F peut g&eacute;rer la FAQ
+	if (eregi('f', $grade_ch->grade)) {
+   $grade['f'] = 'f'; 
+    }//G peut cr&eacute;er des pages ou des menus (paske G4 il cr&eacute;er lol)
+	if (eregi('g', $grade_ch->grade)) {
+   $grade['g'] = 'g'; 
+    }
+	//H peut gèrer les liens ( <a Href=''> ) 
+	if (eregi('h', $grade_ch->grade)) {
+   $grade['h'] = 'h'; 
+    }
+	//I peut gèrer le livre d'or (???)
+	if (eregi('i', $grade_ch->grade)) {
+   $grade['i'] = 'i'; 
+    }
+	//J peut gèrer les joueurs
+	if (eregi('j', $grade_ch->grade)) {
+   $grade['j'] = 'j'; 
+    }
+	// K pour M4 ou AB
+	if (eregi('k', $grade_ch->grade)) {
+   $grade['k'] = 'k'; 
+    }
+	//L peut utiliser la maling List
+	if (eregi('l', $grade_ch->grade)) {
+   $grade['l'] = 'l'; 
+    }
+	// M Mod&eacute;rateur
+	if (eregi('m', $grade_ch->grade)) {
+   $grade['m'] = 'm'; 
+    }
+	// N newser
+	if (eregi('n', $grade_ch->grade)) {
+   $grade['n'] = 'n'; 
+    }
+	// O ind&eacute;finie libre pour des mods ou custom rank
+	if (eregi('o', $grade_ch->grade)) {
+   $grade['o'] = 'o'; 
+    }
+	// P gère les partenaire
+	if (eregi('p', $grade_ch->grade)) {
+   $grade['p'] = 'p'; 
+    }
+	// Q gère la gallerie
+	if (eregi('q', $grade_ch->grade)) {
+   $grade['q'] = 'q'; 
+    }
+	// S gère les server
+	if (eregi('r', $grade_ch->grade)) {
+   $grade['r'] = 'r'; 
+    }
+	// S gère les sponsors
+	if (eregi('s', $grade_ch->grade)) {
+   $grade['s'] = 's'; 
+    }
+	// T admin de tous les tournois (est orga & admin)
+	if (eregi('t', $grade_ch->grade)) {
+   $grade['t'] = 't'; 
+    }
+	// U admin des ladder (cr&eacute;er, gère..).
+	if (eregi('u', $grade_ch->grade)) {
+   $grade['u'] = 'u'; 
+    }
+	// V ind&eacute;finie libre pour des mods ou custom rank
+	if (eregi('v', $grade_ch->grade)) {
+   $grade['v'] = 'v'; 
+    }
+	// W Peut &eacute;diter les pouvoirs
+	if (eregi('w', $grade_ch->grade)) {
+   $grade['w'] = 'w'; 
+    }
+	// X est manager d'une Team 
+	if (eregi('x', $grade_ch->grade)) {
+   $grade['x'] = 'x'; 
+    }
+	// Y est wararranger ou leader d'une Team 
+	if (eregi('y', $grade_ch->grade)) {
+   $grade['y'] = 'y'; 
+    }
+	//le Z est le rang 'user' un membre qui n'a pas "z" est bannit...
+	if (eregi('z', $grade_ch->grade)) {
+   $grade['z'] = 'z'; 
+    }
+}
 
-		/*
-		 //  A est 'le' chef
-		if (strpos($grade_ch->grade,'a')!== false) {
-	   $grade['a'] = 'a'; 
-	    }
-		// B peut tout faire sauf modifier 'le chef'
-	    if (strpos($grade_ch->grade,'a')!== false) {
-	   $grade['b'] = 'b'; 
-	    }
-		// C peut modifier la configuration (mods comprit)
-		if (eregi('c', $grade_ch->grade)) {
-	   $grade['c'] = 'c'; 
-	    }
-		// D gï¿½re les downloads
-		if (eregi('d', $grade_ch->grade)) {
-	   $grade['d'] = 'd'; 
-	    }
-		//E peut gï¿½rer les &eacute;quipe
-		if (eregi('e', $grade_ch->grade)) {
-	   $grade['e'] = 'e'; 
-	    }
-		//F peut g&eacute;rer la FAQ
-		if (eregi('f', $grade_ch->grade)) {
-	   $grade['f'] = 'f'; 
-	    }//G peut cr&eacute;er des pages ou des menus (paske G4 il cr&eacute;er lol)
-		if (eregi('g', $grade_ch->grade)) {
-	   $grade['g'] = 'g'; 
-	    }
-		//H peut gï¿½rer les liens ( <a Href=''> ) 
-		if (eregi('h', $grade_ch->grade)) {
-	   $grade['h'] = 'h'; 
-	    }
-		//I peut gï¿½rer le livre d'or (???)
-		if (eregi('i', $grade_ch->grade)) {
-	   $grade['i'] = 'i'; 
-	    }
-		//J peut gï¿½rer les joueurs
-		if (eregi('j', $grade_ch->grade)) {
-	   $grade['j'] = 'j'; 
-	    }
-		// K pour M4 ou AB
-		if (eregi('k', $grade_ch->grade)) {
-	   $grade['k'] = 'k'; 
-	    }
-		//L peut utiliser la maling List
-		if (eregi('l', $grade_ch->grade)) {
-	   $grade['l'] = 'l'; 
-	    }
-		// M Mod&eacute;rateur
-		if (eregi('m', $grade_ch->grade)) {
-	   $grade['m'] = 'm'; 
-	    }
-		// N newser
-		if (eregi('n', $grade_ch->grade)) {
-	   $grade['n'] = 'n'; 
-	    }
-		// O ind&eacute;finie libre pour des mods ou custom rank
-		if (eregi('o', $grade_ch->grade)) {
-	   $grade['o'] = 'o'; 
-	    }
-		// P gï¿½re les partenaire
-		if (eregi('p', $grade_ch->grade)) {
-	   $grade['p'] = 'p'; 
-	    }
-		// Q gï¿½re la gallerie
-		if (eregi('q', $grade_ch->grade)) {
-	   $grade['q'] = 'q'; 
-	    }
-		// S gï¿½re les server
-		if (eregi('r', $grade_ch->grade)) {
-	   $grade['r'] = 'r'; 
-	    }
-		// S gï¿½re les sponsors
-		if (eregi('s', $grade_ch->grade)) {
-	   $grade['s'] = 's'; 
-	    }
-		// T admin de tous les tournois (est orga & admin)
-		if (eregi('t', $grade_ch->grade)) {
-	   $grade['t'] = 't'; 
-	    }
-		// U admin des ladder (cr&eacute;er, gï¿½re..).
-		if (eregi('u', $grade_ch->grade)) {
-	   $grade['u'] = 'u'; 
-	    }
-		// V ind&eacute;finie libre pour des mods ou custom rank
-		if (eregi('v', $grade_ch->grade)) {
-	   $grade['v'] = 'v'; 
-	    }
-		// W Peut &eacute;diter les pouvoirs
-		if (eregi('w', $grade_ch->grade)) {
-	   $grade['w'] = 'w'; 
-	    }
-		// X est manager d'une Team 
-		if (eregi('x', $grade_ch->grade)) {
-	   $grade['x'] = 'x'; 
-	    }
-		// Y est wararranger ou leader d'une Team 
-		if (eregi('y', $grade_ch->grade)) {
-	   $grade['y'] = 'y'; 
-	    }
-		//le Z est le rang 'user' un membre qui n'a pas "z" est bannit...
-		if (eregi('z', $grade_ch->grade)) {
-	   $grade['z'] = 'z'; 
-	    }*/
-	}
-
-	/*** Si le joueur est bannit on l'exclut ***/
-	if ($grade['z'] != 'z')  
-	{
-	//setcookie("data","banned",time()-9999999);
-		if ($page!="banned") 
-		{
-			js_goto("?page=banned");
-		}
-	}
+/*** Si le joueur est bannit on l'exclut ***/
+if ($grade['z'] != 'z')  {
+//setcookie("data","banned",time()-9999999);
+if ($page!="banned") {
+js_goto("?page=banned");
+}
+}
 }
 
 /*** Correction du s_type selon rang admin ***/
@@ -399,5 +384,5 @@ class phpTMailer extends PHPMailer {
 
 //end forum
 
-$config['version'] = "v3.5 G4.3 php5.2-5.3";
+$config['version'] = "v3.5 G4.2 php5";
 ?>
