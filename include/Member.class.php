@@ -126,7 +126,6 @@ class Member{
 		
 		$req = null;
 		$valide=null;
-		$r = false;
 
 		if(verif($user) && verif($pass)){
 			$valide=true;
@@ -134,7 +133,7 @@ class Member{
 			$db->select("*");
 			$db->from("${dbprefix}joueurs");
 			$db->where("pseudo = '$user' AND passwd = '".md5($pass)."' AND passwd != '' AND passwd is not null");
-			$req=$db->exec();		
+			$req=$db->exec();	
 							
 		}else if ($user===0 && $pass===null){
 			$valide=false;
@@ -148,7 +147,7 @@ class Member{
 		if ($valide!==null){
 			$result = null;
 			$result = $db->fetch($req);
-			
+				
 				if(!empty($result->id)){
 					$r = true;
 					foreach($result as $k=>$v)
@@ -168,8 +167,8 @@ class Member{
 				$db->exec();
 			}
 		}
-							
-		return $r;
+			
+		return $valide;
 	}
 	
 	public function login_sess(){
@@ -202,12 +201,12 @@ class Member{
 	
 	public function getMember(){
 		
-		foreach($this as $key => $value) 
+		/*foreach($this as $key => $value) 
 		{
 		 $Member->$key = $value;
-		}
+		}*/
 		
-		return $Member;
+		return $this;
 	}
 	
 	public function logout($m_id){

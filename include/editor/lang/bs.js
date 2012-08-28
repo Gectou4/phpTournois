@@ -124,7 +124,7 @@ FontFormats			: "Normal;Formatted;Address;Heading 1;Heading 2;Heading 3;Heading 
 
 // Alerts and Messages
 ProcessingXHTML		: "Procesiram XHTML. Molim saèekajte...",
-Done				: "Gotovo",
+Done				: "js_gotovo",
 PasteWordConfirm	: "Tekst koji želite zalijepiti èini se da je kopiran iz Worda. Da li želite da se prvo oèisti?",
 NotCompatiblePaste	: "Ova komanda je podržana u Internet Explorer-u verzijama 5.5 ili novijim. Da li želite da izvršite lijepljenje teksta bez èišæenja?",
 UnknownToolbarItem	: "Nepoznata stavka sa trake sa alatima \"%1\"",

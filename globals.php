@@ -107,5 +107,3 @@ function make_globals($table) {
 	}
 }
 
-
-?>

@@ -41,7 +41,7 @@ if ( file_exists( 'g4.g4') )
 
 $s_theme = 'phpTG4';
 $header = 'win';
-$version = '3.5_phpTG4';
+$version = '3.5_phpTG4_1.1';
 $filename = 'config.php';
 $filenamem4 = 'config.m4.php';
 $filenameab = 'config.ab.php';
@@ -743,6 +743,10 @@ elseif($stage==3) {
 	else {
 		fclose($fd);
 	}
+    
+    echo "<h3>$strInstallStage3</h3>";
+	echo "$strInstallStage3Consignes<br>";
+	echo "pensez à visiter les forum phpTournois http://forum.phptournois.net/ !";
 
 	/** tentative d'effacage **/		
 	@unlink('install.php');
@@ -750,13 +754,13 @@ elseif($stage==3) {
 	@unlink('update.php');
 	if(is_file('update.php')) show_warning("$strInstallStage3Delupdatel<br>");
 	if(!file_exists("g4.g4")){
-	fwrite( fopen("g4.g4","w"), "phpTG4 installed");
+        try{
+            fwrite( fopen("g4.g4","w"), "phpTG4 installed");
+        }catch(Eception $e){
+            echo "can't create g4.g4 files on root to prevent install exploit";
+        }
 	}
 	
-	//echo "<SCRIPT LANGUAGE=\"JavaScript\">window.open('http://install.phptournois.com/?lang=$langue&nom=$nomsite&url=$urlsite&v=$version&ref=".$_SERVER["HTTP_REFERER"]."','phpTournois','toolbar=0,location=0,directories=0,status=0,scrollbars=0,resizable=0,copyhistory=0,menuBar=0,width=250,height=150');</SCRIPT>";
-	echo "<h3>$strInstallStage3</h3>";
-	echo "$strInstallStage3Consignes<br>";
-	echo "pensez à visiter les forum phpTournois http://forum.phptournois.net/ !";
 	}
 		
 }
@@ -769,5 +773,3 @@ echo "<br>";
 include('include/footer.inc.php');
 $db->close();
 exit;
-
- ?>

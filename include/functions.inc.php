@@ -4413,7 +4413,7 @@ function compteur() {
 	//on verifie l adresse ip du visiteur et aussi son heure de passage
 	$db->select("*");
 	$db->from("${dbprefix}compteur");
-	$db->where("id = '".md5($Sess->ip.$Sess->id)."'");
+	$db->where("id = '".md5($Sess->ip)."'");
 	$res = $db->exec();
 
 	if($db->num_rows($res) > 0) 
@@ -4423,7 +4423,7 @@ function compteur() {
 		if(!isset($s_joueur) || empty($s_joueur)) $s_joueur = '0';
 		if(!isset($s_joueur) || empty($s_joueur)) $s_type = '0';
 		$db->set("date = $duree, joueur = '$s_joueur', type = '$s_type'");
-		$db->where("id = '".md5($Sess->ip.$Sess->id)."'");
+		$db->where("id = '".md5($Sess->ip)."'");
 		$db->exec();
 	}
 	else {
@@ -4431,7 +4431,7 @@ function compteur() {
 		$db->insert("${dbprefix}compteur (id,date,joueur,type)");
 		if(!is_int($s_joueur)) $s_joueur = '0';
 		if(!is_int($s_type)) $s_type = '0';
-		$db->values("'".md5($Sess->ip.$Sess->id)."','$duree','$s_joueur','$s_type'");
+		$db->values("'".md5($Sess->ip)."','$duree','$s_joueur','$s_type'");
 		$db->exec();
 
 		if ((ereg("Nav", getenv("HTTP_USER_AGENT"))) || (ereg("Gold", getenv("HTTP_USER_AGENT"))) || (ereg("X11", getenv("HTTP_USER_AGENT"))) || (ereg("Mozilla", getenv("HTTP_USER_AGENT"))) || (ereg("Netscape", getenv("HTTP_USER_AGENT"))) AND (!ereg("MSIE", getenv("HTTP_USER_AGENT")))) {

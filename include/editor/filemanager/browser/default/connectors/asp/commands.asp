@@ -96,7 +96,7 @@ Sub CreateFolder( resourceType, currentFolder )
 		iErrNumber		= err.number
 		sErrDescription	= err.Description
 		
-		On Error Goto 0
+		On Error js_goto 0
 		
 		Select Case iErrNumber
 			Case 0
