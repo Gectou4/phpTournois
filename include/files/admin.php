@@ -4,8 +4,8 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2004 by Gectou4 <le_gardien_prime@hotmail.com>       |  
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2004 by Gectou4 <le_gardien_prime@hotmail.com>       |  
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -34,7 +34,7 @@
 */
 
 /*** verification securite ***/
-if (eregi("admin.php", $_SERVER['PHP_SELF'])) {
+if (preg_match("/admin.php/i", $_SERVER['PHP_SELF'])) {
 	die ("You cannot open this page directly");
 }
 

@@ -31,7 +31,7 @@
    |          Gougou                                                     | 
    +---------------------------------------------------------------------+ 
 */ 
-if (eregi("reglements.php", $_SERVER['PHP_SELF'])) { 
+if (preg_match("/reglements.php/i", $_SERVER['PHP_SELF'])) {
    die ("You cannot open this page directly"); 
 } 
 

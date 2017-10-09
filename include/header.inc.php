@@ -5,7 +5,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -32,7 +32,7 @@
    |          Gougou                                                     |
    +---------------------------------------------------------------------+
 */
-if (eregi("header.inc.php", $_SERVER['PHP_SELF'])) {
+if (preg_match("`header.inc.php`i", $_SERVER['PHP_SELF'])) {
 	die ("You cannot open this page directly");
 }
 
@@ -57,32 +57,14 @@ $compteur=compteur();
 <META HTTP-EQUIV="CONTENT-LANGUAGE" CONTENT="French">
 <META NAME="ROBOTS" CONTENT="index,follow">
 <META NAME="REVISIT-AFTER" CONTENT="10">
-<meta name="copyright" content="© phpTournois COPYRIGHT 1999-2005">
+<meta name="copyright" content="ï¿½ phpTournois COPYRIGHT 1999-2005">
 <link rel="stylesheet" type="text/css" href="themes/<?php echo $s_theme;?>/styles.css">
 <script lang="Javascript" src="include/javascript.inc.js"></script>
 <script type="text/javascript" src="include/fckeditor.js"></script>
-	<!-- <script type="text/javascript">
-      window.onload = function()
-      {
-        var oFCKeditor = new FCKeditor( 'contenu' ) ;
-        oFCKeditor.ReplaceTextarea() ;
-      }</script>-->
-	<!-- <script type="text/javascript">
-      window.onload = function()  window.onload = function()
-{
 
-	var oFCKeditor = new FCKeditor( 'contenu' ) ;
-	oFCKeditor.BasePath	= 'include/' ;
-	oFCKeditor.Value	= 'EDITED'  ;
-	oFCKeditor.ReplaceTextarea() ;
-}</script>-->
 </head>
 
-<?php 
-/*if($config['horloge'] == 1) {
-	echo '<body onLoad="show(\''.date('M, d Y H:i:s').'\');">';		
-}
-else*/
+<?php
 	echo '<body>';
 	
 if(!isset($autorefresh)) $autorefresh='';

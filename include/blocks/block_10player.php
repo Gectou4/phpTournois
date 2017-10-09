@@ -5,9 +5,9 @@
   +---------------------------------------------------------------------+
   +---------------------------------------------------------------------+
   | phpTournois                                                         |
-  | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+  | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
   +---------------------------------------------------------------------+
-  | Copyright© 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
+  | Copyrightï¿½ 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
   +---------------------------------------------------------------------+
   | This file is part of phpTournois.                                   |
   |                                                                     |
@@ -35,17 +35,16 @@
   +---------------------------------------------------------------------+
 */
 
-if (eregi("block_10player.php", $_SERVER['PHP_SELF'])) {
-die ("You cannot open this page directly");
+if (preg_match("/block_10player.php/i", $_SERVER['PHP_SELF'])) {
+    die ("You cannot open this page directly");
 }
 // HTML EDITED
 
 
-
 theme_openblock("<img src=\"themes/$s_theme/images/player.gif\" align=\"absmiddle\" alt=\":)\"> $strLastregistred");
-   
-if(!isset($start) || !is_numeric($start)) $start=0;    
-  
+
+if (!isset($start) || !is_numeric($start)) $start = 0;
+
 
 $db->select("*");
 $db->from("${dbprefix}joueurs");
@@ -53,28 +52,26 @@ $db->from("${dbprefix}joueurs");
 $nb_maxx = 10;
 $db->where("etat = 'I'");
 $db->order_by("id DESC LIMIT $start,$nb_maxx");
-$res=$db->exec();
-   echo "<ul>";
-if ($db->num_rows($res)==0) {
- echo "<li class=\"lib\">$strPasDeJoueur<br>";
-}
-else {
+$res = $db->exec();
+echo "<ul>";
+if ($db->num_rows($res) == 0) {
+    echo "<li class=\"lib\">$strPasDeJoueur<br>";
+} else {
 
-  while ($ps = $db->fetch($res)) {
+    while ($ps = $db->fetch($res)) {
 
-   $ps->pseudo=stripslashes($ps->pseudo);
-$max = 17; 
-   if (strlen($ps->pseudo) >= $max) {
-      $ps->pseudo= substr($ps->pseudo, 0, $max); 
-      $espace = strrpos($ps->pseudo, " ");    
-     $ps->pseudo= substr($ps->pseudo, 0, $espace)."...";
+        $ps->pseudo = stripslashes($ps->pseudo);
+        $max = 17;
+        if (strlen($ps->pseudo) >= $max) {
+            $ps->pseudo = substr($ps->pseudo, 0, $max);
+            $espace = strrpos($ps->pseudo, " ");
+            $ps->pseudo = substr($ps->pseudo, 0, $espace) . "...";
+        }
+        echo "<li class=\"lib\"><a href=\"?page=joueurs&id=" . $ps->id . "\">" . $ps->pseudo . "</a><br>";
+
     }
-   echo "<li class=\"lib\"><a href=\"?page=joueurs&id=".$ps->id."\">".$ps->pseudo."</a><br>";
-
-  }
-  }
-  echo "</ul>";
+}
+echo "</ul>";
 
 
 theme_closeblock();
-?>

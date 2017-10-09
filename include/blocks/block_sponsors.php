@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-  | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+  | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -32,36 +32,36 @@
    +---------------------------------------------------------------------+
 */
 
-if (eregi("block_sponsors.php", $_SERVER['PHP_SELF'])) {
-	die ("You cannot open this page directly");
+if (preg_match("/block_sponsors.php/i", $_SERVER['PHP_SELF'])) {
+    die ("You cannot open this page directly");
 }
 
-global $db,$dbprefix,$config,$s_joueur,$s_theme,$strSponsors;
+global $db, $dbprefix, $config, $s_joueur, $s_theme, $strSponsors;
 
 
-if($config['sponsors'] && nb_sponsors()!= 0) {	
-		
-	theme_openblock("<img src=\"themes/$s_theme/images/icon_sponsors.gif\" align=\"absmiddle\" alt=\"sponsors\"> $strSponsors");
-		
-	echo '<div align="center"><marquee onmouseout="this.start()" onmouseover="this.stop()" width="110" scrolldelay="40" scrollamount="1" height="160" direction="up" behavior="scroll">';
+if ($config['sponsors'] && nb_sponsors() != 0) {
 
-	$db->select("*");
-	$db->from("${dbprefix}sponsors");
-	$db->order_by("rang");
-	$sponsors=$db->exec();
-	
-	if ($db->num_rows($sponsors) != 0) {
-				
-		while ($sponsor = $db->fetch($sponsors)) {	
-			
-			list($width, $height, $type, $attr)=@getimagesize("images/sponsors/$sponsor->image");
-			if($width>100) $width="width=100";
-			else $width='';
-			
-			echo "<a href=\"?page=sponsors&amp;id=$sponsor->id\"><img border=\"0\" title=\"$sponsor->nom\" $width src=\"images/sponsors/$sponsor->image\" alt=\"\"></a><br /><br />";
-		}		
-	}
-	echo '</marquee></div>';
-			
-	theme_closeblock();
+    theme_openblock("<img src=\"themes/$s_theme/images/icon_sponsors.gif\" align=\"absmiddle\" alt=\"sponsors\"> $strSponsors");
+
+    echo '<div align="center"><marquee onmouseout="this.start()" onmouseover="this.stop()" width="110" scrolldelay="40" scrollamount="1" height="160" direction="up" behavior="scroll">';
+
+    $db->select("*");
+    $db->from("${dbprefix}sponsors");
+    $db->order_by("rang");
+    $sponsors = $db->exec();
+
+    if ($db->num_rows($sponsors) != 0) {
+
+        while ($sponsor = $db->fetch($sponsors)) {
+
+            list($width, $height, $type, $attr) = @getimagesize("images/sponsors/$sponsor->image");
+            if ($width > 100) $width = "width=100";
+            else $width = '';
+
+            echo "<a href=\"?page=sponsors&amp;id=$sponsor->id\"><img border=\"0\" title=\"$sponsor->nom\" $width src=\"images/sponsors/$sponsor->image\" alt=\"\"></a><br /><br />";
+        }
+    }
+    echo '</marquee></div>';
+
+    theme_closeblock();
 }

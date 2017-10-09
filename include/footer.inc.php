@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -32,7 +32,7 @@
    +---------------------------------------------------------------------+
 */
 
-if (eregi("footer.inc.php", $_SERVER['PHP_SELF'])) {
+if (preg_match("`footer.inc.php`i", $_SERVER['PHP_SELF'])) {
 	die ("You cannot open this page directly");
 }
 
@@ -41,15 +41,6 @@ if(isset($header) && $header == 'win')
 	theme_footer_win();
 else {
 	theme_footer();
-	
-	/*if($config['horloge'] == 1) {
-		echo '<div style="position:absolute;top:70;right:20;">';
-		echo '<table cellspacing="0" cellpadding="0" border="0" bgcolor="#000000"><tr><td>';
-		echo '<img height=15 src="images/clock/8.gif" name="a" border="0" alt="a"><img height="15" src="images/clock/8.gif" name="b" alt="b"><img height="15" src="images/clock/c.gif" name="c" alt="c"><img height="15" src="images/clock/8.gif" name="d" alt="d"><img height="15" src="images/clock/8.gif" name="e" alt="e"><img height="13" src="images/clock/c.gif" name="f" alt="f"><img height="13" src="images/clock/8.gif" name="g" alt="g"><img height="13" src="images/clock/8.gif" name="h" alt="h">';
-		echo '</td></tr></table>';
-		echo '</div>';
-	}*/
-	
 }
 
 if($s_joueur == -1) {
@@ -77,4 +68,3 @@ if(!isset($header) || $header != 'win') {
 }
 //$db->close();
 exit;
-?>

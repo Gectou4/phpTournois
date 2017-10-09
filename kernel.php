@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -226,106 +226,106 @@ if(isset($s_tournois) && !empty($s_tournois)) {
 	
 while ($grade_ch = $db->fetch($res)) {
 	 //  A est 'le' chef
-	if (eregi('a', $grade_ch->grade)) {
+	if (preg_match('`a', $grade_ch->grade)) {
    $grade['a'] = 'a'; 
     }
 	// B peut tout faire sauf modifier 'le chef'
-	if (eregi('b', $grade_ch->grade)) {
+	if (preg_match('`b`i', $grade_ch->grade)) {
    $grade['b'] = 'b'; 
     }
 	// C peut modifier la configuration (mods comprit)
-	if (eregi('c', $grade_ch->grade)) {
+	if (preg_match('`c`i', $grade_ch->grade)) {
    $grade['c'] = 'c'; 
     }
-	// D gère les downloads
-	if (eregi('d', $grade_ch->grade)) {
+	// D gï¿½re les downloads
+	if (preg_match('`d`i', $grade_ch->grade)) {
    $grade['d'] = 'd'; 
     }
-	//E peut gèrer les &eacute;quipe
-	if (eregi('e', $grade_ch->grade)) {
+	//E peut gï¿½rer les &eacute;quipe
+	if (preg_match('`e`i', $grade_ch->grade)) {
    $grade['e'] = 'e'; 
     }
 	//F peut g&eacute;rer la FAQ
-	if (eregi('f', $grade_ch->grade)) {
+	if (preg_match('`f`i', $grade_ch->grade)) {
    $grade['f'] = 'f'; 
     }//G peut cr&eacute;er des pages ou des menus (paske G4 il cr&eacute;er lol)
-	if (eregi('g', $grade_ch->grade)) {
+	if (preg_match('`g`i', $grade_ch->grade)) {
    $grade['g'] = 'g'; 
     }
-	//H peut gèrer les liens ( <a Href=''> ) 
-	if (eregi('h', $grade_ch->grade)) {
+	//H peut gï¿½rer les liens ( <a Href=''> ) 
+	if (preg_match('`h`i', $grade_ch->grade)) {
    $grade['h'] = 'h'; 
     }
-	//I peut gèrer le livre d'or (???)
-	if (eregi('i', $grade_ch->grade)) {
+	//I peut gï¿½rer le livre d'or (???)
+	if (preg_match('`i`i', $grade_ch->grade)) {
    $grade['i'] = 'i'; 
     }
-	//J peut gèrer les joueurs
-	if (eregi('j', $grade_ch->grade)) {
+	//J peut gï¿½rer les joueurs
+	if (preg_match('`j`i', $grade_ch->grade)) {
    $grade['j'] = 'j'; 
     }
 	// K pour M4 ou AB
-	if (eregi('k', $grade_ch->grade)) {
+	if (preg_match('`k`i', $grade_ch->grade)) {
    $grade['k'] = 'k'; 
     }
 	//L peut utiliser la maling List
-	if (eregi('l', $grade_ch->grade)) {
+	if (preg_match('`l`i', $grade_ch->grade)) {
    $grade['l'] = 'l'; 
     }
 	// M Mod&eacute;rateur
-	if (eregi('m', $grade_ch->grade)) {
+	if (preg_match('`m`i', $grade_ch->grade)) {
    $grade['m'] = 'm'; 
     }
 	// N newser
-	if (eregi('n', $grade_ch->grade)) {
+	if (preg_match('`n`i', $grade_ch->grade)) {
    $grade['n'] = 'n'; 
     }
 	// O ind&eacute;finie libre pour des mods ou custom rank
-	if (eregi('o', $grade_ch->grade)) {
+	if (preg_match('`o`i', $grade_ch->grade)) {
    $grade['o'] = 'o'; 
     }
-	// P gère les partenaire
-	if (eregi('p', $grade_ch->grade)) {
+	// P gï¿½re les partenaire
+	if (preg_match('`p`i', $grade_ch->grade)) {
    $grade['p'] = 'p'; 
     }
-	// Q gère la gallerie
-	if (eregi('q', $grade_ch->grade)) {
+	// Q gï¿½re la gallerie
+	if (preg_match('`q`i', $grade_ch->grade)) {
    $grade['q'] = 'q'; 
     }
-	// S gère les server
-	if (eregi('r', $grade_ch->grade)) {
+	// S gï¿½re les server
+	if (preg_match('`r`i', $grade_ch->grade)) {
    $grade['r'] = 'r'; 
     }
-	// S gère les sponsors
-	if (eregi('s', $grade_ch->grade)) {
+	// S gï¿½re les sponsors
+	if (preg_match('`s`i', $grade_ch->grade)) {
    $grade['s'] = 's'; 
     }
 	// T admin de tous les tournois (est orga & admin)
-	if (eregi('t', $grade_ch->grade)) {
+	if (preg_match('`t`i', $grade_ch->grade)) {
    $grade['t'] = 't'; 
     }
-	// U admin des ladder (cr&eacute;er, gère..).
-	if (eregi('u', $grade_ch->grade)) {
+	// U admin des ladder (cr&eacute;er, gï¿½re..).
+	if (preg_match('`u`i', $grade_ch->grade)) {
    $grade['u'] = 'u'; 
     }
 	// V ind&eacute;finie libre pour des mods ou custom rank
-	if (eregi('v', $grade_ch->grade)) {
+	if (preg_match('`v`i', $grade_ch->grade)) {
    $grade['v'] = 'v'; 
     }
 	// W Peut &eacute;diter les pouvoirs
-	if (eregi('w', $grade_ch->grade)) {
+	if (preg_match('`w`i', $grade_ch->grade)) {
    $grade['w'] = 'w'; 
     }
 	// X est manager d'une Team 
-	if (eregi('x', $grade_ch->grade)) {
+	if (preg_match('`x`i', $grade_ch->grade)) {
    $grade['x'] = 'x'; 
     }
 	// Y est wararranger ou leader d'une Team 
-	if (eregi('y', $grade_ch->grade)) {
+	if (preg_match('`y`i', $grade_ch->grade)) {
    $grade['y'] = 'y'; 
     }
 	//le Z est le rang 'user' un membre qui n'a pas "z" est bannit...
-	if (eregi('z', $grade_ch->grade)) {
+	if (preg_match('`z`i', $grade_ch->grade)) {
    $grade['z'] = 'z'; 
     }
 }
