@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -32,7 +32,7 @@
    +---------------------------------------------------------------------+
 */
 // code from Lille-eurolan
-if (eregi("sponsors.php", $_SERVER['PHP_SELF'])) {
+if (preg_match("/sponsors.php/", $_SERVER['PHP_SELF'])) {
 	die ("You cannot open this page directly");
 }
 

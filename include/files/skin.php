@@ -5,7 +5,7 @@
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
    +---------------------------------------------------------------------+
@@ -31,7 +31,7 @@
    |          Gougou                                                     |
    +---------------------------------------------------------------------+
 */
-if (eregi("skin.php", $_SERVER['PHP_SELF'])) {
+if (preg_match("/skin.php/", $_SERVER['PHP_SELF'])) {
 	die ("You cannot open this page directly");
 }
 

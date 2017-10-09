@@ -2,10 +2,10 @@
 /*
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2004 by Gectou4 <le_gardien_prime@hotmail.com>       |
+   | phpTournoisG4 ï¿½2004 by Gectou4 <le_gardien_prime@hotmail.com>       |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -32,291 +32,287 @@
    |          Gougou                                                     |
    +---------------------------------------------------------------------+
 */
-if (eregi("partenaires.php", $_SERVER['PHP_SELF'])) {
-	die ("You cannot open this page directly");
+if (preg_match("/partenaires.php/i", $_SERVER['PHP_SELF'])) {
+    die ("You cannot open this page directly");
 }
 
-if(!$config['partenaires']) js_goto('?page=index');
+if (!$config['partenaires']) js_goto('?page=index');
 
 /********************************************************
  * ajout d'un partenaire
  */
-if ($op=='add') {
-	
-	/*** verification securite globale ***/
-	if ($grade['a']!='a'&&$grade['b']!='b'&&$grade['p']!='p') {js_goto($PHP_SELF);} 
+if ($op == 'add') {
 
-	$str='';
-	$erreur=0;
+    /*** verification securite globale ***/
+    if ($grade['a'] != 'a' && $grade['b'] != 'b' && $grade['p'] != 'p') {
+        js_goto($PHP_SELF);
+    }
 
-	if(!$nom) {
-		$erreur=1;
-		$str.="- $strElementsNomInvalide<br>";
-	}	
-	if(!$image) {
-		$erreur=1;
-		$str.="- $strElementsImageInvalide<br>";
-	}
-	if(!$url || $url=='http://') {
-		$erreur=1;
-		$str.="- $strElementsUrlInvalide<br>";
-	}
+    $str = '';
+    $erreur = 0;
 
-	if($erreur==1) {
-		show_erreur_saisie($str);		
-	}
-	else {
-	
-		$db->insert("${dbprefix}partenaires (nom, url, image, rang, date)");
-		$db->values("'$nom','$url','$image','$rang', ".time()."");
-		$db->exec();
+    if (!$nom) {
+        $erreur = 1;
+        $str .= "- $strElementsNomInvalide<br>";
+    }
+    if (!$image) {
+        $erreur = 1;
+        $str .= "- $strElementsImageInvalide<br>";
+    }
+    if (!$url || $url == 'http://') {
+        $erreur = 1;
+        $str .= "- $strElementsUrlInvalide<br>";
+    }
 
-		js_goto("?page=partenaires&op=admin");
-	}
-}
+    if ($erreur == 1) {
+        show_erreur_saisie($str);
+    } else {
 
-/********************************************************
+        $db->insert("${dbprefix}partenaires (nom, url, image, rang, date)");
+        $db->values("'$nom','$url','$image','$rang', " . time() . "");
+        $db->exec();
+
+        js_goto("?page=partenaires&op=admin");
+    }
+} /********************************************************
  * suppression d'un partenaire
  */
-elseif ($op=="delete") {
-			
-	/*** verification securite globale ***/
-	if ($grade['a']!='a'&&$grade['b']!='b'&&$grade['p']!='p') {js_goto($PHP_SELF);} 
+elseif ($op == "delete") {
 
-	$db->delete("${dbprefix}partenaires");
-	$db->where("id = $id");
-	$db->exec();		
-	
+    /*** verification securite globale ***/
+    if ($grade['a'] != 'a' && $grade['b'] != 'b' && $grade['p'] != 'p') {
+        js_goto($PHP_SELF);
+    }
 
-	js_goto("?page=partenaires&op=admin");
-	
-}
+    $db->delete("${dbprefix}partenaires");
+    $db->where("id = $id");
+    $db->exec();
 
-/********************************************************
+
+    js_goto("?page=partenaires&op=admin");
+
+} /********************************************************
  * Modification d'un partenaire
  */
-elseif($op == "modify") {
+elseif ($op == "modify") {
 
-	/*** verification securite globale ***/
-	if ($grade['a']!='a'&&$grade['b']!='b'&&$grade['p']!='p') {js_goto($PHP_SELF);} 
+    /*** verification securite globale ***/
+    if ($grade['a'] != 'a' && $grade['b'] != 'b' && $grade['p'] != 'p') {
+        js_goto($PHP_SELF);
+    }
 
-	$db->select("*");
-	$db->from("${dbprefix}partenaires");
-	$db->where("id = '$id'");
-	$res=$db->exec();
-	$partenaire = $db->fetch($res);
+    $db->select("*");
+    $db->from("${dbprefix}partenaires");
+    $db->where("id = '$id'");
+    $res = $db->exec();
+    $partenaire = $db->fetch($res);
 
-	echo "<p class=title>.:: $strAdminPartenaires ::.</p>";
+    echo "<p class=title>.:: $strAdminPartenaires ::.</p>";
 
-	echo "<form method=post action=?page=partenaires&op=do_modify>";
-	echo "<table border=0 cellpadding=0 cellspacing=0 class=bordure2><tr><td>";
-	echo "<table cellspacing=1 cellpadding=0 border=0>";
-	echo "<tr><td class=headerfiche>$strModifierPartenaires</td></tr>";
-	echo "<tr><td>";
-	echo "<table cellspacing=0 cellpadding=3 border=0 width=100%>";
-	echo "<tr>";
-	echo "<td class=titlefiche>$strNom <font color=red><b>*</b></font> :</td>";
-	echo "<td class=textfiche><input type=text name=nom size=30 value=\"".stripslashes($partenaire->nom)."\"></td>";
-	echo "</tr>";
-	echo "<tr>";	
-	echo "<td class=titlefiche>$strUrl <font color=red><b>*</b></font> :</td>";
-	echo "<td class=textfiche><input type=text name=url size=60 value=\"$partenaire->url\"></td>";
-	echo "</tr>";
-	echo "<tr>";
-	echo "<td class=titlefiche>$strImage <font color=red><b>*</b></font> :</td>";
-	echo "<td class=textfiche>";
-	echo "<select name=image>";
-	$fd = opendir("images/partenaires");
+    echo "<form method=post action=?page=partenaires&op=do_modify>";
+    echo "<table border=0 cellpadding=0 cellspacing=0 class=bordure2><tr><td>";
+    echo "<table cellspacing=1 cellpadding=0 border=0>";
+    echo "<tr><td class=headerfiche>$strModifierPartenaires</td></tr>";
+    echo "<tr><td>";
+    echo "<table cellspacing=0 cellpadding=3 border=0 width=100%>";
+    echo "<tr>";
+    echo "<td class=titlefiche>$strNom <font color=red><b>*</b></font> :</td>";
+    echo "<td class=textfiche><input type=text name=nom size=30 value=\"" . stripslashes($partenaire->nom) . "\"></td>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<td class=titlefiche>$strUrl <font color=red><b>*</b></font> :</td>";
+    echo "<td class=textfiche><input type=text name=url size=60 value=\"$partenaire->url\"></td>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<td class=titlefiche>$strImage <font color=red><b>*</b></font> :</td>";
+    echo "<td class=textfiche>";
+    echo "<select name=image>";
+    $fd = opendir("images/partenaires");
 
-	while($file = readdir($fd)) {
-		if ($file != "." && $file != "..") {
-			echo "<option value=\"$file\"";
-			if($partenaire->image==$file) echo " SELECTED";
-			echo ">$file";
-		}
-	}
-	echo "</select>";
-	closedir($fd);
-	echo "</td>";
-	echo "</tr>";
-	echo "<tr>";
-	echo "<td class=titlefiche>$strRang :</td>";
-	echo "<td class=textfiche><input type=rang name=rang size=5 value=\"$partenaire->rang\"></td></td>";
-	echo "</tr>";
-	echo "<tr><td class=footerfiche colspan=2 align=center><input type=submit value=\"$strModifier\">&nbsp;<input type=button value=\"$strRetour\" onclick=\"document.location='?page=liens&op=admin'\"></td></tr>";
-	echo "</table>";
-	echo "</td></tr></table>";
-	echo "<input type=hidden name=id value='$id'>";
-	echo "</td></tr></form></table>";
+    while ($file = readdir($fd)) {
+        if ($file != "." && $file != "..") {
+            echo "<option value=\"$file\"";
+            if ($partenaire->image == $file) echo " SELECTED";
+            echo ">$file";
+        }
+    }
+    echo "</select>";
+    closedir($fd);
+    echo "</td>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<td class=titlefiche>$strRang :</td>";
+    echo "<td class=textfiche><input type=rang name=rang size=5 value=\"$partenaire->rang\"></td></td>";
+    echo "</tr>";
+    echo "<tr><td class=footerfiche colspan=2 align=center><input type=submit value=\"$strModifier\">&nbsp;<input type=button value=\"$strRetour\" onclick=\"document.location='?page=liens&op=admin'\"></td></tr>";
+    echo "</table>";
+    echo "</td></tr></table>";
+    echo "<input type=hidden name=id value='$id'>";
+    echo "</td></tr></form></table>";
 
 
-}
-/********************************************************
+} /********************************************************
  * Modification d'un partenaire
  */
-elseif($op == "do_modify") {
+elseif ($op == "do_modify") {
 
-	/*** verification securite globale ***/
-	if ($grade['a']!='a'&&$grade['b']!='b'&&$grade['p']!='p') {js_goto($PHP_SELF);} 
+    /*** verification securite globale ***/
+    if ($grade['a'] != 'a' && $grade['b'] != 'b' && $grade['p'] != 'p') {
+        js_goto($PHP_SELF);
+    }
 
-	$str='';
-	$erreur=0;
+    $str = '';
+    $erreur = 0;
 
-	if(!$nom) {
-		$erreur=1;
-		$str.="- $strElementsNomInvalide<br>";
-	}
-	if(!$image) {
-		$erreur=1;
-		$str.="- ".$strElementsImageInvalide."<br>";
-	}
-	if(!$url || $url=='http://') {
-		$erreur=1;
-		$str.="- $strElementsUrlInvalide<br>";
-	}
+    if (!$nom) {
+        $erreur = 1;
+        $str .= "- $strElementsNomInvalide<br>";
+    }
+    if (!$image) {
+        $erreur = 1;
+        $str .= "- " . $strElementsImageInvalide . "<br>";
+    }
+    if (!$url || $url == 'http://') {
+        $erreur = 1;
+        $str .= "- $strElementsUrlInvalide<br>";
+    }
 
-	if($erreur==1) {
-		show_erreur_saisie($str);
-	}
-	else {
+    if ($erreur == 1) {
+        show_erreur_saisie($str);
+    } else {
 
-		$db->update("${dbprefix}partenaires");
-		$db->set("nom = '$nom'");
-		$db->set("url = '$url'");
-		$db->set("image = '$image'");
-		$db->set("rang = '$rang'");
-		$db->where("id = '$id'");
-		$db->exec();
+        $db->update("${dbprefix}partenaires");
+        $db->set("nom = '$nom'");
+        $db->set("url = '$url'");
+        $db->set("image = '$image'");
+        $db->set("rang = '$rang'");
+        $db->where("id = '$id'");
+        $db->exec();
 
-		js_goto("?page=partenaires&op=admin");
-	}
-}
-
-/********************************************************
+        js_goto("?page=partenaires&op=admin");
+    }
+} /********************************************************
  * Affichage admin
  */
-elseif($op=='admin') {
+elseif ($op == 'admin') {
 
-	/*** verification securite ***/
-	if ($grade['a']!='a'&&$grade['b']!='b'&&$grade['p']!='p') {js_goto($PHP_SELF);} 
+    /*** verification securite ***/
+    if ($grade['a'] != 'a' && $grade['b'] != 'b' && $grade['p'] != 'p') {
+        js_goto($PHP_SELF);
+    }
 
-	echo "<p class=title>.:: $strAdminPartenaires ::.</p>";
-	
-	echo "<table cellspacing=0 cellpadding=2 border=0>";
-	echo "<tr><td class=title>". nb_partenaires() ." $strPartenaires</td></tr>";
-	echo "</table>";	
-		
-	$db->select("*");
-	$db->from("${dbprefix}partenaires");	
-	$db->order_by("rang");
-	$partenaires = $db->exec();
+    echo "<p class=title>.:: $strAdminPartenaires ::.</p>";
 
-	if ($db->num_rows($partenaires)!=0) {
+    echo "<table cellspacing=0 cellpadding=2 border=0>";
+    echo "<tr><td class=title>" . nb_partenaires() . " $strPartenaires</td></tr>";
+    echo "</table>";
 
-		echo "<table border=0 cellpadding=0 cellspacing=0 class=bordure1><tr><td>";
-		echo "<table cellspacing=1 cellpadding=2 border=0>";
-		echo "<tr><td class=header>$strRang</td><td class=header>$strNom</td><td class=header>$strUrl</td><td class=header>$strImage</td></tr>";
+    $db->select("*");
+    $db->from("${dbprefix}partenaires");
+    $db->order_by("rang");
+    $partenaires = $db->exec();
 
-		while($partenaire = $db->fetch($partenaires)) {
+    if ($db->num_rows($partenaires) != 0) {
 
-			echo "<tr>";
-			echo "<td class=text align=center>$partenaire->rang</td>";
-			echo "<td class=text>";
-			echo "<div style=\"clear: both\"><div style=\"float: left\">".stripslashes($partenaire->nom)."</div>";
-			echo "<div style=\"float: right\">&nbsp;<a href=\"?page=partenaires&op=modify&id=$partenaire->id\">[$strE]</a> <a href=?page=partenaires&op=delete&id=".$partenaire->id." onclick=\"return confirm('$strConfirmEffacerPartenaire');\">[$strS]</a></div>";
-			echo "</div></td>";
-			echo "<td class=text><a href=\"$partenaire->url\">$partenaire->url</a></td>";
-			echo "<td class=text align=center><img src=\"images/partenaires/$partenaire->image\" align=absmiddle height=20></td>";
-			echo "</tr>";
-		}
-		echo "</table>";
-		echo "</td></tr></table>";
-	}
-	
-	/*** ajout d'un partenaire ***/
-	echo "<br>";
-	echo "<form method=post action=?page=partenaires&op=add>";
-	echo "<table border=0 cellpadding=0 cellspacing=0 class=bordure2><tr><td>";
-	echo "<table cellspacing=1 cellpadding=0 border=0>";
-	echo "<tr><td class=headerfiche>$strAjouterPartenaire</td></tr>";
-	echo "<tr><td>";
-	echo "<table cellspacing=0 cellpadding=3 border=0 width=100%>";
-	echo "<tr>";
-	echo "<td class=titlefiche>$strNom <font color=red><b>*</b></font> :</td>";
-	echo "<td class=textfiche><input type=text name=nom size=30></td>";
-	echo "</tr>";
-	echo "<tr>";	
-	echo "<td class=titlefiche>$strUrl <font color=red><b>*</b></font> :</td>";
-	echo "<td class=textfiche><input type=text name=url size=50 value=\"http://\"></td>";
-	echo "</tr>";
-	echo "<tr>";
-	echo "<td class=titlefiche>$strImage <font color=red><b>*</b></font> :</td>";
-	echo "<td class=textfiche>";
-	echo "<select name=image>";
-	$fd = opendir("images/partenaires");
-	while($file = readdir($fd)) {
-		if ($file != "." && $file != "..") {
-			echo "<option value=\"$file\">$file";
-		}
-	}
-	echo "</select>";
-	closedir($fd);
-	echo "</td>";
-	echo "</tr>";
-	echo "<tr>";
-	echo "<td class=titlefiche>$strRang :</td>";
-	echo "<td class=textfiche><input type=rang name=rang size=5></td></td>";
-	echo "</tr>";
-	echo "<tr><td class=footerfiche align=center colspan=2><input type=submit value=\"$strAjouter\"></td></tr>";
-	echo "</table>";
-	echo "</td></tr></table>";
-	echo "</td></tr></form></table>";
+        echo "<table border=0 cellpadding=0 cellspacing=0 class=bordure1><tr><td>";
+        echo "<table cellspacing=1 cellpadding=2 border=0>";
+        echo "<tr><td class=header>$strRang</td><td class=header>$strNom</td><td class=header>$strUrl</td><td class=header>$strImage</td></tr>";
 
-	echo "<br><img src=\"images/back.gif\" border=0 align=align=absmiddle> <a href=javascript:back() class=action>$strRetour</a><br>";
+        while ($partenaire = $db->fetch($partenaires)) {
 
-}
+            echo "<tr>";
+            echo "<td class=text align=center>$partenaire->rang</td>";
+            echo "<td class=text>";
+            echo "<div style=\"clear: both\"><div style=\"float: left\">" . stripslashes($partenaire->nom) . "</div>";
+            echo "<div style=\"float: right\">&nbsp;<a href=\"?page=partenaires&op=modify&id=$partenaire->id\">[$strE]</a> <a href=?page=partenaires&op=delete&id=" . $partenaire->id . " onclick=\"return confirm('$strConfirmEffacerPartenaire');\">[$strS]</a></div>";
+            echo "</div></td>";
+            echo "<td class=text><a href=\"$partenaire->url\">$partenaire->url</a></td>";
+            echo "<td class=text align=center><img src=\"images/partenaires/$partenaire->image\" align=absmiddle height=20></td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        echo "</td></tr></table>";
+    }
 
-/********************************************************
+    /*** ajout d'un partenaire ***/
+    echo "<br>";
+    echo "<form method=post action=?page=partenaires&op=add>";
+    echo "<table border=0 cellpadding=0 cellspacing=0 class=bordure2><tr><td>";
+    echo "<table cellspacing=1 cellpadding=0 border=0>";
+    echo "<tr><td class=headerfiche>$strAjouterPartenaire</td></tr>";
+    echo "<tr><td>";
+    echo "<table cellspacing=0 cellpadding=3 border=0 width=100%>";
+    echo "<tr>";
+    echo "<td class=titlefiche>$strNom <font color=red><b>*</b></font> :</td>";
+    echo "<td class=textfiche><input type=text name=nom size=30></td>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<td class=titlefiche>$strUrl <font color=red><b>*</b></font> :</td>";
+    echo "<td class=textfiche><input type=text name=url size=50 value=\"http://\"></td>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<td class=titlefiche>$strImage <font color=red><b>*</b></font> :</td>";
+    echo "<td class=textfiche>";
+    echo "<select name=image>";
+    $fd = opendir("images/partenaires");
+    while ($file = readdir($fd)) {
+        if ($file != "." && $file != "..") {
+            echo "<option value=\"$file\">$file";
+        }
+    }
+    echo "</select>";
+    closedir($fd);
+    echo "</td>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<td class=titlefiche>$strRang :</td>";
+    echo "<td class=textfiche><input type=rang name=rang size=5></td></td>";
+    echo "</tr>";
+    echo "<tr><td class=footerfiche align=center colspan=2><input type=submit value=\"$strAjouter\"></td></tr>";
+    echo "</table>";
+    echo "</td></tr></table>";
+    echo "</td></tr></form></table>";
+
+    echo "<br><img src=\"images/back.gif\" border=0 align=align=absmiddle> <a href=javascript:back() class=action>$strRetour</a><br>";
+
+} /********************************************************
  * Affichage normal
  */
 else {
 
-	echo "<p class=title>.:: $strPartenaires ::.</p>";
-	
-	$db->select("*");
-	$db->from("${dbprefix}partenaires");
-	$db->order_by("rang");
-	$partenaires=$db->exec();
-	
-	if ($db->num_rows($partenaires)!=0) {
+    echo "<p class=title>.:: $strPartenaires ::.</p>";
 
-		echo "<table border=0 align=center cellpadding=2 cellspacing=2>";
-		
-		while ($partenaire = $db->fetch($partenaires)) {
-			$date=strftime(DATESTRING2, $partenaire->date);
-			echo "<tr>";
-			echo "<td class=test2 align=center><a target=\"_blank\" href=\"$partenaire->url\"><img border=0 src=\"images/partenaires/$partenaire->image\" title=\"$partenaire->nom\"></a></td>";
-			echo "<td class=text2 align=left><li class=lib><a target=\"_blank\" href=\"$partenaire->url\"><b>$partenaire->nom</b></a><br>$strPartenaireDepuisLe : $date<br>";
-			echo "</tr>";
-		}	
-		echo "</table>";			
-	}
-	else {
-		echo "<table cellspacing=2 cellpadding=2 border=0>";
-		echo "<tr><td class=title>$strPasDePartenaires</td></tr>";
-		echo "</table>";
-	}
+    $db->select("*");
+    $db->from("${dbprefix}partenaires");
+    $db->order_by("rang");
+    $partenaires = $db->exec();
 
-	echo "<br><table cellspacing=2 cellpadding=2 border=0>";
-	echo "<tr><td class=title valign=middle>$strDevenirPartenaire : <a href=\"mailto: $config[emailcontact]?subject=$strLinkex\"><img src=\"images/icon_email.gif\" border=0 align=absmiddle></a></td></tr>";
-	echo "</table>";
+    if ($db->num_rows($partenaires) != 0) {
 
+        echo "<table border=0 align=center cellpadding=2 cellspacing=2>";
 
-	echo "<br><img src=\"images/back.gif\" border=0 align=align=absmiddle> <a href=javascript:back() class=action>$strRetour</a><br>";
+        while ($partenaire = $db->fetch($partenaires)) {
+            $date = strftime(DATESTRING2, $partenaire->date);
+            echo "<tr>";
+            echo "<td class=test2 align=center><a target=\"_blank\" href=\"$partenaire->url\"><img border=0 src=\"images/partenaires/$partenaire->image\" title=\"$partenaire->nom\"></a></td>";
+            echo "<td class=text2 align=left><li class=lib><a target=\"_blank\" href=\"$partenaire->url\"><b>$partenaire->nom</b></a><br>$strPartenaireDepuisLe : $date<br>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<table cellspacing=2 cellpadding=2 border=0>";
+        echo "<tr><td class=title>$strPasDePartenaires</td></tr>";
+        echo "</table>";
+    }
+
+    echo "<br><table cellspacing=2 cellpadding=2 border=0>";
+    echo "<tr><td class=title valign=middle>$strDevenirPartenaire : <a href=\"mailto: $config[emailcontact]?subject=$strLinkex\"><img src=\"images/icon_email.gif\" border=0 align=absmiddle></a></td></tr>";
+    echo "</table>";
 
 
+    echo "<br><img src=\"images/back.gif\" border=0 align=align=absmiddle> <a href=javascript:back() class=action>$strRetour</a><br>";
 
-	
+
 }
 
 ?>

@@ -4,9 +4,9 @@
   | Hack by Evolution <Evolution@Freekillers.net>                      |
   +---------------------------------------------------------------------+
   | phpTournois                                                        |
-  | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+  | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
   +---------------------------------------------------------------------+
-  | Copyright© 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
+  | Copyrightï¿½ 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
   +---------------------------------------------------------------------+
   | This file is part of phpTournois.                                  |
   |                                                                    |
@@ -31,7 +31,7 @@
   +---------------------------------------------------------------------+
 */
 
-if (eregi("inscriptions.php", $_SERVER['PHP_SELF'])) {
+if (preg_match("/inscriptions.php/i", $_SERVER['PHP_SELF'])) {
 die ("You cannot open this page directly");
 }
 

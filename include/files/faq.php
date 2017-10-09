@@ -8,7 +8,7 @@
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
-   | Copyright© 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
+   | Copyrightï¿½ 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
    +---------------------------------------------------------------------+
    | This file is part of phpTournois.                                   |
    |                                                                     |
@@ -33,7 +33,7 @@
   | Edited by @ngelius <angelius@tournois-online.com> (21/07/2005)      |
   +---------------------------------------------------------------------+
 */
-if (eregi("faq.php", $_SERVER['PHP_SELF'])) {
+if (preg_match("/faq.php/i", $_SERVER['PHP_SELF'])) {
 die ("You cannot open this page directly");
 }
 
@@ -529,7 +529,7 @@ if ($_POST['act']=="E" || $_GET['act']=="E")
   {
 
    echo '<tr><td class="headerfiche" align="left">&nbsp;'.$datar->categorie.'&nbsp;</td><td class="textfiche">';
-   // j'ai matter le reoder de IBF ouer bas dès que "j'aurais le temps" je ferrais pareil (bigre de bigre)
+   // j'ai matter le reoder de IBF ouer bas dï¿½s que "j'aurais le temps" je ferrais pareil (bigre de bigre)
  
   if ($p_test!=$cat_max)
    {

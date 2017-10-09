@@ -7,7 +7,7 @@
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
    +---------------------------------------------------------------------+
@@ -33,7 +33,7 @@
    |          Gougou                                                     |
    +---------------------------------------------------------------------+
 */
-if (eregi("ac_spe.php", $_SERVER['PHP_SELF'])) {
+if (preg_match("/ac_spe.php/i", $_SERVER['PHP_SELF'])) {
 	die ("You cannot open this page directly");
 }
 
@@ -136,7 +136,7 @@ if ($_GET['act']=="arvxp")
 		
 }
 /********************************************************
- * A prit ça commande
+ * A prit ï¿½a commande
  */
 if ($_GET['act']=="prixp")
 	{
@@ -469,7 +469,7 @@ if ($_GET['admin'] == "add")
       		echo '<td bgcolor="#CCCCCC"><font color="#000066"><b>';
 			echo "$strAc_prix";
 			echo '&nbsp;:</b></font></td>'; 
-      		echo '<td><input type="text" name="addprix">€</td>'; 
+      		echo '<td><input type="text" name="addprix">ï¿½</td>'; 
     		echo '</tr>'; 
   			echo '</table>'; 
   			echo '</form></center>'; 
@@ -625,7 +625,7 @@ if ($_GET['admin']== "list")
          echo ' <td width="37"><div align="center">'.$ac_l.'</div></td>';
          echo '</tr>';
 /********************************************************
-* RAZ prix + check N° commande
+* RAZ prix + check Nï¿½ commande
 */         
 	
 		
@@ -776,7 +776,7 @@ if ($_GET['wtl'] == "")
 	    echo '<td align="center">';
         //echo '<a href="?page=ac_spe&op=admin&admin=statusoff&annule='.$lcid.'"><div align="center"><img src="images/G4/non.gif" onClik="javascipt:confirm ("ATENTION !!!\nVous allez effacer d&eacute;finitivement\nLa totalit&eacute; des comandes de cette commande\n");" alt="';
 		//echo "$strAc_annueff"; 
-		//echo '&nbsp;(N°'.$lcid.')" border="0"></div>';
+		//echo '&nbsp;(Nï¿½'.$lcid.')" border="0"></div>';
 		
 
 	
@@ -1018,7 +1018,7 @@ if ($_GET['ac_op']=="rechup") {
 		
 
 /********************************************************
- * A prit ça commande 2
+ * A prit ï¿½a commande 2
  */
 
 		$rchaine_req = $_POST['rchaindel'];

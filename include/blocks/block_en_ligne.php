@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-  | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+  | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -32,7 +32,7 @@
    +---------------------------------------------------------------------+
 */
 
-if (eregi("block_en_ligne.php", $_SERVER['PHP_SELF'])) {
+if (preg_match("/block_en_ligne.php/i", $_SERVER['PHP_SELF'])) {
 	die ("You cannot open this page directly");
 }
 //HTML EDITED
@@ -96,4 +96,3 @@ theme_closeblock_enligne("$strNoUserOnline");
 }else{
 theme_closeblock_enligne("<img src=\"themes/$s_theme/images/icon_enligne.gif\" align=\"absmiddle\" alt=\"enligne\"> $strQuiEnLigne");
 }
-?>

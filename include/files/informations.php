@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* 
    +---------------------------------------------------------------------+ 
    | phpTournois                                                         | 
@@ -30,54 +30,53 @@
    |          RV <rv@phptournois.net>                                    | 
    |          Gougou                                                     | 
    +---------------------------------------------------------------------+ 
-*/ 
-if (eregi("informations.php", $_SERVER['PHP_SELF'])) { 
-   die ("You cannot open this page directly"); 
-} 
+*/
+if (preg_match("/informations.php/i", $_SERVER['PHP_SELF'])) {
+    die ("You cannot open this page directly");
+}
 
-/******************************************************** 
- * Affichage normal 
- */ 
- $isntafile_usesql="no"; 
- if($id != null){ 
-   $db->select("information"); 
-   $db->from("${dbprefix}tournois"); 
-   $db->where("id = $id"); 
- }else{ 
-   $db->select("information"); 
-   $db->from("${dbprefix}config"); 
- } 
+/********************************************************
+ * Affichage normal
+ */
+$isntafile_usesql = "no";
+if ($id != null) {
+    $db->select("information");
+    $db->from("${dbprefix}tournois");
+    $db->where("id = $id");
+} else {
+    $db->select("information");
+    $db->from("${dbprefix}config");
+}
 
-   $res=$db->exec(); 
-   $infos_sql=$db->fetch($res);    
-   $information = $infos_sql->information; 
-   echo "<p class=title>.:: $strInformations / $strPresentation ::.</p>"; 
-
-          
-echo "<table cellspacing=2 cellpadding=2 border=0>"; 
-echo "<tr>"; 
-$information=str_replace ( "..", "", $information); 
-if ($isntafile_usesql=="no" && file_exists("./include/html/informations/$s_lang/$information") && !is_dir("./include/html/informations/$s_lang/$information")) { 
-   echo "<td>"; 
-   include("include/html/informations/$s_lang/$information"); 
-   echo "</td>"; 
-} else { 
-
-$information = BBCode($information); 
+$res = $db->exec();
+$infos_sql = $db->fetch($res);
+$information = $infos_sql->information;
+echo "<p class=title>.:: $strInformations / $strPresentation ::.</p>";
 
 
-if($information!=NULL||$information!="") { 
-   echo "<td>"; 
-   echo $information; 
-   echo "</td>"; 
-} 
-else { 
-   echo "<td class=title>$strPasDInformation</td>"; 
-} 
-} 
-echo "</tr>";    
-echo "</table>"; 
+echo "<table cellspacing=2 cellpadding=2 border=0>";
+echo "<tr>";
+$information = str_replace("..", "", $information);
+if ($isntafile_usesql == "no" && file_exists("./include/html/informations/$s_lang/$information") && !is_dir("./include/html/informations/$s_lang/$information")) {
+    echo "<td>";
+    include("include/html/informations/$s_lang/$information");
+    echo "</td>";
+} else {
 
-echo "<br><img src=\"images/back.gif\" border=0 align=align=absmiddle> <a href=javascript:back() class=action>$strRetour</a><br>"; 
-    
+    $information = BBCode($information);
+
+
+    if ($information != NULL || $information != "") {
+        echo "<td>";
+        echo $information;
+        echo "</td>";
+    } else {
+        echo "<td class=title>$strPasDInformation</td>";
+    }
+}
+echo "</tr>";
+echo "</table>";
+
+echo "<br><img src=\"images/back.gif\" border=0 align=align=absmiddle> <a href=javascript:back() class=action>$strRetour</a><br>";
+
 ?>

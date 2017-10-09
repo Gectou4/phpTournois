@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -31,37 +31,36 @@
    |          Gougou                                                     |
    +---------------------------------------------------------------------+
 */
-if (eregi("dotations.php", $_SERVER['PHP_SELF'])) {
-	die ("You cannot open this page directly");
+if (preg_match("/dotations.php/i", $_SERVER['PHP_SELF'])) {
+    die ("You cannot open this page directly");
 }
 
 /********************************************************
  * Affichage normal
  */
 
-if(!is_numeric($id)) js_goto("?page=index");
-	
+if (!is_numeric($id)) js_goto("?page=index");
+
 $db->select("dotation");
 $db->from("${dbprefix}tournois");
 $db->where("id = $id");
-$res=$db->exec();
-$tournois = $db->fetch($res);		
-$dotation=$tournois->dotation;
+$res = $db->exec();
+$tournois = $db->fetch($res);
+$dotation = $tournois->dotation;
 
 echo "<p class=title>.:: $strDotations $nom_tournois ::.</p>";
-		
+
 echo "<table cellspacing=2 cellpadding=2 border=0>";
 echo "<tr>";
-$dotation=str_replace ( "..", "", $dotation);
-if(file_exists("./include/html/dotations/$s_lang/$dotation") && !is_dir("./include/html/dotations/$s_lang/$dotation")) {
-	echo "<td>";
-	include("include/html/dotations/$s_lang/$dotation");
-	echo "</td>";
+$dotation = str_replace("..", "", $dotation);
+if (file_exists("./include/html/dotations/$s_lang/$dotation") && !is_dir("./include/html/dotations/$s_lang/$dotation")) {
+    echo "<td>";
+    include("include/html/dotations/$s_lang/$dotation");
+    echo "</td>";
+} else {
+    echo "<td class=title>$strPasDeDotation</td>";
 }
-else {
-	echo "<td class=title>$strPasDeDotation</td>";
-}
-echo "</tr>";	
+echo "</tr>";
 echo "</table>";
 
 echo "<br><img src=\"images/back.gif\" border=0 align=align=absmiddle> <a href=javascript:back() class=action>$strRetour</a><br>";

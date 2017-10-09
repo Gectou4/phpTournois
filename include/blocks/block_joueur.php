@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-  | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+  | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -32,7 +32,7 @@
    +---------------------------------------------------------------------+
 */
 
-if (eregi("block_joueur.php", $_SERVER['PHP_SELF'])) {
+if (preg_match("/block_joueur.php/i", $_SERVER['PHP_SELF'])) {
 	die ("You cannot open this page directly");
 }
 
@@ -45,10 +45,6 @@ theme_openblock("<img src=\"themes/$s_theme/images/icon_joueur.gif\" align=\"abs
 if (empty($s_joueur)) {
 	
 	if(isset($_COOKIE['data'])) {
-	
-		//$data_banned = $_COOKIE['data'];
-		//if ($data_banned="banned") {js_goto("?page=banned.php");}
-		
 		$data_info = $_COOKIE['data'];
 		$data_info = base64_decode($data_info);
 		$user_data = explode('|',$data_info);
@@ -56,50 +52,6 @@ if (empty($s_joueur)) {
 		/*** transmition des variables via donn&eacute;e du cookie ***/
   $pseudo=$user_data[0];
   $passwd=$user_data[1];
-/*
-/*** login ***
-$db->select("id,langue,admin");
-$db->from("${dbprefix}joueurs");
-$db->where("pseudo = '$pseudo'");
-$db->where("passwd = md5('$passwd')");
-$db->where("passwd != ''");
-$db->where("passwd is not null");
-$db->where("(etat in ('P','I') or id = -1 or admin = 'O')");
-$db->exec();
-
-if ($db->num_rows() != 0) {
-  $joueur = $db->fetch();
-  
-  
-  // creation de la session
-  SessionNew(session_id(),$joueur->id);  
-  SessionSetVar("s_joueur",$joueur->id);
-  SessionSetVar("s_type","1");
-
-  if($joueur->admin == 'O') {
-   SessionSetVar("s_type","2");
-  }
-
-  if($joueur->langue) {
-   SessionSetVar("s_lang",$joueur->langue);
-  }
-
-     
-   $data_info="$pseudo|$passwd";
-   $data_info=base64_encode($data_info);
-   setcookie("data","$data_info",time()+9999999);
-   
-
-  // update de la date de login
-  $db->update("${dbprefix}joueurs");
-  $db->set("datelogin = '".time()."'");
-  $db->where("id = '$joueur->id'");
-  $db->exec();
-  
-
-  js_goto("?page=index");
-  
-  }*/
 	}
 	else {
 		$user_data = array('','');
@@ -202,4 +154,3 @@ else {
 
 theme_closeblock();
 
-?>

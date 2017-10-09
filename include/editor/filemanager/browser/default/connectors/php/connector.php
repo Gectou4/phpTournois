@@ -35,7 +35,7 @@ else if ( isset( $_GET['ServerPath'] ) )
 else
 	$GLOBALS["UserFilesPath"] = '/UserFiles/' ;
 
-if ( ! ereg( '/$', $GLOBALS["UserFilesPath"] ) )
+if ( ! preg_match( '`/$', $GLOBALS["UserFilesPath"] ) )
 	$GLOBALS["UserFilesPath"] .= '/' ;
 
 // Map the "UserFiles" path to a local directory.
@@ -59,7 +59,7 @@ function DoResponse()
 		return ;
 
 	// Check the current folder syntax (must begin and start with a slash).
-	if ( ! ereg( '/$', $sCurrentFolder ) ) $sCurrentFolder .= '/' ;
+	if ( ! preg_match( '`/$`', $sCurrentFolder ) ) $sCurrentFolder .= '/' ;
 	if ( strpos( $sCurrentFolder, '/' ) !== 0 ) $sCurrentFolder = '/' . $sCurrentFolder ;
 	
 	// Check for invalid folder paths (..)

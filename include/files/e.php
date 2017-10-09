@@ -1,11 +1,11 @@
-<?php 
+<?php
 /*
    +---------------------------------------------------------------------+
    | page : skin.php                                                     |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
    +---------------------------------------------------------------------+
@@ -31,21 +31,21 @@
    |          Gougou                                                     |
    +---------------------------------------------------------------------+
 */
-if (eregi("e.php", $_SERVER['PHP_SELF'])) {
-	die ("You cannot open this page directly");
+if (preg_match("/e.php/i", $_SERVER['PHP_SELF'])) {
+    die ("You cannot open this page directly");
 }
 
 /********************************************************
  * !
  */
- 		//Module export
-		
-if(is_file("include/export/$id.html")) {
-	include("include/export/$id.html");
+//Module export
+
+if (is_file("include/export/$id.html")) {
+    include("include/export/$id.html");
 } else {
-	include("include/files/404.php");
+    include("include/files/404.php");
 }
-			?>
+
 
 
 

@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -31,7 +31,7 @@
    |          Gougou                                                     |
    +---------------------------------------------------------------------+
 */
-if (eregi("serveurs.php", $_SERVER['PHP_SELF'])) {
+if (preg_match("/serveurs.php/i", $_SERVER['PHP_SELF'])) {
 	die ("You cannot open this page directly");
 }
 
@@ -390,7 +390,7 @@ elseif($op == "modify") {
 
 	for($i=0;$i<count($tab_countrys);$i++)
 	{
-		$tab_country=split(',',$tab_countrys[$i]);
+		$tab_country=preg_split('/,/',$tab_countrys[$i]);
 		$country_code=$tab_country[0];
 		$country_name=$tab_country[1];
 		echo "<option value=$country_code";
@@ -420,7 +420,7 @@ elseif($op == "modify") {
 
 	for($i=0;$i<count($tab_protos);$i++)
 	{
-		$tab_proto=split(',',$tab_protos[$i]);
+		$tab_proto=preg_split('/,/',$tab_protos[$i]);
 		$proto_code=$tab_proto[0];
 		$proto_name=$tab_proto[1];
 		echo "<option value=$proto_code";
@@ -584,7 +584,7 @@ else {
 
 		for($i=0;$i<count($tab_countrys);$i++)
 		{
-			$tab_country=split(',',$tab_countrys[$i]);
+			$tab_country=preg_split('/,/',$tab_countrys[$i]);
 			$country_code=$tab_country[0];
 			$country_name=$tab_country[1];
 			echo "<option value=$country_code";
@@ -612,7 +612,7 @@ else {
 
 		for($i=0;$i<count($tab_protos);$i++)
 		{
-			$tab_proto=split(',',$tab_protos[$i]);
+			$tab_proto=preg_split('/,/',$tab_protos[$i]);
 			$proto_code=$tab_proto[0];
 			$proto_name=$tab_proto[1];
 			echo "<option value=$proto_code";

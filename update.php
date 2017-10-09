@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.com)|
    +---------------------------------------------------------------------+
@@ -30,7 +30,7 @@
    |          Gougou                                                     |
    +---------------------------------------------------------------------+
 */
-// test de sécurité
+// test de sï¿½curitï¿½
 if ( file_exists( 'g4.g4') )
 {
 	echo $install_error;
@@ -47,7 +47,7 @@ $filenameab = 'config.ab.php';
 /*** inclusion des globals ***/
 include('globals.php');
 
-/*** chargement de la classe base de donnée ***/
+/*** chargement de la classe base de donnï¿½e ***/
 include("db/mysql.inc.php");
 
 /*** chargement du fichier de fonctions ***/
@@ -116,7 +116,7 @@ if($stage==0) {
 	$fd = opendir("lang/");
 	while($file = readdir($fd)) {
 		if ($file != "." && $file != "..") {
-			$file = ereg_replace(".inc.php","",$file);
+			$file = preg_replace("/.inc.php/","",$file);
 			echo "<option value=$file>$file";
 		}
 	}
@@ -468,14 +468,14 @@ elseif($stage==2) {
 	$erreur=0;
 
 
-	/*** configuration générale ***/
+	/*** configuration gï¿½nï¿½rale ***/
 if ($useconfig=="1"||$useconfig==1) {
 	$str = "<?php
 /*
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.com)|
    +---------------------------------------------------------------------+
@@ -502,7 +502,7 @@ if ($useconfig=="1"||$useconfig==1) {
    +---------------------------------------------------------------------+
 */
 
-if (eregi('config.php', \$_SERVER['PHP_SELF'])) {
+if (preg_match('/config.php/i', \$_SERVER['PHP_SELF'])) {
 	die ('You cannot open this page directly');
 }
 
@@ -525,7 +525,7 @@ if (eregi('config.php', \$_SERVER['PHP_SELF'])) {
 
 /************************************************/
 /*** Flood variable ***/
-\$config['flood_time']=$flood_time; // must be in minutes !!! Doit être en minutes !!! 
+\$config['flood_time']=$flood_time; // must be in minutes !!! Doit ï¿½tre en minutes !!! 
 
 /************************************************/
 /*** Screening variables for drawing <table> ***/
@@ -565,7 +565,7 @@ if (eregi('config.php', \$_SERVER['PHP_SELF'])) {
 /*** Affichage Sponsors ***/
 \$config['col_sponsors'] = $col_sponsors;
 
-/*** Affichage Catégorie ***/
+/*** Affichage Catï¿½gorie ***/
 \$config['col_categories']=$col_categories;
 
 /*** Affichage des miniature ***/
@@ -585,7 +585,7 @@ include('config.m4.php');
 include('config.ab.php');
 
 ?>";
-	/*** ecriture de la config générale ***/
+	/*** ecriture de la config gï¿½nï¿½rale ***/
 	if(!$fd = @fopen($filename,"w+")) {
 		$erreur=1;
 		show_erreur("$strOuvertureInvalideConfigFile : $filename");
@@ -606,7 +606,7 @@ if ($usem4=="1"||$usem4==1) {
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.com)|
    +---------------------------------------------------------------------+
@@ -633,7 +633,7 @@ if ($usem4=="1"||$usem4==1) {
    +---------------------------------------------------------------------+
 */
 
-if (eregi('config.m4.php', \$_SERVER['PHP_SELF'])) {
+if (preg_match('/config.m4.php/i', \$_SERVER['PHP_SELF'])) {
 	die ('You cannot open this page directly');
 }
 
@@ -676,7 +676,7 @@ if ($useab=="1"||$useab==1) {
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ï¿½2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.com)|
    +---------------------------------------------------------------------+
@@ -703,7 +703,7 @@ if ($useab=="1"||$useab==1) {
    +---------------------------------------------------------------------+
 */
 
-if (eregi('config.ab.php', \$_SERVER['PHP_SELF'])) {
+if (preg_match('/config.ab.php/i', \$_SERVER['PHP_SELF'])) {
 	die ('You cannot open this page directly');
 }
 
@@ -888,7 +888,7 @@ elseif($stage==3) {
 	echo "$strInstallStage3Consignes<br>";
 	echo "Support ? : http://forum.phptournois.net/ !<br>";
 	echo "Don't forgot to go on your configuration pag for define new configuration tool !<br>";
-	echo "N'oubliez pas d'aller sur votre page configuration pour définir les nouvelles options de configurations !<br>";
+	echo "N'oubliez pas d'aller sur votre page configuration pour dï¿½finir les nouvelles options de configurations !<br>";
 	
     
 	/** tentative d'effacage **/		
