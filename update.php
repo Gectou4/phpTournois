@@ -575,7 +575,7 @@ if (preg_match('/config.php/i', \$_SERVER['PHP_SELF'])) {
 include('config.m4.php');
 include('config.ab.php');
 
-?>";
+";
         /*** ecriture de la config g�N°rale ***/
         if (!$fd = @fopen($filename, "w+")) {
             $erreur = 1;
@@ -641,7 +641,7 @@ if (preg_match('/config.m4.php/i', \$_SERVER['PHP_SELF'])) {
 \$m4autostartcfg = $m4autostartcfg;
 \$m4prolongationcfg = $m4prolongationcfg;
 
-?>";
+";
 
         /*** ecriture de la config M4 ***/
         if (!$fd = @fopen($filenamem4, "w+")) {
@@ -709,7 +709,7 @@ if (preg_match('/config.ab.php/i', \$_SERVER['PHP_SELF'])) {
 \$abautostartcfg = $abautostartcfg;
 \$abprolongationcfg = $abprolongationcfg;
 
-?>";
+";
 
         /*** ecriture de la config AB ***/
         if (!$fd = @fopen($filenameab, "w+")) {
@@ -815,11 +815,7 @@ elseif ($stage == 3) {
 
             if (!$db->query($req))
                 die($db->getError());
-
-            $db->exec();
-
         } else {
-
             include("db/up_g4.php");
         }
 
@@ -841,7 +837,7 @@ elseif ($stage == 3) {
         if (!$fd = @fopen($filename, "a+")) {
             $erreur = 1;
             show_erreur("$strOuvertureInvalideConfigFile : $filename");
-        } elseif (!fputs($fd, "<?php define('PHPTOURNOIS_INSTALLED',true);?>")) {
+        } elseif (!fputs($fd, "define('PHPTOURNOIS_INSTALLED',true);")) {
             $erreur = 1;
             show_erreur("$strEcritureInvalideConfigFile : $filename");
         } else {
@@ -856,10 +852,10 @@ elseif ($stage == 3) {
 
 
         /** tentative d'effacage **/
-        @unlink('install.php');
-        if (is_file('install.php')) show_warning("$strInstallStage3DelInstall<br>");
-        @unlink('update.php');
-        if (is_file('update.php')) show_warning("$strInstallStage3Delupdatel<br>");
+        //@unlink('install.php');
+        //if (is_file('install.php')) show_warning("$strInstallStage3DelInstall<br>");
+        //@unlink('update.php');
+        //if (is_file('update.php')) show_warning("$strInstallStage3Delupdatel<br>");
         if (!file_exists("g4.g4")) {
             try {
                 fwrite(fopen("g4.g4", "w"), "phpTG4 installed");
