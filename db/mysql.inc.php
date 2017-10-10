@@ -417,12 +417,16 @@ class database
 
     public function query($sql)
     {
-        if ($this->debuglevel >= 2)
-            $this->winlog($sql, LOG_EXEC);
-        $this->res = mysqli_query($this->link, $sql);
-        $this->nbquery++;
-        if ($this->debuglevel >= 1)
-            $this->error();
+        $this->res = null;
+        if (!empty($sql)) {
+            if ($this->debuglevel >= 2)
+                $this->winlog($sql, LOG_EXEC);
+            $this->res = mysqli_query($this->link, $sql);
+            $this->nbquery++;
+            if ($this->debuglevel >= 1)
+                $this->error();
+        }
+
         return $this->res;
     }
 

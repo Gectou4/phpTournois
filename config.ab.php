@@ -31,7 +31,7 @@
 */
 
 if (preg_match('`config.ab.php`i', $_SERVER['PHP_SELF'])) {
-    die ('You cannot open this page directly');
+	die ('You cannot open this page directly');
 }
 
 /***************************************/
@@ -49,3 +49,4 @@ $abrulecfg = '12';
 $abcampscfg = 0;
 $abautostartcfg = 1;
 $abprolongationcfg = 0;
+

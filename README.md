@@ -1,63 +1,53 @@
-  +--------------------------------------------------------------------------+
-  | phpTournois                                                              |
-  +--------------------------------------------------------------------------+
-  | Copyright (c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.com)    |
-  |                                                                          |
-  | phpTournois is free software; you can redistribute it and/or modify      |
-  | it under the terms of the GNU General Public License as published by     |
-  | the Free Software Foundation; either version 2 of the License, or        |
-  | (at your option) any later version.                                      |
-  |                                                                          |
-  +--------------------------------------------------------------------------+
-  +--------------------------------------------------------------------------+
-  | phpTournoisG4                                                            |
-  +--------------------------------------------------------------------------+
-  | Copyright (c) 2005-2012 Li0n, RV, Gougou, Gectou4 (http://www.phptournois.com)|
-  |                                                                          |
-  | phpTournois is free software; you can redistribute it and/or modify      |
-  | it under the terms of the GNU General Public License as published by     |
-  | the Free Software Foundation; either version 2 of the License, or        |
-  | (at your option) any later version.                                      |
-  |                                                                          |
-  +--------------------------------------------------------------------------+
-   
+phpTournois 
+==================
+Copyright (c) 2001-2004 Li0n, RV, Gougou  
+phpTG4 Copyright (c) 2005-2017 Li0n, RV, Gougou, Gectou4
+                                                                        
+*phpTournois is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.*
 
-phpTournois est un outil sous licence GPL d'aide à l'organisation de tournois 
-divers, plus spécialisé cependant dans les tournois de jeux vidéo en LAN ou 
-online. 
+*phpTournois est un outil CMS sous licence GPL d'aide Ã  l'organisation de tournois divers, plus spÃ©cialisÃ© cependant dans les tournois de jeux vidÃ©o en LAN ou online.*
 
-L'intégration de MatchMod (dJeyL.net) et de AdminBot-MX (neXen.org) permet de 
-lancer et de récupérer directement les matchs Counter-Strike sur les serveurs 
-avec la map et les paramètres voulus.
+MatchMod & AdminBot-MX
+==================
+L'intÃ©gration de MatchMod (dJeyL.net) et de AdminBot-MX (neXen.org) permet de 
+lancer et de rÃ©cupÃ©rer directement les matchs Counter-Strike sur les serveurs 
+avec la map et les paramÃ¨tres voulus.
 
-Voici la grande famille phpTournois:
+#Attention
+Le code principal date d'avant 2005. Depuis de nombreuse chose ont Ã©voluÃ©, des librairies
+JS, PHP, HTML et CSS ont vue le jours, d'autre CMS et produits open source.
+phpTournois est tout de mÃªme compatible jusqu'en PHP 7. Cependant nous recommandons
+un usage le plus limitÃ© possible et le plus possible en LAN. Le temps qu'un jours il soit revue entiÃ¨rement.
 
-Team Développement:
+Team
+==================
+
+##Team DÃ©veloppement:
 -Li0n (code leader),
 -RV (project leader),
 
-Version phpTG4:
+##Version phpTG4:
 -Gectou4 
 
-Team Béta-testeurs:
--Killercool (béta-testeur ++),
--S4ruman (béta-testeur),
--Fatboy (béta-testeur),
+##Team BÃªta-testeurs:
+-Killercool (bÃªta-testeur ++),
+-S4ruman (bÃªta-testeur),
+-Fatboy (bÃªta-testeur),
 
-Contributeurs:
+##Contributeurs:
 -Ben64 (M. Algo),
--Nono (M4 intégrat0r),
+-Nono (M4 intÃ©grat0r),
 -Florian95 (multi-addons),
--Gimlur, PsYcO, OlyM4rs (idées et soutient).
+-Gimlur, PsYcO, OlyM4rs (idÃ©es et soutient).
 
-Nous sommes ouvert à toutes formes de contribution (comme des packs de langages 
+Nous sommes ouvert Ã  toutes formes de contribution (comme des packs de langages 
 ou des aides en ligne), pour cela il suffit de prendre contact avec nous: 
 contact@phptournois.com
 
-Vous pouvez aussi nous faire part de vos idées sur le forum, nous sommes à votre
-écoute: http://forum.phpTournois.com et par IRC sur Quakenet: #phpTournois
+Vous pouvez aussi nous faire part de vos idï¿½es sur le forum, nous sommes Ã  votre
+Ã©coute: http://forum.phpTournois.com et par IRC sur Quakenet: #phpTournois
 
 Merci d'utiliser phpTournois!!
 Have Fun !
 
-L'équipe phpTournois.
+L'Ã©quipe phpTournois.

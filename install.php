@@ -649,7 +649,6 @@ elseif ($stage == 3) {
     if ($erreur == 1) {
         show_erreur_saisie($str);
     } else {
-        var_dump($dbport);
         /*** test de la base ***/
         $link = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $dbport ?? 3306) or die($strConnexionImpossible);
 
@@ -673,7 +672,6 @@ elseif ($stage == 3) {
             if (!$db->query($q))
                 die($db->getError());
         }
-        $db->exec();
 
         /*** from http://www.php.net/manual/fr/function.mysql-query.php ***/
 
@@ -692,7 +690,7 @@ elseif ($stage == 3) {
         if (!$fd = @fopen($filename, "a+")) {
             $erreur = 1;
             show_erreur("$strOuvertureInvalideConfigFile : $filename");
-        } elseif (!fputs($fd, "<?php define('PHPTOURNOIS_INSTALLED',true);?>")) {
+        } elseif (!fputs($fd, "define('PHPTOURNOIS_INSTALLED',true);")) {
             $erreur = 1;
             show_erreur("$strEcritureInvalideConfigFile : $filename");
         } else {
@@ -704,10 +702,10 @@ elseif ($stage == 3) {
         echo "pensez à visiter les forum phpTournois http://forum.phptournois.net/ !";
 
         /** tentative d'effacage **/
-        @unlink('install.php');
-        if (is_file('install.php')) show_warning("$strInstallStage3DelInstall<br>");
-        @unlink('update.php');
-        if (is_file('update.php')) show_warning("$strInstallStage3Delupdatel<br>");
+        //@unlink('install.php');
+        //if (is_file('install.php')) show_warning("$strInstallStage3DelInstall<br>");
+        //@unlink('update.php');
+        //if (is_file('update.php')) show_warning("$strInstallStage3Delupdatel<br>");
         if (!file_exists("g4.g4")) {
             try {
                 fwrite(fopen("g4.g4", "w"), "phpTG4 installed");
