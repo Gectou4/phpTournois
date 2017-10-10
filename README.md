@@ -22,30 +22,31 @@ un usage le plus limité possible et le plus possible en LAN. Le temps qu'un jou
 Team
 ==================
 
-##Team Développement:
--Li0n (code leader),
--RV (project leader),
+Team Développement
+------------------
 
-##Version phpTG4:
--Gectou4 
+* ma-Li0n (code leader)
+* RV (project leader)
 
-##Team Bêta-testeurs:
--Killercool (bêta-testeur ++),
--S4ruman (bêta-testeur),
--Fatboy (bêta-testeur),
+Version phpTG4
+------------------
+* Gectou4 
 
-##Contributeurs:
--Ben64 (M. Algo),
--Nono (M4 intégrat0r),
--Florian95 (multi-addons),
--Gimlur, PsYcO, OlyM4rs (idées et soutient).
+Team Bêta-testeurs
+------------------
+* Killercool (bêta-testeur ++)
+* S4ruman (bêta-testeur)
+* Fatboy (bêta-testeur)
 
-Nous sommes ouvert à toutes formes de contribution (comme des packs de langages 
-ou des aides en ligne), pour cela il suffit de prendre contact avec nous: 
-contact@phptournois.com
+Contributeurs
+------------------
+* Ben64 (M. Algo)
+* Nono (M4 intégrat0r)
+* Florian95 (multi-addons)
+* Gimlur, PsYcO, OlyM4rs (idées et soutient)
 
-Vous pouvez aussi nous faire part de vos id�es sur le forum, nous sommes à votre
-écoute: http://forum.phpTournois.com et par IRC sur Quakenet: #phpTournois
+Nous sommes ouvert à toutes formes de contribution.
+Vous pouvez aussi nous faire part de vos idées.
 
 Merci d'utiliser phpTournois!!
 Have Fun !
