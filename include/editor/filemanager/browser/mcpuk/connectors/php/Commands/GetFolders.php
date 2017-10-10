@@ -17,29 +17,30 @@
  * File Authors:
  * 		Grant French (grant@mcpuk.net)
  */
-class GetFolders {
-var $fckphp_config;
-var $type;
-var $cwd;
-var $actual_cwd;
 
-function GetFolders($fckphp_config, $type, $cwd)
+class GetFolders
 {
-    $this->fckphp_config = $fckphp_config;
-    $this->type = $type;
-    $this->raw_cwd = $cwd;
-    $this->actual_cwd = str_replace("//", "/", ($fckphp_config['UserFilesPath'] . "/$type/" . $this->raw_cwd));
-    $this->real_cwd = str_replace("//", "/", ($this->fckphp_config['basedir'] . "/" . $this->actual_cwd));
-}
+    var $fckphp_config;
+    var $type;
+    var $cwd;
+    var $actual_cwd;
 
-function run() {
-header("content-type: text/xml");
-echo "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n";
-?>
-<Connector command="GetFolders" resourceType="<?php echo $this->type; ?>">
-    <CurrentFolder path="<?php echo $this->raw_cwd; ?>" url="<?php echo $this->actual_cwd; ?>"/>
-    <Folders>
-        <?php
+    function GetFolders($fckphp_config, $type, $cwd)
+    {
+        $this->fckphp_config = $fckphp_config;
+        $this->type = $type;
+        $this->raw_cwd = $cwd;
+        $this->actual_cwd = str_replace("//", "/", ($fckphp_config['UserFilesPath'] . "/$type/" . $this->raw_cwd));
+        $this->real_cwd = str_replace("//", "/", ($this->fckphp_config['basedir'] . "/" . $this->actual_cwd));
+    }
+
+    function run()
+    {
+        header("content-type: text/xml");
+        echo "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n";
+        echo '<Connector command="GetFolders" resourceType="' . $this->type . '">';
+        echo ' <CurrentFolder path="' . $this->raw_cwd . '" url="' . $this->actual_cwd . '"/>';
+        echo '<Folders>';
         if ($dh = opendir($this->real_cwd)) {
             while (($filename = readdir($dh)) !== false) {
                 if (($filename != ".") && ($filename != "..")) {
@@ -56,6 +57,7 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n";
             }
             closedir($dh);
         }
-        ?>
-    </Folders>
-</Connector>
+        echo '</Folders>';
+        echo '</Connector>';
+    }
+}

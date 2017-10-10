@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -472,7 +472,7 @@ elseif ($op == "do_envoyer") {
     } else {
         if ($config['mail'] != 'N') {
 
-            /*** g&eacute;n&eacute;ration de l'email ***/
+            /*** génération de l'email ***/
             $link = "<a href=\"" . $config['urlsite'] . "/?page=news&id=$id\" target=\"_blank\">" . $config['urlsite'] . "/?page=news&id=$id</a>";
             $array1 = array("%nomsite%", "%urlsite%", "%link%");
             $array2 = array($config['nomsite'], $config['urlsite'], $link);

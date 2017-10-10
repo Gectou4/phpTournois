@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -32,7 +32,7 @@
    +---------------------------------------------------------------------+
 */
 /********************************************************
- * S&eacute;curit&eacute;
+ * Sécurité
  */
 
 if (preg_match("/page/i", $_SERVER['PHP_SELF'])) {
@@ -115,14 +115,14 @@ if ($op == "addpage") {
         */
 
         $sqladd = "INSERT INTO ${dbprefix}page(auteur,titre,contenu,date,rubrique,npage,nmenu,orde,acces,lien) Values('$s_joueur','$titre','$contenu','$date','$rubrique',$npage,'$nmenu','$orde','$acces','$lien')";
-        $reqadd = mysql_query($sqladd) or die('Erreur SQL !<br>' . $sqladd . '<br>' . mysql_error());
+        $reqadd = $db->query($sqladd) or die('Erreur SQL !<br>' . $sqladd . '<br>' . $db->getError());
 
 
         /*** redirection ***/
         $sql = "SELECT id FROM ${dbprefix}page WHERE titre='$titre' AND npage='$npage' AND rubrique='$rubrique'";
-        $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+        $req = $db->query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . $db->getError());
 
-        while ($data = mysql_fetch_array($req)) {
+        while ($data = $db->fetch_array($req)) {
             $id = $data['id'];
         }
         js_goto("?page=page&op=modif&id=$id");
@@ -141,10 +141,10 @@ if ($op == "delpage") {
 
     if ($rubrique != '') {
         $sqldel = "DELETE FROM `${dbprefix}page` WHERE rubrique='$rubrique'";
-        $reqdel = mysql_query($sqldel) or die('Erreur SQL !<br>' . $sqldel . '<br>' . mysql_error());
+        $reqdel = $db->query($sqldel) or die('Erreur SQL !<br>' . $sqldel . '<br>' . $db->getError());
     } else {
         $sqldel = "DELETE FROM `${dbprefix}page` WHERE id='$id'";
-        $reqdel = mysql_query($sqldel) or die('Erreur SQL !<br>' . $sqldel . '<br>' . mysql_error());
+        $reqdel = $db->query($sqldel) or die('Erreur SQL !<br>' . $sqldel . '<br>' . $db->getError());
     }
     /*** redirection ***/
     js_goto("?page=page&op=listm");
@@ -199,7 +199,7 @@ if ($op == "modpage") {
 
         $sqldel = "UPDATE `${dbprefix}page` SET titre = '$titre', contenu = '$contenu', rubrique = '$rubrique', 
 		npage = '$npage', nmenu = '$nmenu', orde = '$orde', acces = '$acces', lien = '$lien', orde='$orde' WHERE id ='$id'";
-        $reqdel = mysql_query($sqldel) or die('Erreur SQL !<br>' . $sqldel . '<br>' . mysql_error());
+        $reqdel = $db->query($sqldel) or die('Erreur SQL !<br>' . $sqldel . '<br>' . $db->getError());
 
         /*$db->update("page");
         $db->set("titre = '$titre'");
@@ -238,14 +238,14 @@ if ($_GET['op'] == "add") {
         echo "</tr>";
 
         $sqld = "SELECT rubrique FROM ${dbprefix}page WHERE rubrique !='' GROUP BY rubrique";
-        $reqd = mysql_query($sqld) or die('Erreur SQL !<br>' . $sqld . '<br>' . mysql_error());
+        $reqd = $db->query($sqld) or die('Erreur SQL !<br>' . $sqld . '<br>' . $db->getError());
 
         echo "<tr>";
         echo "<td class=titlefiche>$strRubrique :</td>";
         echo "<td class=textfiche><input type=text name=rubrique maxlength=20 size=20>";
         echo "<select name=selectrubrique onChange=\"javascript:document.formulaire.rubrique.value=this.options[this.selectedIndex].value;\"><option value=''></option>";
 
-        while ($datad = mysql_fetch_array($reqd)) {
+        while ($datad = $db->fetch_array($reqd)) {
             echo '<option value="' . $datad['rubrique'] . '">' . $datad['rubrique'] . '</option>';
         }
         echo "</select></td>";
@@ -256,13 +256,13 @@ if ($_GET['op'] == "add") {
         echo "</tr>";
 
         $sqlx = "SELECT titre FROM ${dbprefix}menu";
-        $reqx = mysql_query($sqlx) or die('Erreur SQL !<br>' . $sqlx . '<br>' . mysql_error());
+        $reqx = $db->query($sqlx) or die('Erreur SQL !<br>' . $sqlx . '<br>' . $db->getError());
 
         echo "<tr>";
         echo "<td class=titlefiche>$strNmenu :</td>";
         echo "<td class=textfiche><select name=nmenu><option value=''></option>";
 
-        while ($datax = mysql_fetch_array($reqx)) {
+        while ($datax = $db->fetch_array($reqx)) {
             echo '<option value="' . $datax['titre'] . '">' . $datax['titre'] . '</option>';
         }
         echo "</select>";
@@ -317,12 +317,12 @@ if ($_GET['op'] == "listm") {
         echo "<table cellspacing=0 cellpadding=3 border=0 width=100%>";
 
         $sqlx = "SELECT rubrique,id FROM ${dbprefix}page GROUP BY rubrique";
-        $reqx = mysql_query($sqlx) or die('Erreur SQL !<br>' . $sqlx . '<br>' . mysql_error());
+        $reqx = $db->query($sqlx) or die('Erreur SQL !<br>' . $sqlx . '<br>' . $db->getError());
 
         $i2 = '1';
         $list_exist = 'N';
 
-        while ($datax = mysql_fetch_array($reqx)) {
+        while ($datax = $db->fetch_array($reqx)) {
             if ($i2 == "1") {
                 echo "<tr>";
                 $list_exist = 'O';
@@ -362,10 +362,10 @@ if ($_GET['op'] == "listm2") {
         echo "<table cellspacing=0 cellpadding=3 border=0 width=100%>";
 
         $sqlx = "SELECT id,titre FROM ${dbprefix}page WHERE rubrique='$rubrique' AND titre!= '' GROUP BY titre";
-        $reqx = mysql_query($sqlx) or die('Erreur SQL !<br>' . $sqlx . '<br>' . mysql_error());
+        $reqx = $db->query($sqlx) or die('Erreur SQL !<br>' . $sqlx . '<br>' . $db->getError());
 
         $i2 = '1';
-        while ($datax = mysql_fetch_array($reqx)) {
+        while ($datax = $db->fetch_array($reqx)) {
             if ($i2 == "1") {
                 echo "<tr>";
             }
@@ -395,9 +395,9 @@ if ($_GET['op'] == "modif") {
 
 
         $sqldelta = "SELECT * FROM ${dbprefix}page WHERE id='$id'";
-        $reqdelta = mysql_query($sqldelta) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+        $reqdelta = $db->query($sqldelta) or die('Erreur SQL !<br>' . $sql . '<br>' . $db->getError());
 
-        while ($data = mysql_fetch_array($reqdelta)) {
+        while ($data = $db->fetch_array($reqdelta)) {
 
             echo "<form method=post name=\"formulaire\" action=?page=page&op=modpage&id=" . $data['id'] . ">";
             echo "<table border=0 cellpadding=0 cellspacing=0 class=bordure2><tr><td>";
@@ -411,14 +411,14 @@ if ($_GET['op'] == "modif") {
             echo "</tr>";
 
             $sqld = "SELECT rubrique FROM ${dbprefix}page WHERE rubrique !='' GROUP BY rubrique";
-            $reqd = mysql_query($sqld) or die('Erreur SQL !<br>' . $sqld . '<br>' . mysql_error());
+            $reqd = $db->query($sqld) or die('Erreur SQL !<br>' . $sqld . '<br>' . $db->getError());
 
             echo "<tr>";
             echo "<td class=titlefiche>$strRubrique :</td>";
             echo "<td class=textfiche><input type=text name=rubrique maxlength=20 size=20 value=" . $data['rubrique'] . ">";
             echo "<select name=selectrubrique onChange=\"javascript:document.formulaire.rubrique.value=this.options[this.selectedIndex].value;\"><option value=''></option>";
 
-            while ($datad = mysql_fetch_array($reqd)) {
+            while ($datad = $db->fetch_array($reqd)) {
                 echo '<option value="' . $datad['rubrique'] . '">' . $datad['rubrique'] . '</option>';
             }
             echo "</select></td>";
@@ -429,13 +429,13 @@ if ($_GET['op'] == "modif") {
             echo "</tr>";
 
             $sqlx = "SELECT titre FROM ${dbprefix}menu";
-            $reqx = mysql_query($sqlx) or die('Erreur SQL !<br>' . $sqlx . '<br>' . mysql_error());
+            $reqx = $db->query($sqlx) or die('Erreur SQL !<br>' . $sqlx . '<br>' . $db->getError());
 
             echo "<tr>";
             echo "<td class=titlefiche>$strNmenu :</td>";
             echo "<td class=textfiche><select name=nmenu><option value=" . $data['nmenu'] . "></option>";
 
-            while ($datax = mysql_fetch_array($reqx)) {
+            while ($datax = $db->fetch_array($reqx)) {
                 echo '<option value="' . $datax['titre'] . '">' . $datax['titre'] . '</option>';
             }
             echo "</select>";
@@ -508,7 +508,7 @@ if ($_GET['op'] == "modif") {
     }
 }
 /********************************************************
- * Affichage de la page demand&eacute;e
+ * Affichage de la page demandée
  */
 if ($_GET['op'] == "see") {
 
@@ -517,9 +517,9 @@ if ($_GET['op'] == "see") {
     $npage = $_GET['npage'];
 
     $sql = "SELECT * FROM ${dbprefix}page WHERE rubrique='$rubrique' AND npage='$npage'";
-    $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+    $req = $db->query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . $db->getError());
 
-    while ($data = mysql_fetch_array($req)) {
+    while ($data = $db->fetch_array($req)) {
         $contenu = $data['contenu'];
         $acces = $data['acces'];
         if ($acces != "" || $contenu != NULL) {

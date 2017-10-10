@@ -4,9 +4,9 @@
   | Hack by Evolution <Evolution@Freekillers.net>                      |
   +---------------------------------------------------------------------+
   | phpTournois                                                        |
-  | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+  | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
   +---------------------------------------------------------------------+
-  | Copyright� 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
+  | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
   +---------------------------------------------------------------------+
   | This file is part of phpTournois.                                  |
   |                                                                    |

@@ -89,7 +89,7 @@ if ($_GET['alerte']!="a")
 
  
 /********************************************************
-* Affichage de la categorie demand&eacute;
+* Affichage de la categorie demandé
 */
 if ($_GET['op']=="seecat") {
 
@@ -209,7 +209,7 @@ if ($_GET['act']=="Aup")
   $addcat=htmlentities($addcat);$addcat=str_replace("nowhere","nowhere",$addcat);$addcat=str_replace("NOWHERE","nowhere",$addcat);
 
 $sql = "INSERT INTO ${dbprefix}faq (id,question,reponse,categorie,rang,date,idcat) Values('','','','$addcat','-1','','$idcat')";
-$req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+$req = $db->query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.$db->getError());
 
 js_goto("?page=faq&op=admin&act=B");
 }
@@ -290,13 +290,13 @@ if ($_GET['act']=="Bup")
   $addr=htmlentities($addr);$addr=str_replace("nowhere","nowhere",$addr);$addr=str_replace("NOWHERE","nowhere",$addr);
 
 $sql = "INSERT INTO ${dbprefix}faq (id,question,reponse,categorie,rang,date,idcat) Values('','$addq','$addr','','$rang','','$idcat')";
-$req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+$req = $db->query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.$db->getError());
 
 js_goto("?page=faq&op=admin&act=B&v=o");
         }
 
 /********************************************************
-* Modifier cat&eacute;gorie
+* Modifier catégorie
 */
 if ($_POST['act']=="C"  || $_GET['act']=="C")
 {
@@ -344,7 +344,7 @@ if ($_GET['act']=="Cup")
   $modifcat=htmlentities($modifcat);$modifcat=str_replace("nowhere","nowhere",$modifcat);$modifcat=str_replace("NOWHERE","nowhere",$modifcat);
  
 $sqldel = "UPDATE `${dbprefix}faq` SET categorie='$modifcat' WHERE idcat='$idcat' and categorie!=''";
-$reqdel = mysql_query($sqldel) or die('Erreur SQL !<br>'.$sqldel.'<br>'.mysql_error());
+$reqdel = $db->query($sqldel) or die('Erreur SQL !<br>'.$sqldel.'<br>'.$db->getError());
 
 js_goto("?page=faq&op=admin");
 }
@@ -496,7 +496,7 @@ $modifq=htmlentities($modifq);$modifq=str_replace("nowhere","nowhere",$modifq);$
 $modifr=htmlentities($modifr);$modifr=str_replace("nowhere","nowhere",$modifr);$modifr=str_replace("NOWHERE","nowhere",$modifr);
 
 $sqldel = "UPDATE `${dbprefix}faq` SET question='$modifq', reponse='$modifr' WHERE id='$modifqr'";
-$reqdel = mysql_query($sqldel) or die('Erreur SQL !<br>'.$sqldel.'<br>'.mysql_error());
+$reqdel = $db->query($sqldel) or die('Erreur SQL !<br>'.$sqldel.'<br>'.$db->getError());
 
 
 js_goto("?page=faq&op=admin&act=Dup&v=o&modifqr=$modifqr");
@@ -504,7 +504,7 @@ js_goto("?page=faq&op=admin&act=Dup&v=o&modifqr=$modifqr");
 }
 
 /********************************************************
-* Reorder cat&eacute;gorie
+* Reorder catégorie
 */
 if ($_POST['act']=="E" || $_GET['act']=="E")
   { 
@@ -520,8 +520,8 @@ if ($_POST['act']=="E" || $_GET['act']=="E")
   $p_test=1;
   $m_test=1;
  
-  $req = mysql_query("SELECT COUNT(*) AS categorie FROM ${dbprefix}faq WHERE categorie!=''");
-  $t_max = mysql_fetch_array($req);
+  $req = $db->query("SELECT COUNT(*) AS categorie FROM ${dbprefix}faq WHERE categorie!=''");
+  $t_max = $db->fetch_array($req);
   $cat_max=$t_max['categorie'];
   $select_test2=0;
  
@@ -566,18 +566,18 @@ if ($_GET['act']=="Eup")
 {
 $idcat=$_GET['idcat'];
 $id=$_GET['id'];
-  $req = mysql_query("SELECT COUNT(*) AS categorie FROM ${dbprefix}faq WHERE categorie!=''");
-  $t_max = mysql_fetch_array($req);
+  $req = $db->query("SELECT COUNT(*) AS categorie FROM ${dbprefix}faq WHERE categorie!=''");
+  $t_max = $db->fetch_array($req);
   $id_max=$t_max['categorie']+1;
 
    $sql = "UPDATE `${dbprefix}faq` SET idcat='$id_max' WHERE idcat='$idcat'";
-   $req = mysql_query($sql) or die('Erreur SQL 1 !<br>'.$sql.'<br>'.mysql_error());
+   $req = $db->query($sql) or die('Erreur SQL 1 !<br>'.$sql.'<br>'.$db->getError());
 
    $sql = "UPDATE `${dbprefix}faq` SET idcat='$idcat' WHERE idcat='$id'";
-   $req = mysql_query($sql) or die('Erreur SQL 2 !<br>'.$sql.'<br>'.mysql_error());
+   $req = $db->query($sql) or die('Erreur SQL 2 !<br>'.$sql.'<br>'.$db->getError());
 
    $sql = "UPDATE `${dbprefix}faq` SET idcat='$id' WHERE idcat='$id_max'";
-   $req = mysql_query($sql) or die('Erreur SQL 3 !<br>'.$sql.'<br>'.mysql_error());
+   $req = $db->query($sql) or die('Erreur SQL 3 !<br>'.$sql.'<br>'.$db->getError());
 
 js_goto("?page=faq&op=admin&act=E");
 }
@@ -639,8 +639,8 @@ if ($_POST['act']=="F2"  || $_GET['act']=="F2")
   $m_test=1;
   $select_test2=0;
  
-  $req = mysql_query("SELECT COUNT(*) AS question FROM ${dbprefix}faq WHERE question!='' and idcat='$catf'");
-  $t_max = mysql_fetch_array($req);
+  $req = $db->query("SELECT COUNT(*) AS question FROM ${dbprefix}faq WHERE question!='' and idcat='$catf'");
+  $t_max = $db->fetch_array($req);
   $cat_max=$t_max['question'];
 
    while ($datar = $db->fetch($resr))
@@ -685,25 +685,25 @@ if ($_GET['act']=="Fup")
 $idrang=$_GET['idrang'];
 $id=$_GET['id'];
 $catf=$_GET['idcat'];
-  $req = mysql_query("SELECT COUNT(*) AS question FROM ${dbprefix}faq WHERE question!='' and idcat='$catf'");
-  $t_max = mysql_fetch_array($req);
+  $req = $db->query("SELECT COUNT(*) AS question FROM ${dbprefix}faq WHERE question!='' and idcat='$catf'");
+  $t_max = $db->fetch_array($req);
   $id_max=$t_max['question']+1;
 
    $sql = "UPDATE `${dbprefix}faq` SET rang='$id_max' WHERE rang='$idrang' and idcat='$catf'";
-   $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+   $req = $db->query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.$db->getError());
 
    $sql = "UPDATE `${dbprefix}faq` SET rang='$idrang' WHERE rang='$id' and idcat='$catf'";
-   $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+   $req = $db->query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.$db->getError());
 
    $sql = "UPDATE `${dbprefix}faq` SET rang='$id' WHERE rang='$id_max' and idcat='$catf'";
-   $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+   $req = $db->query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.$db->getError());
 
 
 js_goto("?page=faq&op=admin&act=F2&catf=$catf");
 
 }
 /********************************************************
-* EFFACER Cat&eacute;gorie
+* EFFACER Catégorie
 */
 if ($_POST['act']=="G" || $_GET['act']=="G")
   {
@@ -740,7 +740,7 @@ $idcat=$_POST['catf'];
 
 
    $sql = "DELETE FROM `${dbprefix}faq` WHERE idcat='$idcat'";
-   $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+   $req = $db->query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.$db->getError());
 
   
 
@@ -821,7 +821,7 @@ $catid=$_POST['idcat'];
 
 
    $sql = "DELETE FROM `${dbprefix}faq` WHERE id='$id'";
-   $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+   $req = $db->query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.$db->getError());
 
   
 
@@ -926,7 +926,7 @@ $catidx=$_POST['catidx'];
 
 
   $sql = "UPDATE `${dbprefix}faq` SET idcat='$catid' WHERE id='$id'";
-  $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+  $req = $db->query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.$db->getError());
 
   
 

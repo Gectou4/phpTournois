@@ -1,14 +1,12 @@
 <?php
 
-
-
-$req ="
+$req = "
 
 			CREATE TABLE `${dbprefix}administre` (
 			  `tournois` int(11) NOT NULL default '0',
 			  `joueur` int(11) NOT NULL default '0',
 			  PRIMARY KEY  (`tournois`,`joueur`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 			
 			CREATE TABLE `${dbprefix}appartient` (
 			  `joueur` int(11) NOT NULL default '0',
@@ -16,7 +14,7 @@ $req ="
 			  `jeux` int(11) NOT NULL default '0',
 			  `status` int(11) NOT NULL default '2',
 			  PRIMARY KEY  (`joueur`,`equipe`,`jeux`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 			
 			CREATE TABLE `${dbprefix}article` (
 		  `id` int(11) NOT NULL auto_increment,
@@ -30,7 +28,7 @@ $req ="
 		  `idj` int(11) default NULL,
 		  `pev` char(2) default NULL,
 		  PRIMARY KEY  (`id`)
-			) ;
+			) CHARACTER SET utf8 COLLATE utf8_general_ci ;
 			
 			
 
@@ -40,7 +38,7 @@ $req ="
 			  `joueur` int(11) NOT NULL default '0',
 			  `type` int(11) NOT NULL default '0',
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
@@ -109,7 +107,7 @@ $req ="
 			  `ladder` int(11) NOT NULL default '1',
 			  `faq` int(11) NOT NULL default '1',
 			  `support` int(1) NOT NULL default '0'
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
@@ -150,9 +148,9 @@ $req ="
 			1, 
 			0, 
 			1, 
-			'page info à écrire dans le panel configuration',
-			'page reglement à écrire dans le panel configuration',
-			'page decharge à écrire dans le panel configuration', 
+			'page info Ã  Ã©crire dans le panel configuration',
+			'page reglement Ã  Ã©crire dans le panel configuration',
+			'page decharge Ã  Ã©crire dans le panel configuration', 
 			200, 
 			'A', 
 			0, 
@@ -213,7 +211,7 @@ $req ="
 			  `serverip` varchar(32) NOT NULL default '',
 			  `id_s` int(11) NOT NULL default '0',
 			  PRIMARY KEY  (`id`)
-			) ;
+			) CHARACTER SET utf8 COLLATE utf8_general_ci ;
 
 
 
@@ -225,7 +223,7 @@ $req ="
 			  `contenu` text,
 			  `date` int(11) NOT NULL default '0',
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 			CREATE TABLE `${dbprefix}faq` (
@@ -240,7 +238,7 @@ $req ="
 			  `text` text,
 			  `description` text,
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 			CREATE TABLE `${dbprefix}flood` (
@@ -249,7 +247,7 @@ $req ="
 			  `date` int(11) NOT NULL default '0',
 			  `mod` varchar(255) NOT NULL default '',
 			  KEY `id` (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
@@ -270,14 +268,14 @@ $req ="
 			  `last_post_author` varchar(255) NOT NULL default '',
 			  `last_post_date` int(11) NOT NULL default '0',
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
-			INSERT INTO `${dbprefix}forum` VALUES (38, 0, 'Remarque, suggestions !', 0, '', '', 0, 1, 0, 'Cette catégorie est accessible à [color=red][b]TOUS[/b][/color].', 'u', 0, 0, '', 0);
-			INSERT INTO `${dbprefix}forum` VALUES (39, 0, 'Modo & Newseur', 0, '', '', 0, 2, 0, 'Accesible uniquement aux modos newseurs et admin', 'mn', 0, 0, '', 0);
+			INSERT INTO `${dbprefix}forum` VALUES (38, 0, 'Remarque, suggestions !', 0, '', '', 0, 1, 0, 'Cette catÃ©gorie est accessible Ã  [color=red][b]TOUS[/b][/color].', 'u', 0, 0, '', 0);
+			INSERT INTO `${dbprefix}forum` VALUES (39, 0, 'Modo & Newseur', 0, '', '', 0, 2, 0, 'Accessible uniquement aux modos newseurs et admin', 'mn', 0, 0, '', 0);
 			INSERT INTO `${dbprefix}forum` VALUES (40, 0, '', 0, '', 'Bonjour', 1, 1, 1113227281, '', '', 0, 0, '', 0);
-			INSERT INTO `${dbprefix}forum` VALUES (41, 0, '', 0, '', 'Bienvenue sur cette discution privé', 2, 2, 1113227411, '', '', 0, 0, '', 0);
+			INSERT INTO `${dbprefix}forum` VALUES (41, 0, '', 0, '', 'Bienvenue sur cette discution privÃ©', 2, 2, 1113227411, '', '', 0, 0, '', 0);
 
 
 
@@ -294,12 +292,12 @@ $req ="
 			  `cattopic` int(11) NOT NULL default '0',
 			  `locking` int(1) NOT NULL default '0',
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
 			INSERT INTO `${dbprefix}forum_message` VALUES (97, -2, 1113227281, 1, 'Bonjour', 'Bienvenue sur le forum :)', 'N', 0, '', 1, 0);
-			INSERT INTO `${dbprefix}forum_message` VALUES (98, -2, 1113227411, 2, 'Bienvenue sur cette discution privé', 'Vous voila entre personnel du staff :)\r\n\r\nBonne beta et bon tournois !', 'N', 0, '', 2, 0);
+			INSERT INTO `${dbprefix}forum_message` VALUES (98, -2, 1113227411, 2, 'Bienvenue sur cette discution privÃ©', 'Vous voila entre personnel du staff :)\r\n\r\nBonne beta et bon tournois !', 'N', 0, '', 2, 0);
 
 
 
@@ -309,7 +307,7 @@ $req ="
 			  `tour` int(11) default NULL,
 			  `finale` int(11) default NULL,
 			  `date` int(11) NOT NULL default '0'
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
@@ -326,7 +324,7 @@ $req ="
 			  `sigle` varchar(20) NOT NULL default '',
 			  `icone` varchar(20) NOT NULL default 'null.gif',
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 			INSERT INTO `${dbprefix}jeux` VALUES (1, 'ALL', '', 'null.gif');
@@ -409,7 +407,7 @@ $req ="
 			  `allowmp` int(1) NOT NULL default '1',
 			  PRIMARY KEY  (`id`),
 			  UNIQUE KEY `pseudo` (`pseudo`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 			INSERT INTO `${dbprefix}joueurs` VALUES (-2, 'support_phpt', 'none', 'none', 'contact@phptournois.com', '99', 'FR', 'none', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4443eae168a942dc63edfbd4d563e444', 'O', 'N', NULL, 'C', 1104925932, NULL, 'steam_0:0:000000', 'null.gif', 'N', '', '', 'N', 'abcdefghijklmnopqrstuvwxyz', 0, 2, 'phpT Dev Team', 'aucun', NULL, 'Special protected user for mod : tech support', 0, 0);
@@ -424,7 +422,7 @@ $req ="
 			  `date` int(11) NOT NULL default '0',
 			  `match_id` int(11) NOT NULL default '0',
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
@@ -449,7 +447,7 @@ $req ="
 			  `total_match` int(11) NOT NULL default '0',
 			  `team` varchar(50) NOT NULL default '',
 			  `teamid` int(11) NOT NULL default '0'
-			) ;
+			) CHARACTER SET utf8 COLLATE utf8_general_ci ;
 
 
 
@@ -479,7 +477,7 @@ $req ="
 			  `new_data` int(1) NOT NULL default '0',
 			  `mail` int(11) NOT NULL default '1',
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
@@ -521,7 +519,7 @@ $req ="
 			  `image` varchar(20) default NULL,
 			  `date` int(11) NOT NULL default '0',
 			  PRIMARY KEY  (`id`)
-			) ;
+			) CHARACTER SET utf8 COLLATE utf8_general_ci ;
 
 
 			INSERT INTO `${dbprefix}liens` VALUES (1, 'phpTournois', 'LE site web de phpTournois ! yeah', 'http://www.phptournois.net', '', 0, 'phptournois.gif', 1072915200);
@@ -534,21 +532,21 @@ $req ="
 			  `prix` varchar(50) NOT NULL default '',
 			  `ingred` varchar(255) NOT NULL default '',
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
 			CREATE TABLE `${dbprefix}livredor` (
 			  `id` int(11) NOT NULL auto_increment,
-			  `auteur` varchar(20) NOT NULL default 'Invité',
+			  `auteur` varchar(20) NOT NULL default 'InvitÃ©',
 			  `contenu` text,
 			  `date` int(11) NOT NULL default '0',
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
-			INSERT INTO `${dbprefix}livredor` VALUES (1, 'admin', 'yop les gentils monsieurs, un ptit post sur notre forum pour nous dire si vous aimez utiliser phpTournois... \r\nca nous ferait très plaisir pour prendre le dev des prochaines versions à coeur :wub:', 1066557163);
+			INSERT INTO `${dbprefix}livredor` VALUES (1, 'admin', 'yop les gentils monsieurs, un ptit post sur notre forum pour nous dire si vous aimez utiliser phpTournois... \r\nca nous ferait trÃ¨s plaisir pour prendre le dev des prochaines versions ï¿½ coeur :wub:', 1066557163);
 
 
 
@@ -560,7 +558,7 @@ $req ="
 			  `score2` int(11) NOT NULL default '0',
 			  `status` enum('C','A','D','T') NOT NULL default 'C',
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
@@ -572,7 +570,7 @@ $req ="
 			  `score2` int(11) NOT NULL default '0',
 			  `statusequipe` enum('F1','F2') default NULL,
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
@@ -581,7 +579,7 @@ $req ="
 			  `nom` char(20) NOT NULL default '',
 			  `jeux` int(11) NOT NULL default '1',
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
@@ -660,7 +658,7 @@ $req ="
 			  `statusequipe` enum('F1','F2','D1','D2') default NULL,
 			  PRIMARY KEY  (`id`),
 			  UNIQUE KEY `tournois` (`tournois`,`type`,`finale`,`numero`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
@@ -726,11 +724,11 @@ $req ="
 			  `m_team_valid_num` int(11) NOT NULL default '5',
 			  `auto_valid_team` int(1) NOT NULL default '0',
 			  `news2` int(1) NOT NULL default '0'
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
-			INSERT INTO `${dbprefix}mods` VALUES ('#FF0000', '#000099', '#555555', '#000044', 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, '#00AA00', 0, 0, 1, '1', 0, 0, 'Laissé ici vos notes personnels ou entre admins.', 1, 1, 5, 0, 0);
+			INSERT INTO `${dbprefix}mods` VALUES ('#FF0000', '#000099', '#555555', '#000044', 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, '#00AA00', 0, 0, 1, '1', 0, 0, 'Laisser ici vos notes personnels ou entre admins.', 1, 1, 5, 0, 0);
 
 
 			CREATE TABLE `${dbprefix}multinews` (
@@ -739,7 +737,7 @@ $req ="
 			  `titre` varchar(50) NOT NULL default '',
 			  `contenu` text,
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 			CREATE TABLE `${dbprefix}news` (
 			  `id` int(11) NOT NULL auto_increment,
@@ -752,7 +750,7 @@ $req ="
 			  `date` int(11) NOT NULL default '0',
 			  `icone2` varchar(20) NOT NULL default '',
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 			INSERT INTO `${dbprefix}news` VALUES (
@@ -761,9 +759,9 @@ $req ="
 			'all.gif', 
 			'phpTournois modded  !!', 
 			'phpTournois modded  !!', 
-			'Bienvenue à vous sur cette modded de phpTournois 3.5\r\n\r\n\r\nIL risque d''y avoir quelque petit bug si et làc''est pour ça que c''est une beta ^^\r\n\r\n\r\n- > l''exportateur de tournois en page html est en étdue (il me faut l''aide de li0n qui semble avoir disparut c''est dernier temps ^^)\r\n\r\n-> le LADDER est le principal objet de cette ''beta'' je suis consient qu''il bug méchament c''est pour cela que je diffuse cette beta pour le tester concrétement.\r\n\r\n-> Pour le reste ily''à sans doute plein de petite option que j''ai oublier d''ajouter si c''est le cas faite le moi savoir ^^\r\n\r\n-> Si vous faite des ''thème'' pendant cette beta soummettez les moi, ils seront inclues dans le zip final ^^\r\nPensez au fichier de license du thème avec un petit lien vers votre site/lan :)', 
-			'Bienvenue à vous sur cette modded de phpTournois 3.5\r\n\r\n\r\nIL risque d''y avoir quelque petit bug si et làc''est pour ça que c''est une beta ^^\r\n\r\n\r\n- > l''exportateur de tournois en page html est en étdue (il me faut l''aide de li0n qui semble avoir disparut c''est dernier temps ^^)\r\n\r\n-> le LADDER est le principal objet de cette ''beta'' je suis consient qu''il bug méchament c''est pour cela que je diffuse cette beta pour le tester concrétement.\r\n\r\n-> Pour le reste ily''à sans doute plein de petite option que j''ai oublier d''ajouter si c''est le cas faite le moi savoir ^^\r\n\r\n-> Si vous faite des ''thème'' pendant cette beta soummettez les moi, ils seront inclues dans le zip final ^^\r\nPensez au fichier de license du thème avec un petit lien vers votre site/lan :)', 
-			".time().",
+			'Bienvenue sur cette version moddÃ©e de phpTournois. Attention cette version est compatible PHP 7 mais est Ã  utiliser le plus possible en LAN. Le code date et malgrÃ©s notre attention Ã  l\'Ã©poque, des bug/soucis de sÃ©curitÃ© pourraient Ãªtre prÃ©sents. Il faudrait du temps pour reaire tout Ã§a au propre.', 
+			'Bienvenue sur cette version moddÃ©e de phpTournois. Attention cette version est compatible PHP 7 mais est Ã  utiliser le plus possible en LAN. Le code date et malgrÃ©s notre attention Ã  l\'Ã©poque, des bug/soucis de sÃ©curitÃ© pourraient Ãªtre prÃ©sents. Il faudrait du temps pour reaire tout Ã§a au propre.', 
+			" . time() . ",
 			'dr_cube_manga8.gif');
 
 
@@ -775,7 +773,7 @@ $req ="
 			  `contenu` text,
 			  `date` int(11) NOT NULL default '0',
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 			CREATE TABLE `${dbprefix}page` (
@@ -791,7 +789,7 @@ $req ="
 			  `acces` varchar(4) NOT NULL default '0',
 			  `lien` varchar(120) NOT NULL default '',
 			  PRIMARY KEY  (`id`)
-			) ;
+			) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 			CREATE TABLE `${dbprefix}partenaires` (
@@ -802,13 +800,7 @@ $req ="
 			  `rang` int(11) NOT NULL default '0',
 			  `date` int(11) NOT NULL default '0',
 			  PRIMARY KEY  (`id`)
-			) ;
-
-
-
-			INSERT INTO `${dbprefix}partenaires` VALUES (2, 'phpTournois', 'http://www.phptournois.net', 'phptournois.gif', 0, 1081253456);
-			INSERT INTO `${dbprefix}partenaires` VALUES (4, 'G4iens', 'http://alphasis.free.fr', 'G4iens.gif', 1, 1113227785);
-
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 			CREATE TABLE `${dbprefix}participe` (
@@ -819,7 +811,7 @@ $req ="
 			  `seed` int(11) default NULL,
 			  `date` int(11) NOT NULL default '0',
 			  PRIMARY KEY  (`tournois`,`equipe`)
-			) ;
+			) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
@@ -827,7 +819,7 @@ $req ="
 			  `place` int(11) NOT NULL default '0',
 			  `status` int(11) NOT NULL default '0',
 			  PRIMARY KEY  (`place`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 			 
 
@@ -875,7 +867,7 @@ $req ="
 			  `rcon` varchar(20) default NULL,
 			  `stats` varchar(150) default NULL,
 			  PRIMARY KEY  (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
@@ -883,7 +875,7 @@ $req ="
 			  `tournois` int(11) NOT NULL default '0',
 			  `serveur` int(11) NOT NULL default '0',
 			  PRIMARY KEY  (`tournois`,`serveur`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
@@ -898,16 +890,16 @@ $req ="
 			  `vars` blob NOT NULL,
 			  UNIQUE KEY `id_sess` (`id`),
 			  KEY `id` (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 			CREATE TABLE `${dbprefix}shoutbox` (
 			  `id` int(11) NOT NULL auto_increment,
-			  `pseudo` varchar(32) NOT NULL default 'Invité',
+			  `pseudo` varchar(32) NOT NULL default 'InvitÃ©',
 			  `contenu` text,
 			  `ip` varchar(15) NOT NULL default '',
 			  `date` int(11) NOT NULL default '0',
 			  KEY `id` (`id`)
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 			CREATE TABLE `${dbprefix}sponsors` (
@@ -936,7 +928,7 @@ $req ="
 			  `nom` text,
 			  `type` varchar(32) NOT NULL default '',
 			  `count` int(11) NOT NULL default '0'
-			) ;
+			)  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 			
 			INSERT INTO `${dbprefix}stats` VALUES ('Internet Explorer', 'browser', 0);
@@ -986,9 +978,5 @@ $req ="
 			  `status` enum('C','I','G','P','H','F','T') NOT NULL default 'C',
 			  PRIMARY KEY  (`id`),
 			  UNIQUE KEY `nom` (`nom`)
-			);
-
-
-
+			) CHARACTER SET utf8 COLLATE utf8_general_ci;
 			";
-?>

@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-  | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+  | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -75,7 +75,7 @@ if($grade['o']=='o'||$grade['a']=='a'||$grade['b']=='b') {echo "<li class=\"lir\
 echo '</dl></div></td></tr>';
 echo '</table>';
 /*
-$txtcol='0xFF0000'; //couleur de base  /!\ tjs mettre 0x au d&eacute;but puis le code en hexa le 0x remplace le #
+$txtcol='0xFF0000'; //couleur de base  /!\ tjs mettre 0x au début puis le code en hexa le 0x remplace le #
 $txtcol2='0x00FF00'; //couleur au survol
 $bgcol='#FFFFFF'; //couleur du fond (couleur normal en html)
 $urlva='?page=news'; //url du lien

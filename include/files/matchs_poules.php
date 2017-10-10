@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -41,9 +41,9 @@ if (empty($s_tournois)) js_goto("?page=index");
  * Generation des matchs d'une poules
  */
 /*
-result= tab[journ&eacute;e][matchn�][x]
-journ&eacute;e : numero de la journee (1<->nbequipes)
-matchn� : numero du match (1<->nbequipes/2)
+result= tab[journée][matchN°][x]
+journée : numero de la journee (1<->nbequipes)
+matchN° : numero du match (1<->nbequipes/2)
 x : equipe du match (1 || 2)
 resulr : numero de l'equipe dans la poule (1<->nbequipes)
 

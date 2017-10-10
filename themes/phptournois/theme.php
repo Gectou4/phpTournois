@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 Â©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -159,7 +159,7 @@ function theme_footer() {
         						</div>							
         					</td>
         					<td>
-        <!--				<a href="include/html/panic.html"><img src="images/tux.gif" align="middle" alt='PANIC !!kh&eacute;h&eacute;h&eacute;&eacute;h&eacute;!!!' border="0"></a> -->
+        <!--				<a href="include/html/panic.html"><img src="images/tux.gif" align="middle" alt='PANIC !!khÃ©hÃ©hÃ©Ã©hÃ©!!!' border="0"></a> -->
         					</td>
 						</tr>
 					</table>
@@ -247,7 +247,7 @@ function theme_menu_left()
 	include("include/blocks/block_donation.php");
 	if($config['shoutbox']){include("include/blocks/block_shoutbox.php");}
 	
-	// module TOP 10 à repositionn&eacute; au besoin ;)
+	// module TOP 10 ï¿½ repositionnÃ© au besoin ;)
 	if($mods['topdl']){include("include/blocks/block_dl10.php");}
 	if($mods['topplayer']){include("include/blocks/block_10player.php");}
 	//if($config['sondage'])
@@ -256,20 +256,20 @@ function theme_menu_left()
 
 	if ($config['phpt_type'] != 'lan'){
 	 $sql = "SELECT * FROM ${dbprefix}menu WHERE titre!='' AND align='G' ORDER BY orde"; 
-	 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+	 $req = $db->query($sql);
  
 
  
- while($data = mysql_fetch_array($req)) 
+ while($data = $db->fetch_array($req))
        {
    $titre=$data['titre'];
    
    theme_openblock("$titre");
    
    $sql2 = "SELECT * FROM ${dbprefix}page WHERE lien!='' AND nmenu='$titre' ORDER BY orde"; 
-     $req2 = mysql_query($sql2) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
+     $req2 = $db->query($sql2) or die('Erreur SQL !<br>'.$sql2.'<br>'.$db->getError());
    
-   while($data2 = mysql_fetch_array($req2)) 
+   while($data2 = $db->fetch_array($req2))
    {
    $rubrique=$data2['rubrique'];
    $lien=$data2['lien'];
@@ -302,7 +302,7 @@ function theme_menu_right()
 	
 	//include("include/blocks/block_admin.php");
 	
-	// module des 10 dernière news à placer ou vous voulez ^^
+	// module des 10 derniï¿½re news ï¿½ placer ou vous voulez ^^
 	if($mods['lastnews']==1){include("include/blocks/block_10news.php");}
 	
 	include("include/blocks/block_partenaires.php");
@@ -313,20 +313,20 @@ function theme_menu_right()
 	if ($config['phpt_type'] != 'lan'){
 	
 	$sql = "SELECT * FROM ${dbprefix}menu WHERE titre!='' AND align='D' ORDER BY orde"; 
-    $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+    $req = $db->query($sql);
  
 
  
- while($data = mysql_fetch_array($req)) 
+ while($data = $db->fetch_array($req))
        {
    $titre=$data['titre'];
    
    theme_openblock("$titre");
    
    $sql2 = "SELECT * FROM ${dbprefix}page WHERE lien!='' AND nmenu='$titre' ORDER BY orde"; 
-   $req2 = mysql_query($sql2) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
+   $req2 = $db->query($sql2) or die('Erreur SQL !<br>'.$sql2.'<br>'.$db->getError());
    
-   while($data2 = mysql_fetch_array($req2)) 
+   while($data2 = $db->fetch_array($req2))
    {
    $rubrique=$data2['rubrique'];
    $lien=$data2['lien'];

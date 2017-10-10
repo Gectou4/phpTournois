@@ -2,7 +2,7 @@
 /*
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
    +---------------------------------------------------------------------+
@@ -30,7 +30,7 @@
 
 $fichier_plan = "include/html/plan/PlanNantarena_5.1.htm"; // Nom du fichier de plan de salles
 
-/*** verification s&eacute;curite ***/
+/*** verification sécurite ***/
 if (preg_match("/plan.php/i", $_SERVER['PHP_SELF'])) {
     die ("You cannot open this page directly");
 }
@@ -39,7 +39,7 @@ if ($op == "do_reserve") {
     if ($grade['z'] != 'z') js_goto("?page=index");
     if (!$id_equipe) {
         show_erreur_saisie($strEquipeNonDefini);
-    } else {/* verifier si l'&eacute;quipe n'a pas reserv&eacute; un autre emplacement */
+    } else {/* verifier si l'équipe n'a pas reservé un autre emplacement */
         $db->select("status");
         $db->from("${dbprefix}plan");
         $db->where("status = '$id_equipe'");
@@ -59,28 +59,28 @@ if ($op == "do_reserve") {
     }
 } elseif ($op == "reserve") {
 
-    /*** verification s&eacute;curite ***/
+    /*** verification sécurite ***/
     if ($grade['z'] != 'z') js_goto("?page=index");
 
-    /* si c l'admin, doit choisir l'equipe dans un menu d&eacute;roulant */
+    /* si c l'admin, doit choisir l'equipe dans un menu déroulant */
     if ($grade['a'] == 'a' || $grade['b'] == 'b' || $grade['k'] == 'k' or joueur_inscrit($s_joueur)) {
         echo "<p class=title>.:: " . $strChoixEmplacement . " ::.</p>";
 
         echo "<form method=post action=?page=plan&op=do_reserve>";
 
-        /*** table d'affichage des &eacute;quipes ***/
+        /*** table d'affichage des équipes ***/
         echo "<table border=0 cellpadding=0 cellspacing=0 class=bordure1><tr><td>";
         echo "<table cellspacing=1 cellpadding=0 border=0 class=fiche>";
         echo "<tr><td>";
         echo "<table cellspacing=0 cellpadding=3 border=0 width=100%>";
 
-        /*** &eacute;quipes ***/
+        /*** équipes ***/
         echo "<tr><td class=titlefiche width=33%>$strTag <font color=red></font> :</td>";
         echo "<td class=textfiche>";
         echo "<input type=hidden name=place value=$place>";
         echo "<select name=id_equipe value=''>";
 
-        /* Affiche toutes les &eacute;quipes  */
+        /* Affiche toutes les équipes  */
         if ($grade['a'] == 'a' || $grade['b'] == 'b' || $grade['k'] == 'k') {
             $db->select("id, tag");
             $db->from("${dbprefix}equipes");
@@ -102,7 +102,7 @@ if ($op == "do_reserve") {
                 if (count($equipes)) {
                     show_erreur_saisie($strJoueurNonManager);
                 } else {
-                    /* doit rejoindre une &eacute;quipe */
+                    /* doit rejoindre une équipe */
                     js_goto("?page=equipes&op=rejoindre");
                 }
             }
@@ -120,13 +120,13 @@ if ($op == "do_reserve") {
         show_consignes($strSelectionEquipeConsignes);
 
         echo "<img src=\"images/back.gif\" border=0 align=align=absmiddle> <a href=javascript:back() class=action>$strRetour</a><br>";
-    } /* si c un joueur, v&eacute;rifier qu'il appartient � une &eacute;quipe */
+    } /* si c un joueur, vérifier qu'il appartient � une équipe */
     else {
         js_goto("?page=equipe&op=rejoindre");
     }
 } elseif ($op == "libere") {
 
-    /* pour l'instant, seul l'administrateur master/normal/de salle peut lib&eacute;rer une place */
+    /* pour l'instant, seul l'administrateur master/normal/de salle peut libérer une place */
     if ($grade['a'] == 'a' || $grade['b'] == 'b' || $grade['k'] == 'k') {
         $db->update("${dbprefix}plan");
         $db->set("status = '0'");
@@ -143,7 +143,7 @@ if ($op == "do_reserve") {
     if (($grade['a'] == 'a' || $grade['b'] == 'b' || $grade['k'] == 'k') && ($op == 'admin')) echo "<p class=title>.:: " . $strAdministrationReservation . " ::.</p>";
     else echo "<p class=title>.:: " . $strPlanSalle . " ::.</p>";
 
-    /* Affiche le plan des &eacute;quipes */
+    /* Affiche le plan des équipes */
     $fp = fopen($fichier_plan, "r");
     $data = fread($fp, 50000);
 

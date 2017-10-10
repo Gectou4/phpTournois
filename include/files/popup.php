@@ -7,7 +7,7 @@
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 Â©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
    +---------------------------------------------------------------------+
@@ -51,15 +51,15 @@ echo 'test';
 		$pev='';
 		
 		$sqln12X = "SELECT article_config FROM ${dbprefix}config"; 
-		$reqn12X = mysql_query($sqln12X) or die('Erreur SQL !<br>'.$sqln12X.'<br>'.mysql_error());
-		while($datad12X = mysql_fetch_array($reqn12X)) 
+		$reqn12X = $db->query($sqln12X) or die('Erreur SQL !<br>'.$sqln12X.'<br>'.$db->getError());
+		while($datad12X = $db->fetch_array($reqn12X))
    	 				{$ccidX = $datad12X['article_config'];}
 	
 		$sqlnX = "SELECT * FROM ${dbprefix}article ORDER BY id"; 
-		$reqnX = mysql_query($sqlnX) or die('Erreur SQL !<br>'.$sqlnX.'<br>'.mysql_error());
+		$reqnX = $db->query($sqlnX) or die('Erreur SQL !<br>'.$sqlnX.'<br>'.$db->getError());
 		$iX=0;
 		$okX="no";
-		while($datadX = mysql_fetch_array($reqnX)) 
+		while($datadX = $db->fetch_array($reqnX))
    	 				{
 					$iX++;
 					$didX = $datadX['id'];
@@ -78,7 +78,7 @@ echo 'test';
 							{
 							echo ''.$name_articleX.' - '.$datadX['article'].' <font color=red>'.$strAC_regle.'</font><br>';
 							$sqlupdating1 = "UPDATE ${dbprefix}article SET pev='a' WHERE id='$didX'"; 
-							$requpdating1 = mysql_query($sqlupdating1) or die('Erreur SQL !<br>'.$sqlupdating1.'<br>'.mysql_error());
+							$requpdating1 = $db->query($sqlupdating1) or die('Erreur SQL !<br>'.$sqlupdating1.'<br>'.$db->getError());
 							}
 							}
 							
@@ -90,7 +90,7 @@ echo 'test';
 							echo " $strAc_areg";
 							echo '</font><br>';
 							$sqlupdating2 = "UPDATE ${dbprefix}article SET pev='a' WHERE id='$didX'"; 
-							$requpdating2 = mysql_query($sqlupdating2) or die('Erreur SQL !<br>'.$sqlupdating2.'<br>'.mysql_error());
+							$requpdating2 = $db->query($sqlupdating2) or die('Erreur SQL !<br>'.$sqlupdating2.'<br>'.$db->getError());
 							} 
 							}	
 						}// end if

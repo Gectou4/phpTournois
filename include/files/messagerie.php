@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-    | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+    | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -156,7 +156,7 @@ elseif ($op == "lire") {
  */
 elseif ($op == "ecrire") {
 
-    /** recup&eacute;ration du message si c une reponse **/
+    /** recupération du message si c une reponse **/
     $contenu = '';
 
     if (isset($message) && is_numeric($message)) {

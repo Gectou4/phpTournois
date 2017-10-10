@@ -5,7 +5,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -57,7 +57,7 @@ $compteur=compteur();
 <META HTTP-EQUIV="CONTENT-LANGUAGE" CONTENT="French">
 <META NAME="ROBOTS" CONTENT="index,follow">
 <META NAME="REVISIT-AFTER" CONTENT="10">
-<meta name="copyright" content="� phpTournois COPYRIGHT 1999-2005">
+<meta name="copyright" content="(c) phpTournois COPYRIGHT 1999-2005">
 <link rel="stylesheet" type="text/css" href="themes/<?php echo $s_theme;?>/styles.css">
 <script lang="Javascript" src="include/javascript.inc.js"></script>
 <script type="text/javascript" src="include/fckeditor.js"></script>

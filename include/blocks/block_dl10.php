@@ -6,7 +6,7 @@
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
-  | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+  | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | This file is part of phpTournois.                                   |
    |                                                                     |

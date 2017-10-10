@@ -79,7 +79,7 @@ class GetFoldersAndFiles
                         //check if$fckphp_configured not to show this folder
                         $hide = false;
                         for ($i = 0; $i < sizeof($this->fckphp_config['ResourceAreas'][$this->type]['HideFolders']); $i++)
-                            $hide = (preg_match('/'.$this->fckphp_config['ResourceAreas'][$this->type]['HideFolders'][$i].'/', $filename) ? true : $hide);
+                            $hide = (preg_match('/' . $this->fckphp_config['ResourceAreas'][$this->type]['HideFolders'][$i] . '/', $filename) ? true : $hide);
 
                         if (!$hide) echo "\t\t<Folder name=\"$filename\" />\n";
 
@@ -103,7 +103,7 @@ class GetFoldersAndFiles
                 //check if$fckphp_configured not to show this file
                 $editable = $hide = false;
                 for ($j = 0; $j < sizeof($this->fckphp_config['ResourceAreas'][$this->type]['HideFiles']); $j++)
-                    $hide = (preg_match('/'.$this->fckphp_config['ResourceAreas'][$this->type]['HideFiles'][$j].'/', $files[$i]) ? true : $hide);
+                    $hide = (preg_match('/' . $this->fckphp_config['ResourceAreas'][$this->type]['HideFiles'][$j] . '/', $files[$i]) ? true : $hide);
 
                 if (!$hide) {
                     if ($this->fckphp_config['ResourceAreas'][$this->type]['AllowImageEditing'])

@@ -3,7 +3,7 @@
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.com)|
    +---------------------------------------------------------------------+
@@ -48,5 +48,3 @@ $m4rulecfg = 'RL12';
 $m4campscfg = 0;
 $m4autostartcfg = 1;
 $m4prolongationcfg = 1;
-
-?>

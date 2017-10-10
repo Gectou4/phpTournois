@@ -2,7 +2,7 @@
 /*
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
    +---------------------------------------------------------------------+
@@ -40,7 +40,7 @@ global $EquipesX,$strJoueursInscrits,$strEquipesInscrits,$strInscrire,$strSInscr
 global $strTournoisTermines, $strTournoisEnCours, $strarbitre;
 
 if(isset($show_tournois_status) && $show_tournois_status!='') {
-	//termin&eacute;
+	//terminé
 	if($show_tournois_status=='T') {
 		$str_tournois = $strTournoisTermines;
 		$status='T';

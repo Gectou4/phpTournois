@@ -13,8 +13,8 @@ $req = "CREATE TABLE `${dbprefix}article` (
   `idj` int(11) default NULL,
   `pev` char(2) default NULL,
   PRIMARY KEY  (`id`)
-);";
-if(!$db->query($req)){die(mysql_error());}
+)CHARACTER SET utf8 COLLATE utf8_general_ci;";
+if(!$db->query($req)){die($db->getError());}
 
 
 $req = "CREATE TABLE `${dbprefix}forum` (
@@ -34,8 +34,8 @@ $req = "CREATE TABLE `${dbprefix}forum` (
   `last_post_author` varchar(255) NOT NULL default '',
   `last_post_date` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-);";
-if(!$db->query($req)){die(mysql_error());}
+)CHARACTER SET utf8 COLLATE utf8_general_ci;";
+if(!$db->query($req)){die($db->getError());}
 
 $req = "CREATE TABLE `${dbprefix}forum_message` (
   `id` int(11) NOT NULL auto_increment,
@@ -50,8 +50,8 @@ $req = "CREATE TABLE `${dbprefix}forum_message` (
   `cattopic` int(11) NOT NULL default '0',
   `locking` int(1) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-);";
-if(!$db->query($req)){die(mysql_error());}
+)CHARACTER SET utf8 COLLATE utf8_general_ci;";
+if(!$db->query($req)){die($db->getError());}
 
 $req = "CREATE TABLE `${dbprefix}lad_comment` (
   `id` int(11) NOT NULL auto_increment,
@@ -60,8 +60,8 @@ $req = "CREATE TABLE `${dbprefix}lad_comment` (
   `date` int(11) NOT NULL default '0',
   `match_id` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-);";
-if(!$db->query($req)){die(mysql_error());}
+)CHARACTER SET utf8 COLLATE utf8_general_ci;";
+if(!$db->query($req)){die($db->getError());}
 
 $req = "CREATE TABLE `${dbprefix}lad_part` (
   `ladder_id` int(11) NOT NULL default '0',
@@ -84,8 +84,8 @@ $req = "CREATE TABLE `${dbprefix}lad_part` (
   `total_match` int(11) NOT NULL default '0',
   `team` varchar(50) NOT NULL default '',
   `teamid` int(11) NOT NULL default '0'
-);";
-if(!$db->query($req)){die(mysql_error());}
+)CHARACTER SET utf8 COLLATE utf8_general_ci;";
+if(!$db->query($req)){die($db->getError());}
 
 
 
@@ -115,8 +115,8 @@ $req = "CREATE TABLE `${dbprefix}ladder_data` (
   `new_data` int(1) NOT NULL default '0',
   `mail` int(11) NOT NULL default '1',
   PRIMARY KEY  (`id`)
-);";
-if(!$db->query($req)){die(mysql_error());}
+)CHARACTER SET utf8 COLLATE utf8_general_ci;";
+if(!$db->query($req)){die($db->getError());}
 
 
 
@@ -142,8 +142,8 @@ $req = "CREATE TABLE `${dbprefix}ladder_match` (
   `t1_id` int(11) NOT NULL default '0',
   `t2_id` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-);";
-if(!$db->query($req)){die(mysql_error());}
+)CHARACTER SET utf8 COLLATE utf8_general_ci;";
+if(!$db->query($req)){die($db->getError());}
 
 $req = "CREATE TABLE `${dbprefix}listarticle` (
   `id` int(11) NOT NULL auto_increment,
@@ -151,8 +151,8 @@ $req = "CREATE TABLE `${dbprefix}listarticle` (
   `prix` varchar(50) NOT NULL default '',
   `ingred` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`id`)
-);";
-if(!$db->query($req)){die(mysql_error());}
+)CHARACTER SET utf8 COLLATE utf8_general_ci;";
+if(!$db->query($req)){die($db->getError());}
 
 $req = "CREATE TABLE `${dbprefix}menu` (
   `id` int(11) NOT NULL auto_increment,
@@ -160,8 +160,8 @@ $req = "CREATE TABLE `${dbprefix}menu` (
   `orde` int(11) NOT NULL default '0',
   `align` enum('G','D') NOT NULL default 'G',
   PRIMARY KEY  (`id`)
-);";
-if(!$db->query($req)){die(mysql_error());}
+)CHARACTER SET utf8 COLLATE utf8_general_ci;";
+if(!$db->query($req)){die($db->getError());}
 
 $req = "CREATE TABLE `${dbprefix}mods` (
   `MODEnLigneA` varchar(32) NOT NULL default '#FF0000',
@@ -190,16 +190,16 @@ $req = "CREATE TABLE `${dbprefix}mods` (
   `m_team_valid` int(1) NOT NULL default '0',
   `m_team_valid_num` int(11) NOT NULL default '5',
   `auto_valid_team` int(1) NOT NULL default '0'
-);";
-if(!$db->query($req)){die(mysql_error());}
+)CHARACTER SET utf8 COLLATE utf8_general_ci;";
+if(!$db->query($req)){die($db->getError());}
 $req = "CREATE TABLE `${dbprefix}multinews` (
   `id` int(11) NOT NULL auto_increment,
   `lang` char(2) NOT NULL default 'UK',
   `titre` varchar(50) NOT NULL default '',
   `contenu` text,
   PRIMARY KEY  (`id`)
-);";
-if(!$db->query($req)){die(mysql_error());}
+)CHARACTER SET utf8 COLLATE utf8_general_ci;";
+if(!$db->query($req)){die($db->getError());}
 
 $req = "CREATE TABLE `${dbprefix}page` (
   `id` int(11) NOT NULL auto_increment,
@@ -214,19 +214,19 @@ $req = "CREATE TABLE `${dbprefix}page` (
   `acces` varchar(4) NOT NULL default '0',
   `lien` varchar(120) NOT NULL default '',
   PRIMARY KEY  (`id`)
-);";
-if(!$db->query($req)){die(mysql_error());}
+)CHARACTER SET utf8 COLLATE utf8_general_ci;";
+if(!$db->query($req)){die($db->getError());}
 
 
 $req = "CREATE TABLE `${dbprefix}plan` (
   `place` int(11) NOT NULL default '0',
   `status` int(11) NOT NULL default '0',
   PRIMARY KEY  (`place`)
-);";
-if(!$db->query($req)){die(mysql_error());}
+)CHARACTER SET utf8 COLLATE utf8_general_ci;";
+if(!$db->query($req)){die($db->getError());}
 
 $req = "		
-ALTER TABLE `${dbprefix}shoutbox` CHANGE `auteur` `pseudo` varchar(32) NOT NULL default 'Invité';
+ALTER TABLE `${dbprefix}shoutbox` CHANGE `auteur` `pseudo` varchar(32) NOT NULL default 'InvitÃ©';
 ALTER TABLE `${dbprefix}mods` ADD `news2` int(1) NOT NULL default '0';
 
 ALTER TABLE `${dbprefix}config` CHANGE `information` `information` TEXT DEFAULT NULL ,
@@ -289,13 +289,13 @@ $a = explode(';', $req);
 foreach($a as $q) {
 		if(trim($q)=="") break;
 		if(!$db->query($q))
-			die(mysql_error());
+			die($db->getError());
 	} 
 
 $db->exec();
 
 		$db->insert("${dbprefix}mods (admin)");
-		$db->values("'Laissé ici vos notes personnels ou entre admins.'");
+		$db->values("'Laisser ici vos notes personnels ou entre admins.'");
 		$db->exec();
 		$db->insert("${dbprefix}plan (place,status)");
 		$db->values("1, 0");
@@ -451,23 +451,22 @@ $db->exec();
 		$db->values("-2, 'support_phpt', 'none', 'none', 'contact@phptournois.com', '99', 'FR', 'none', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4443eae168a942dc63edfbd4d563e444', 'O', 'N', NULL, 'C', 1104925932, NULL, 'steam_0:0:000000', 'null.gif', 'N', '', '', 'N', 'abcdefghijklmnopqrstuvwxyz', 0, 2, 'phpT Dev Team', 'aucun', NULL, 'Special protected user for mod : tech support', 0, 0");
 		$db->exec();
 		$db->insert("${dbprefix}forum (id,date,cattitle,idcat,title,topic,topid,cattopic,topic_date,descri,reserved,nsujet,nmessage,last_post_author,last_post_date)");
-		$db->values("38, 0, 'Remarque, suggestions !', 0, '', '', 0, 1, 0, 'Cette catégorie est accessible à [color=red][b]TOUS[/b][/color].', 'u', 0, 0, '', 0");
+		$db->values("38, 0, 'Remarque, suggestions !', 0, '', '', 0, 1, 0, 'Cette catÃ©gorie est accessible Ã  [color=red][b]TOUS[/b][/color].', 'u', 0, 0, '', 0");
 		$db->exec();
 		$db->insert("${dbprefix}forum (id,date,cattitle,idcat,title,topic,topid,cattopic,topic_date,descri,reserved,nsujet,nmessage,last_post_author,last_post_date)");
-		$db->values("39, 0, 'Modo & Newseur', 0, '', '', 0, 2, 0, 'Accesible uniquement aux modos newseurs et admin', 'mn', 0, 0, '', 0");
+		$db->values("39, 0, 'Modo & Newseur', 0, '', '', 0, 2, 0, 'Accessible uniquement aux modos newseurs et admin', 'mn', 0, 0, '', 0");
 		$db->exec();
 		$db->insert("${dbprefix}forum (id,date,cattitle,idcat,title,topic,topid,cattopic,topic_date,descri,reserved,nsujet,nmessage,last_post_author,last_post_date)");
 		$db->values("40, 0, '', 0, '', 'Bonjour', 1, 1, 1113227281, '', '', 0, 0, '', 0");
 		$db->exec();
 		$db->insert("${dbprefix}forum (id,date,cattitle,idcat,title,topic,topid,cattopic,topic_date,descri,reserved,nsujet,nmessage,last_post_author,last_post_date)");
-		$db->values("41, 0, '', 0, '', 'Bienvenue sur cette discution privé', 2, 2, 1113227411, '', '', 0, 0, '', 0");
+		$db->values("41, 0, '', 0, '', 'Bienvenue sur cette discution privÃ©e', 2, 2, 1113227411, '', '', 0, 0, '', 0");
 		$db->exec();
 		$db->insert("${dbprefix}forum_message (id,auteur,date,topid,topic,message,edit,edit_date,edit_by,cattopic,locking)");
 		$db->values("97, -2, 1113227281, 1, 'Bonjour', 'Bienvenue sur le forum :)', 'N', 0, '', 1, 0");
 		$db->exec();
 		$db->insert("${dbprefix}forum_message (id,auteur,date,topid,topic,message,edit,edit_date,edit_by,cattopic,locking)");
-		$db->values("98, -2, 1113227411, 2, 'Bienvenue sur cette discution privé', 'Vous voila entre personnel du staff :)\r\n\r\nBonne beta et bon tournois !', 'N', 0, '', 2, 0");
+		$db->values("98, -2, 1113227411, 2, 'Bienvenue sur cette discution privÃ©e', 'Vous voila entre personnel du staff :)\r\n\r\nBonne beta et bon tournois !', 'N', 0, '', 2, 0");
 		$db->exec();
 
 $db->exec();
-?>

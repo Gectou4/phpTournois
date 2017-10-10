@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -41,7 +41,7 @@ if(!$config['serveur']) js_goto('?page=index');
 //include("qstat/phpqstat.php");
 
 /********************************************************
- * Ajout d'un serveur g&eacute;n&eacute;ral d'une team
+ * Ajout d'un serveur général d'une team
  */
 if ($op == "add") {
 
@@ -138,7 +138,7 @@ if ($op == "add") {
 	}
 }
 /********************************************************
- * Modifier un serveur g&eacute;n&eacute;ral
+ * Modifier un serveur général
  */
 elseif ($op == "do_modify") {
 
@@ -224,7 +224,7 @@ elseif ($op == "do_modify") {
 	}
 }
 /********************************************************
- * Suppression d'un serveur g&eacute;n&eacute;ral
+ * Suppression d'un serveur général
  */
 elseif ($op == "delete") {
 

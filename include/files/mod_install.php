@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 Â©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.com)|
@@ -39,28 +39,28 @@ global $db,$dbprefix;
 		echo '<b> Suivi d\'install : </b><br>';
 		
 		$sql = "ALTER TABLE ${dbprefix}config ADD `rangforum` enum('0', '1') DEFAULT '0' NOT NULL"; 
-		$req = mysql_query($sql) or die('<font color="red"><b>ERREUR : rangforum n\'a pus être ajouté à la table config </b></font><br>');
-		echo '<font color="green"><b> rangforum ajouté à la table config </b></font><br>';
+		$req = $db->query($sql) or die('<font color="red"><b>ERREUR : rangforum n\'a pus Ãªtre ajoutÃ© Ã  la table config </b></font><br>');
+		echo '<font color="green"><b> rangforum ajoutÃ© Ã  la table config </b></font><br>';
 		
 		$sql2 = "ALTER TABLE ${dbprefix}joueurs ADD `last_forum_join` INT( 11 ) DEFAULT '0' NOT NULL "; 
-		$req2 = mysql_query($sql2) or die('<font color="red"><b>ERREUR : last_forum_join n\'a pus être ajouté à la table joueurs </b></font><br>');
-		echo '<font color="green"><b> last_forum_join ajouté à la table joueurs</b></font><br>';
+		$req2 = $db->query($sql2) or die('<font color="red"><b>ERREUR : last_forum_join n\'a pus Ãªtre ajoutÃ© Ã  la table joueurs </b></font><br>');
+		echo '<font color="green"><b> last_forum_join ajoutÃ© Ã  la table joueurs</b></font><br>';
 		
 		$sql3 = "ALTER TABLE ${dbprefix}joueurs ADD `forum_post` INT( 11 ) DEFAULT '0' NOT NULL "; 
-		$req3 = mysql_query($sql3) or die('<font color="red"><b>ERREUR : forum_post n\'a pus être ajouté à la table joueurs </b></font><br>');
-		echo '<font color="green"><b> forum_post ajouté à la table joueurs </b></font><br>';
+		$req3 = $db->query($sql3) or die('<font color="red"><b>ERREUR : forum_post n\'a pus Ãªtre ajoutÃ© Ã  la table joueurs </b></font><br>');
+		echo '<font color="green"><b> forum_post ajoutÃ© Ã  la table joueurs </b></font><br>';
 		
 		$sql4 = "ALTER TABLE ${dbprefix}joueurs ADD `forum_userrank` VARCHAR( 128 ) DEFAULT 'noob du forum' NOT NULL  "; 
-		$req4 = mysql_query($sql4) or die('<font color="red"><b>ERREUR : forum_userrank n\'a pus être ajouté à la table  joueur</b></font><br>');
-		echo '<font color="green"><b> forum_userrank ajouté à la table joueurs </b></font><br>';
+		$req4 = $db->query($sql4) or die('<font color="red"><b>ERREUR : forum_userrank n\'a pus Ãªtre ajoutÃ© Ã  la table  joueur</b></font><br>');
+		echo '<font color="green"><b> forum_userrank ajoutÃ© Ã  la table joueurs </b></font><br>';
 		
 		$sql5 = "ALTER TABLE ${dbprefix}forum_message ADD `cattopic` INT( 11 ) DEFAULT '0' NOT NULL "; 
-		$req5 = mysql_query($sql5) or die('<font color="red"><b>ERREUR : cattopic n\'a pus être ajouté à la table forum_message </b></font><br>');
-		echo '<font color="green"><b> cattopic ajouté à la table forum_message </b></font><br>';
+		$req5 = $db->query($sql5) or die('<font color="red"><b>ERREUR : cattopic n\'a pus Ãªtre ajoutÃ© Ã  la table forum_message </b></font><br>');
+		echo '<font color="green"><b> cattopic ajoutÃ© Ã  la table forum_message </b></font><br>';
 		
 		$sql6 = "ALTER TABLE ${dbprefix}forum ADD `reserved` VARCHAR( 132 ) NOT NULL "; 
-		$req6 = mysql_query($sql6) or die('<font color="red"><b>ERREUR : reserved n\'a pus être ajouté à la table forum </b></font><br>');
-		echo '<font color="green"><b> reserved ajouté à la table forum </b></font><br>';
+		$req6 = $db->query($sql6) or die('<font color="red"><b>ERREUR : reserved n\'a pus Ãªtre ajoutÃ© Ã  la table forum </b></font><br>');
+		echo '<font color="green"><b> reserved ajoutÃ© Ã  la table forum </b></font><br>';
 			
 	
 		
@@ -75,15 +75,15 @@ global $db,$dbprefix;
 		$db->set("cattopic = '".$ud->cattopic."'");
 		$db->where("topid = ".$ud->cattopic."");
 		$db->exec();
-		echo '<font color="green"><b> UPDATE de cattopic '.$ud->cattopic.' du topid : '.$ud->cattopic.' Effectué avec succé !</b></font><br>';
+		echo '<font color="green"><b> UPDATE de cattopic '.$ud->cattopic.' du topid : '.$ud->cattopic.' EffectuÃ© avec succÃ¨s !</b></font><br>';
 		
 		
 		}
 		
-		echo 'La mise à jour à été effectué, vérifier quand même que tous c\'est bien passé.<br>
-		pensez à supprimer ce fichier de votre ftp.';
+		echo 'La mise Ã  jour Ã  Ã©tÃ© effectuÃ©e, vÃ©rifier quand mÃªme que tous c\'est bien passÃ©.<br>
+		pensez Ã  supprimer ce fichier de votre ftp.';
 	}	
 
 
-echo '<br><br><a href="?page=mod_install&op=update"><b>cliquer ici pour lancer la MAJ</b></a><br>Elle sera achevé une fois la page suivante avec le texte de succée affiché.';
-?>
+echo '<br><br><a href="?page=mod_install&op=update"><b>cliquer ici pour lancer la MAJ</b></a><br>Elle sera achevÃ©e une fois la page suivante avec le texte de succÃ©s affichÃ©.';
+

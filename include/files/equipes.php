@@ -2,7 +2,7 @@
 /*
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
    +---------------------------------------------------------------------+
@@ -350,7 +350,7 @@ elseif ($op == "delete_joueur") {
         while ($equipe_j = $db->fetch($res)) {
 
             if ($equipe_j->status == 1 || $equipe_j->status == 2) {
-                // incr&eacute;mentation de la variable pour sauter la nullit&eacute;.
+                // incrémentation de la variable pour sauter la nullité.
                 $coun_y_grade = $coun_y_grade + 1;
             }
 
@@ -375,7 +375,7 @@ elseif ($op == "delete_joueur") {
             }
         }
 
-        // g&eacute;n&eacute;ration d'un message pour le joueur
+        // génération d'un message pour le joueur
         $db->select("nom");
         $db->from("${dbprefix}equipes");
         $db->where("id = $id");
@@ -527,24 +527,24 @@ elseif ($op == "modify_manager") {
         // Si on change de manager
         if ($manager != $oldmanager) {
 
-            // On cherche si l'ancien manager ne l'&eacute;tait qu'une fois ou plusieur fois !
+            // On cherche si l'ancien manager ne l'était qu'une fois ou plusieur fois !
             $db->select("manager");
             $db->from("${dbprefix}equipes");
             $db->where("manager = $oldmanager");
             $res = $db->exec();
-            $row_data_x = mysql_fetch_row($res);
+            $row_data_x = $db->fetch_array($res);
             $coun_x_grade = $row_data_x[0];
-            // on incr&eacute;mente de 1 pour supprimer la valeur 0 du tableau et &eacute;vit&eacute; l'annulation de la variable :)
+            // on incrémente de 1 pour supprimer la valeur 0 du tableau et évité l'annulation de la variable :)
             $coun_x_grade++;
 
-            // si il &eacute;tait pr&eacute;sent une ou moin sde fois dans les r&eacute;sultat c'est qu'il n'est plus manager (du tout)
+            // si il était présent une ou moin sde fois dans les résultat c'est qu'il n'est plus manager (du tout)
             if ($coun_x_grade <= 1) {
 
                 $db->select("grade");
                 $db->from("${dbprefix}joueurs");
                 $db->where("id = $oldmanager");
                 $db->exec();
-                $joueur_res = $db->fetch();
+                $joueur_res = $db->fetch_array();
 
                 if (preg_match("/x/i", $joueur_res->grade)) {
 
@@ -655,17 +655,17 @@ elseif ($op == "modify_admin") {
         // Si on change de manager
         if ($manager != $oldmanager) {
 
-            // On cherche si l'ancien manager ne l'&eacute;tait qu'une fois ou plusieur fois !
+            // On cherche si l'ancien manager ne l'était qu'une fois ou plusieur fois !
             $db->select("manager");
             $db->from("${dbprefix}equipes");
             $db->where("manager = $oldmanager");
             $res = $db->exec();
-            $row_data_x = mysql_fetch_row($res);
+            $row_data_x = $db->fetch_array($res);
             $coun_x_grade = $row_data_x[0];
-            // on incr&eacute;mente de 1 pour supprimer la valeur 0 du tableau et &eacute;vit&eacute; l'annulation de la variable :)
+            // on incrémente de 1 pour supprimer la valeur 0 du tableau et évité l'annulation de la variable :)
             $coun_x_grade++;
 
-            // si il &eacute;tait pr&eacute;sent une ou moin sde fois dans les r&eacute;sultat c'est qu'il n'est plus manager (du tout)
+            // si il était présent une ou moin sde fois dans les résultat c'est qu'il n'est plus manager (du tout)
             if ($coun_x_grade <= 1) {
 
                 $db->select("grade");
@@ -690,7 +690,7 @@ elseif ($op == "modify_admin") {
         js_goto("?page=equipes&op=admin&id=$id");
     }
 } /********************************************************
- * Auto validation de l'&eacute;quipe
+ * Auto validation de l'équipe
  */
 elseif ($op == "autoval") {
 
@@ -703,7 +703,7 @@ elseif ($op == "autoval") {
     $db->select("COUNT(distinct joueur) FROM ${dbprefix}appartient WHERE equipe = $id ");
     $db->order_by("joueur");
     $res = $db->exec();
-    $row_data = mysql_fetch_row($res);
+    $row_data = $db->fetch_array($res);
     $data_total = $row_data[0];
 
     if ($data_total >= $mods['m_team_valid_num']) {
@@ -810,7 +810,7 @@ elseif ($op == "inscription") {
     echo "<img src=\"images/back.gif\" border=0 align=align=absmiddle> <a href=javascript:back() class=action>$strRetour</a><br>";
 
 } /********************************************************
- * Edit&eacute; status d'un joueur
+ * Edité status d'un joueur
  */
 elseif ($op == "do_editstat") {
 
@@ -850,7 +850,7 @@ elseif ($op == "do_editstat") {
     }
 
 } /********************************************************
- * Edit&eacute; status d'un joueur
+ * Edité status d'un joueur
  */
 elseif ($op == "edit_stat") {
 
@@ -911,7 +911,7 @@ elseif ($op == "edit_stat") {
 
 
 } /********************************************************
- * Quitter une &eacute;quipe
+ * Quitter une équipe
  */
 elseif ($op == "leave") {
 
@@ -937,7 +937,7 @@ elseif ($op == "leave") {
     while ($equipe_j = $db->fetch($res)) {
 
         if ($equipe_j->status == 1 || $equipe_j->status == 2) {
-            // incr&eacute;mentation de la variable pour sauter la nullit&eacute;.
+            // incrémentation de la variable pour sauter la nullité.
             $coun_y_grade = $coun_y_grade + 1;
         }
 
@@ -962,7 +962,7 @@ elseif ($op == "leave") {
         }
     }
 
-    // g&eacute;n&eacute;ration d'un message pour le manager 
+    // génération d'un message pour le manager 
     $db->select("manager");
     $db->from("${dbprefix}equipes");
     $db->where("id = $id");
@@ -999,7 +999,7 @@ elseif ($op == "leave") {
     js_goto("?page=equipes&id=$id");
 
 } /********************************************************
- * Quitter une &eacute;quipe
+ * Quitter une équipe
  */
 elseif ($op == "leave") {
 
@@ -1509,7 +1509,7 @@ else {
                 $fd = opendir("images/cartons/");
                 while ($file = readdir($fd)) {
                     if ($file != "." && $file != "..") {
-                        $file = ereg_replace(".gif", "", $file);
+                        $file = Preg_replace("/.gif/", "", $file);
                         echo "<option value=$file";
                         if ($file == $equipe->carton) echo " SELECTED";
                         echo ">$file";

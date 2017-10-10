@@ -178,7 +178,7 @@ DlgImgAlignLeft		: "Esquerda",
 DlgImgAlignAbsBottom: "Abs Inferior",
 DlgImgAlignAbsMiddle: "Abs Centro",
 DlgImgAlignBaseline	: "Liña Base",
-DlgImgAlignBottom	: "P&eacute;",
+DlgImgAlignBottom	: "Pé",
 DlgImgAlignMiddle	: "Centro",
 DlgImgAlignRight	: "Dereita",
 DlgImgAlignTextTop	: "Tope do Texto",
@@ -372,7 +372,7 @@ DlgCheckboxSelected	: "Seleccionado",
 // Form Dialog
 DlgFormName		: "Nome",
 DlgFormAction	: "Acción",
-DlgFormMethod	: "M&eacute;todo",
+DlgFormMethod	: "Método",
 
 // Select Field Dialog
 DlgSelectName		: "Nome",

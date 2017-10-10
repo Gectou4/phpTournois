@@ -372,7 +372,7 @@ DlgCheckboxSelected	: "Seleccionado",
 // Form Dialog
 DlgFormName		: "Nombre",
 DlgFormAction	: "Acción",
-DlgFormMethod	: "M&eacute;todo",
+DlgFormMethod	: "Método",
 
 // Select Field Dialog
 DlgSelectName		: "Nombre",
@@ -467,6 +467,6 @@ DlgTemplatesNoTpl	: "(No hay plantillas definidas)",
 DlgAboutAboutTab	: "Acerca de",
 DlgAboutBrowserInfoTab	: "Información de Navegador",
 DlgAboutVersion		: "versión",
-DlgAboutLicense		: "Licenciado bajo los t&eacute;rminos de GNU Lesser General Public License",
+DlgAboutLicense		: "Licenciado bajo los términos de GNU Lesser General Public License",
 DlgAboutInfo		: "Para mayor información por favor dirigirse a"
 }

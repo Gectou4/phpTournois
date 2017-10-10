@@ -7,7 +7,7 @@
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
    +---------------------------------------------------------------------+
@@ -46,7 +46,7 @@ global $last_post_topic_i, $last_post_cat_i;
  */
 
 
-// On r&eacute;cup�re les nouveaux messages
+// On récup�re les nouveaux messages
 if ($s_joueur != "") {
 
     //if ($last_post_topic_i==''||$last_post_topic_i==NULL||$last_post_topic_i=='0') {
@@ -160,16 +160,16 @@ if ($_GET['op'] == "" || $_GET['op'] == NULL) {
 
         if ($datar->cattitle != '' || $datar->cattitle != NULL) {
 
-            // je fait trois requ�te et oui c pas bien paske si je met et incr&eacute;mente des champs PHP et SQL ne veulent ni afficher C champ ni les incr&eacute;menter (c a en devenir fou Oo)
+            // je fait trois requ�te et oui c pas bien paske si je met et incrémente des champs PHP et SQL ne veulent ni afficher C champ ni les incrémenter (c a en devenir fou Oo)
             $db->select("COUNT(id) FROM ${dbprefix}forum WHERE ((cattopic = $datar->cattopic) AND cattitle = '')");
             $db->order_by("id");
             $res = $db->exec();
-            $row_data_nb = mysql_fetch_row($res);
+            $row_data_nb = $db->fetch_array($res);
 
             $db->select("COUNT(id) FROM ${dbprefix}forum_message WHERE cattopic = $datar->cattopic");
             $db->order_by("id");
             $res2 = $db->exec();
-            $row_data_nb_post = mysql_fetch_row($res2);
+            $row_data_nb_post = $db->fetch_array($res2);
 
 
             $db->select("auteur,date,edit_date,edit,topid,cattopic");
@@ -290,7 +290,7 @@ if ($_GET['op'] == "topic") {
     $db->where("topic!=0");
     $db->where("cattopic=$cat");
     $res = $db->exec();
-    $row_topic = mysql_fetch_row($res);
+    $row_topic = $db->fetch_array($res);
     $total_topic = $row_topic[0];
 
     if ($total_topic == '' || $total_topic == NULL || $total_topic == "0") {
@@ -557,7 +557,7 @@ if ($_GET['op'] == "read") {
     $db->from("${dbprefix}forum_message");
     $db->where("topid='$topid'");
     $resX = $db->exec();
-    $row_topic = mysql_fetch_row($resX);
+    $row_topic = $db->fetch_array($resX);
     $total_topic = $row_topic[0];
 
     if ($total_topic == '' || $total_topic == NULL || $total_topic == "0") {
@@ -888,7 +888,7 @@ if ($_GET['op'] == "read") {
     echo '</table><br>';
 }
 /********************************************************
- * Ajouter une r&eacute;ponse
+ * Ajouter une réponse
  */
 if ($_GET['op'] == "addreply") {
     $topid = $_GET['topid'];
@@ -938,7 +938,7 @@ if ($_GET['op'] == "addreply") {
     }
 }
 /********************************************************
- * R&eacute;ponse SQL
+ * Réponse SQL
  */
 if ($_GET['op'] == "add_reply") {
 
@@ -953,7 +953,7 @@ if ($_GET['op'] == "add_reply") {
         if ($islock->locking == 1) $erreur = 1;
     }
     if ($erreur) {
-        $str .= "- Ce Topic est v�rouill�!<br>";
+        $str .= "- Ce Topic est vérouillé!<br>";
     }
     if (!$contenu) {
         $erreur = 1;
@@ -1093,7 +1093,7 @@ if ($_GET['op'] == "add_topic") {
     }
 }
 /********************************************************
- * Effacer r&eacute;ponse
+ * Effacer réponse
  */
 if ($_GET['op'] == "deletereply") {
 
@@ -1149,7 +1149,7 @@ if ($_GET['op'] == "deletereply2") {
 
 }
 /********************************************************
- *Edit&eacute; r&eacute;ponse
+ *Edité réponse
  */
 if ($_GET['op'] == "editreply") {
 
@@ -1202,7 +1202,7 @@ if ($_GET['op'] == "editreply") {
 
 }
 /********************************************************
- * Edit&eacute; r&eacute;ponse SQl
+ * Edité réponse SQl
  */
 if ($_GET['op'] == "edit_reply") {
 
@@ -1232,7 +1232,7 @@ if ($_GET['op'] == "edit_reply") {
     }
 }
 /********************************************************
- * Edit&eacute; sujet
+ * Edité sujet
  */
 if ($_GET['op'] == "editreply2") {
 
@@ -1289,7 +1289,7 @@ if ($_GET['op'] == "editreply2") {
 
 }
 /********************************************************
- * Edit&eacute; sujet SQL
+ * Edité sujet SQL
  */
 if ($_GET['op'] == "edit_reply2") {
 
@@ -1329,7 +1329,7 @@ if ($_GET['op'] == "edit_reply2") {
     }
 }
 /********************************************************
- * Ajout&eacute; cat&eacute;gorie
+ * Ajouté catégorie
  */
 if ($_GET['op'] == "addcat") {
     $cattopic = $_GET['cattopic'];
@@ -1375,7 +1375,7 @@ if ($_GET['op'] == "addcat") {
     echo "</form>";
 }
 /********************************************************
- * Ajout&eacute; cat&eacute;gorie SQL
+ * Ajouté catégorie SQL
  */
 if ($_GET['op'] == "add_cat") {
     $str = '';
@@ -1421,7 +1421,7 @@ if ($_GET['op'] == "add_cat") {
     }
 }
 /********************************************************
- * Effacer Cat&eacute;gorie
+ * Effacer Catégorie
  */
 if ($_GET['op'] == "deletecat") {
 
@@ -1528,7 +1528,7 @@ if ($_GET['op'] == "deletecat") {
 
 }
 /********************************************************
- * Edit&eacute; cat
+ * Edité cat
  */
 if ($_GET['op'] == "edicat") {
 
@@ -1605,7 +1605,7 @@ if ($_GET['op'] == "edicat") {
     echo "</form>";
 }
 /********************************************************
- * Edit&eacute; cat SQL
+ * Edité cat SQL
  */
 if ($_GET['op'] == "edi_cat") {
 
@@ -1642,7 +1642,7 @@ if ($_GET['op'] == "edi_cat") {
     }
 }
 /********************************************************
- * D&eacute;placer Sujet STEP 1
+ * Déplacer Sujet STEP 1
  */
 if ($_GET['op'] == "dej_topic") {
 
@@ -1673,7 +1673,7 @@ if ($_GET['op'] == "dej_topic") {
 
 }
 /********************************************************
- * D&eacute;placer Sujet fin
+ * Déplacer Sujet fin
  */
 if ($_GET['op'] == "dej_topic_end") {
 
@@ -1718,8 +1718,4 @@ if ($_GET['op'] == "iwtul") {
     js_goto("?page=forum");
 
 }
-
-
-?>
-
 

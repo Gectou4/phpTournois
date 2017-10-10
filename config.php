@@ -3,7 +3,7 @@
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.com)|
    +---------------------------------------------------------------------+
@@ -40,10 +40,11 @@ $dbhost = 'localhost';
 $dbuser = 'root';
 $dbpass = '';
 $dbname = 'phptournois';
+$dbport = '3306';
 $dbdebug = 1;
 $dbprefix = 'phpt_';
 
-$config['phpt_type']='lan'; // for lan/online mod or all
+$config['phpt_type']='all'; // for lan/online mod or all
 
 /************************************************/
 /*** Sessions variables ***/
@@ -53,7 +54,7 @@ $config['stats_timeout']=600;
 
 /************************************************/
 /*** Flood variable ***/
-$config['flood_time']=30; // must be in minutes !!! Doit �tre en minutes !!! 
+$config['flood_time']=30; // must be in minutes !!! Doit être en minutes !!!
 
 /************************************************/
 /*** Screening variables for drawing <table> ***/
@@ -112,4 +113,4 @@ $config['nb_sondage_commentaires_max']=10;
 include('config.m4.php');
 include('config.ab.php');
 
-?>
+?><?php define('PHPTOURNOIS_INSTALLED',true);?>

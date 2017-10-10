@@ -5,7 +5,7 @@
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
    +---------------------------------------------------------------------+
@@ -43,7 +43,7 @@ if (preg_match("/skin.php/", $_SERVER['PHP_SELF'])) {
 		if ($s_joueur!="") {
 		$theme=$_POST['theme'];
 		$sql = "UPDATE `${dbprefix}joueurs` SET theme='$theme' where id='$s_joueur'";
-		$req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+		$req = $db->query($sql);
 		/*** redirection ***/
 		js_goto("?page=");
 		} else {

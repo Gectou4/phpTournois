@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -50,7 +50,7 @@ if ($grade['a'] != 'a' && $grade['b'] != 'b' && $grade['t'] != 't' && $grade['u'
  */
 if ($op == "modify") {
 
-    // si il y a de maps selection&eacute;es
+    // si il y a de maps selectionées
     if (count($_POST) != 0) {
 
         foreach ($_POST as $key => $value) {

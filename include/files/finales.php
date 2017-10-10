@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -82,8 +82,8 @@ function creer_tableau_r(&$tableau, $indice, $taille, $tour, $seed)
 }
 
 /* $tableau :
-	R&eacute;sultat - Variable de type tableau d'entier contenant les rencontres
-	$tableau[0] joue contre $tableau[1] puis en r�gle g&eacute;n&eacute;ral $tableau[i] joue contre $tableau[i+1] avec i=2n
+	Résultat - Variable de type tableau d'entier contenant les rencontres
+	$tableau[0] joue contre $tableau[1] puis en r�gle général $tableau[i] joue contre $tableau[i+1] avec i=2n
 	$nb_team : Nombre de teams en phase finale. DOIT ETRE UNE PUISSANCE DE 2
 	CA PETE LA PHRASE HEIN ? AlgoMan64
 */
@@ -152,7 +152,7 @@ elseif ($op == "random") {
         /** si il y a une place dans ce match **/
         if ($match->equipe1 == 0 || $match->equipe2 == 0) {
 
-            /** creation de la liste d'equipes n'ayant pas jou&eacute; **/
+            /** creation de la liste d'equipes n'ayant pas joué **/
             $db->select("equipe1,equipe2");
             $db->from("${dbprefix}matchs");
             $db->where("type = 'W'");
@@ -205,7 +205,7 @@ elseif ($op == "random") {
     /*** redirection ***/
     js_goto("?page=finales&op=admin");
 } /********************************************************
- * Affecter les equipes avec le seed g&eacute;n&eacute;ral
+ * Affecter les equipes avec le seed général
  */
 elseif ($op == "seed") {
 
@@ -290,7 +290,7 @@ elseif ($op == "poules") {
     $T = array();
     creer_tableau_seed($T, $finale * 2);
 
-    // calcul d'une liste al&eacute;atoire sans doublon comprise entre 0 et finale*2-1
+    // calcul d'une liste aléatoire sans doublon comprise entre 0 et finale*2-1
     $tab_rand = array();
 
     for ($i = 0; $i < $finale * 2; $i++) {
@@ -308,7 +308,7 @@ elseif ($op == "poules") {
 
         if ($nb_equipes_max < $nb_equipes_new) $nb_equipes_max = $nb_equipes_new;
 
-        // contruction du tableau de poules non tri&eacute;
+        // contruction du tableau de poules non trié
         $db->select("id, $champX, status, IFNULL(seed,10000) as seed");
         $db->from("${dbprefix}$equipesX, ${dbprefix}participe");
         $db->where("${dbprefix}$equipesX.id = ${dbprefix}participe.equipe");
@@ -423,7 +423,7 @@ elseif ($op == "poules") {
 
         if ($type == 'seed' || $type == 'random') {
 
-            // contruction des tableaux de rang $j inter poules non tri&eacute; (tab des 1er, tab des 2e, etc)
+            // contruction des tableaux de rang $j inter poules non trié (tab des 1er, tab des 2e, etc)
             for ($j = 0; $j < $nb_equipes_max; $j++) {
 
                 //calcul de l'indice d'insertion suivant dans les tableaux de rang
@@ -442,7 +442,7 @@ elseif ($op == "poules") {
         } elseif ($type == 'croise') {
             ${"tab_poule_$p"} = array();
 
-            // contruction du tableau des sortant de la poule $p (tab des 1er 2e, etc pour une poule donn&eacute;e)
+            // contruction du tableau des sortant de la poule $p (tab des 1er 2e, etc pour une poule donnée)
             for ($j = 0; $j < $nb_equipes_sortantes; $j++) {
                 ${"tab_poule_$p"}[] = $tab_poule['id'][$j];
             }
@@ -462,7 +462,7 @@ elseif ($op == "poules") {
             array_multisort(${"tab_poules_$i"}['nb_pts'], SORT_NUMERIC, SORT_DESC, ${"tab_poules_$i"}['avg'], SORT_NUMERIC, SORT_DESC, ${'tab_poules_' . $i}['nb_joues'], ${'tab_poules_' . $i}['nb_gagnes'], ${'tab_poules_' . $i}['nb_nuls'], ${'tab_poules_' . $i}['nb_perdus'], ${'tab_poules_' . $i}['equipe'], ${'tab_poules_' . $i}['id']);
         }
 
-        // affectation du tableau des equipes (et des seeds de sortie de poules) ordon&eacute;e par rang
+        // affectation du tableau des equipes (et des seeds de sortie de poules) ordonée par rang
         $seed = 1;
         for ($i = 0; $i < $nb_equipes_max; $i++) {
             for ($j = 0; $j < count(${"tab_poules_$i"}['id']); $j++) {
@@ -472,7 +472,7 @@ elseif ($op == "poules") {
         }
     } elseif ($type == 'croise') {
 
-        // affectation du tableau des equipes (et des seeds de sortie de poules) ordon&eacute;e par poules
+        // affectation du tableau des equipes (et des seeds de sortie de poules) ordonée par poules
         $seed = 1;
         for ($p = 1; $p <= $nb_poules; $p++) {
             for ($j = 0; $j < $nb_equipes_sortantes; $j++) {
@@ -644,7 +644,7 @@ elseif ($op == "admin") {
             }
         }
 
-        /** creation de la liste d'equipes n'ayant pas jou&eacute; **/
+        /** creation de la liste d'equipes n'ayant pas joué **/
         $db->select("id,equipe1,equipe2");
         $db->from("${dbprefix}matchs");
         $db->where("type = 'W'");

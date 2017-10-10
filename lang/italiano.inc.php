@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -40,7 +40,7 @@
 // gestion des dates
 define('DAY_POS','1'); // en fr, le position du jour est 1 => 27/xx/xxxx
 define('MONTH_POS','2'); // en fr, le position du mois est 2 => xx/02/xxxx
-define('YEAR_POS','3'); // en fr, le position de l'ann�e est 3 => xx/xx/2002
+define('YEAR_POS','3'); // en fr, le position de l'anN°e est 3 => xx/xx/2002
 
 // date d'affichage
 define('DATESTRING','%d/%m/%Y %H:%M');
@@ -445,7 +445,7 @@ $strConnexion = 'Connessione';
 $strConnexionImpossible =  'Connessione al database fallita!';
 $strConsignes = 'Consigli';
 $strContact = 'Contatti';
-$strContactDown = "<u>ClubRezo</u><br>Ecole Polytechnique de l\'Universit� de Nantes<br>rue Christian Pauc<br>44300 Nantes FRANCE<br>Email : <a href=\"mailto: $config[emailcontact]\"><b><u>$config[emailcontact]</u></b></a>";
+$strContactDown = "<u>ClubRezo</u><br>Ecole Polytechnique de l\'Université de Nantes<br>rue Christian Pauc<br>44300 Nantes FRANCE<br>Email : <a href=\"mailto: $config[emailcontact]\"><b><u>$config[emailcontact]</u></b></a>";
 $strContactUp = 'Per contattarci, puoi utilizzare il tuo programma di posta preferito <a href="mailto: %email%"><img src="images/icon_email.gif" border="0" align="absmiddle"></a> o compilare questo modulo:';
 $strContenu = 'Contenuti';
 $strCouleur = 'Colore';
@@ -805,7 +805,7 @@ $strServeursConsignes = 'Istruzioni:<br><li>I campi contrassegnati cos&#236;  <f
 <li>Se usate M4 o AdminBot-MX, dovete mettere un \'tick\' per inserirli nel database M4 or Adminbot.
 <li>Attenzione, il campo \'Rcon\', se usate AdminBot-MX, &#232; richiesto.';
 
-$strInscriptionsJoueursConsignes = 'Istruzioni:<br><li>I campi contrassegnati cos�  <font color=red>*</font> sono necessari. 
+$strInscriptionsJoueursConsignes = 'Istruzioni:<br><li>I campi contrassegnati cosé  <font color=red>*</font> sono necessari. 
 <li>La password richiesta vi permetter&#224; di autenticarvi e accedere al vostro account in futuro. 
 <li>La vostra e-mail deve essere valida per convalidare l\'account (non sar&#224; data a nessun altro).';
 
@@ -864,7 +864,7 @@ $strMODSC='Nota : Ogni bottone \'modifica\' vale per tutte le MOD';
 $strMod='Pannello Mods';
 $strServerTeam='Aggiungi servers del team';
 
-// auto validation d'&eacute;quipe par le manager
+// auto validation d'équipe par le manager
 $strValid_My_Team ='Convalida il mio team';
 $strManag_team ='Manager convalida team (se..vedi sotto)';
 $strTABmanaging='Mod validazione team';
@@ -873,7 +873,7 @@ $strOk_validation='<b><span style="color:green">Il tuo team &#232; stato  conval
 $strNOOk_validation='<b><span style="color:red;font-size:12">Il tuo team non pu&#242; essere convalidato.<br>Mancano ancora giocatori.<br>Se non è cos&#236;, accertati di essere iscritto in uno dei giochi che il team gioca<br>oppure contatta un admin</span></b>';
 $strREQ_player='N. di giocatori necessari per convalidare un team :';
 $strAuto_valid_def='Teams convalidati alla creazione';
-// end auto validation d'&eacute;quipe par le manager
+// end auto validation d'équipe par le manager
 
 $strSIDINV='Perfavore inserire SteamID per registrarsi ';
 $strSIDINV2='Il tuo SteamID deve essere scritto cos&#236; : STEAM_X:X:XXXXXX';
@@ -970,13 +970,12 @@ the &quot;pipe&quot; (symbole &quot;|&quot;) found on its right.</font></font><b
 want to remove the <font color="#0000FF"><strong>ID</strong></font> 6 so you set it to : 2|33|. Finally, downgrade the number of the next box by 1.<br>Example, for 2|6|33| it displayed \'3\' with 2|33| you downgrade 1 to 3 which gives 2.<br>You can also Aggiungi but don\'t forget to increment also the next box</font></p><p align="left"><font size="-1">If you find this too difficult click on  <strong>
 <font color="#FF0000">RESET</font></strong>. This will erase everything.</font></p><p align="left">
 <font size="-1">Have A Good Lan Party!</font></p>';
-$strAc_artfin='\'??|��</font>\'is your item status &quot;<font color="#FF0000">??</font>&quot; If your item has been payed or not. &quot;<font color="#FF0000">��</font>&quot; 
+$strAc_artfin='\'??|..</font>\'is your item status &quot;<font color="#FF0000">??</font>&quot; If your item has been payed or not. 
 If your order has arrived or not.<br></em></font>';
 $strAc_nocmdsry='- No items -';
 $strAc_youneedloginfirst='You have to be logged in first';
 $strAc_pannier='Your bag';
 $strAc_commander='Order';
-$strAc_jecpukoimettre='??|��';
 $strACAlredyExist = 'Order already exists';
 $strAC_podevirg='use . than , for the prize ! And use numeric format';
 $strAC_fermerlafenetre='Close the window';

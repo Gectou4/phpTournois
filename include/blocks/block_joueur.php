@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-  | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+  | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -49,7 +49,7 @@ if (empty($s_joueur)) {
 		$data_info = base64_decode($data_info);
 		$user_data = explode('|',$data_info);
 		$checked = 'checked';
-		/*** transmition des variables via donn&eacute;e du cookie ***/
+		/*** transmition des variables via donnée du cookie ***/
   $pseudo=$user_data[0];
   $passwd=$user_data[1];
 	}

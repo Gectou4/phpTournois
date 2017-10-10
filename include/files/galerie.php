@@ -264,7 +264,7 @@ function display_gallery_dir($galid, $picid = 0)
             $linkgal = "$arraygal[0]";
 
             for ($i = 0; $i < count($arraygal); $i++) {
-                $labelgal = ereg_replace("_", " ", $arraygal[$i]);
+                $labelgal = preg_replace("/_/", " ", $arraygal[$i]);
                 echo "<td><img src=\"images/next.gif\" align=absmidlle></td><td class=titlecategorie><a href=\"?page=galerie&g=$linkgal\">$labelgal</a></td>";
                 $linkgal .= "/" . $arraygal[$i + 1];
             }
@@ -279,7 +279,7 @@ function display_gallery_dir($galid, $picid = 0)
             while (list ($key, $val) = each($gals)) {
 
                 $file = $val;
-                $gallery_name = ereg_replace("_", " ", $file);
+                $gallery_name = preg_replace("/_/", " ", $file);
                 if ($galid == "") $sub_galid = $file;
                 else $sub_galid = $galid . "/" . $file;
                 $nbpics_info = count_pictures($sub_galid);
@@ -331,8 +331,8 @@ function display_pic($galid, $pcid, $start = 1)
     $picture_name = $pics[$pcid];
     $picture_url = $picture_path . $picture_name;
     $picture_msg = "$picture_url.info";
-    $gallery_name = ereg_replace("_", " ", $galid);
-    $gallery_name = ereg_replace("/", " >> ", $gallery_name);
+    $gallery_name = preg_replace("/_/", " ", $galid);
+    $gallery_name = preg_replace("!/!", " >> ", $gallery_name);
 
 
     if (($pcid < 0) || ($pcid > $nb_pics - 1) || $pcid == "")
