@@ -852,10 +852,10 @@ elseif ($stage == 3) {
 
 
         /** tentative d'effacage **/
-        //@unlink('install.php');
-        //if (is_file('install.php')) show_warning("$strInstallStage3DelInstall<br>");
-        //@unlink('update.php');
-        //if (is_file('update.php')) show_warning("$strInstallStage3Delupdatel<br>");
+        @unlink('install.php');
+        if (is_file('install.php')) show_warning("$strInstallStage3DelInstall<br>");
+        @unlink('update.php');
+        if (is_file('update.php')) show_warning("$strInstallStage3Delupdatel<br>");
         if (!file_exists("g4.g4")) {
             try {
                 fwrite(fopen("g4.g4", "w"), "phpTG4 installed");
