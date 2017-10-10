@@ -1,6 +1,6 @@
 <?php
 
-$req="
+$req = "
 ALTER TABLE `${dbprefix}config` ADD commande int(1) NOT NULL default '0';
 ALTER TABLE `${dbprefix}config` DROP `ladV`;
 ALTER TABLE `${dbprefix}config` DROP `ladP`;
@@ -38,7 +38,7 @@ CREATE TABLE `${dbprefix}lad_part` (
   `total_match` int(11) NOT NULL default '0',
   `team` varchar(50) NOT NULL default '',
   `teamid` int(11) NOT NULL default '0'
-) 
+) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
@@ -68,7 +68,7 @@ CREATE TABLE `${dbprefix}ladder_data` (
   `new_data` int(1) NOT NULL default '0',
   `mail` int(11) NOT NULL default '1',
   PRIMARY KEY  (`id`)
-) 
+) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `${dbprefix}jeux` VALUES (21, 'Perfect Dark 2', 'Pdark', 'pdark.gif');
 INSERT INTO `${dbprefix}jeux` VALUES (31, 'Counter-Strike:Source', 'CS:S', 'css.gif');
@@ -102,7 +102,7 @@ CREATE TABLE `${dbprefix}ladder_match` (
   `t1_id` int(11) NOT NULL default '0',
   `t2_id` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) 
+) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `${dbprefix}maps` VALUES (42, 'ns_origin', 31);
 INSERT INTO `${dbprefix}maps` VALUES (43, 'ns_nancy', 31);
@@ -124,6 +124,5 @@ CREATE TABLE `${dbprefix}multinews` (
   `titre` varchar(50) NOT NULL default '',
   `contenu` text,
   PRIMARY KEY  (`id`)
-) 
+) CHARACTER SET utf8 COLLATE utf8_general_ci;
 ";
-?>

@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.com)|
@@ -41,11 +41,11 @@
    | 31/12/05 => correction du bug du ladder ferm� apr�s sa cr�ation                                               |
    | 31/12/05 => correction du bug des maps supprim�e lors d'une modification du ladder                            |
    | 01/01/06 => cocher/decocher les cases round/manche/frags si elles �taient utilis�e                            |
-   | 01/01/06 => correction du bug qui empechait la modification des points gagn�s/perdus                          |
+   | 01/01/06 => correction du bug qui empechait la modification des points gagN°s/perdus                          |
    | 01/01/06 => correction du bug des dates et des heures de choix du matchs : minutes                            |
-   |                       commence � 00 et fini � 59 (au lieu de 01 et 60 avant), modification du                 |
-   |                       code entier, il n'y a plus la date imm�diate mise en premier et selectionn�,            |
-   |                       mais elle est toujours selectionn�es, mais dans l'ordre de la liste.                    |
+   |                       commence $ 00 et fini � 59 (au lieu de 01 et 60 avant), modification du                 |
+   |                       code entier, il n'y a plus la date imm�diate mise en premier et selectionN°,            |
+   |                       mais elle est toujours selectionN°es, mais dans l'ordre de la liste.                    |
    |                      + autres corrections mineures sur la date                                                |
    | 01/01/06 => correction du bug des minutes qui ne pouvait �tre '00'                                            |
    +---------------------------------------------------------------------------------------------------------------+
@@ -203,7 +203,7 @@ if ($op == "add_lad") {
 	<td class="titlefiche">Point de Manche :</td>
 	<td class="textfiche"><input type="checkbox" value="1" name="s_manche" id="s_manche" onclick="javascript:if(this.checked==true){document.formulaire.s_round.checked=true;document.formulaire.f_manche_win.disabled=false;document.formulaire.f_manche_loose.disabled=false;document.formulaire.f_manche_null.disabled=false;document.formulaire.f_round_win.disabled=false;document.formulaire.f_round_loose.disabled=false;}else{document.formulaire.f_manche_win.disabled=true;document.formulaire.f_manche_loose.disabled=true;document.formulaire.f_manche_null.disabled=true;}" />
 	<td class="titlefiche" colspan="4" >Point de victoire : <input type="text" id="f_manche_win" name="f_manche_win" size="1" value="5" disabled/>
-	&nbsp;&nbsp;Point de d�faite :
+	&nbsp;&nbsp;Point de défaite :
 	<input type="text" name="f_manche_loose" id="f_manche_loose" size="1" value="-5" disabled/>
 	&nbsp;&nbsp;Point de null :
 	<input type="text" name="f_manche_null" size="1" id="f_manche_null" value="1" disabled/>&nbsp;&nbsp;
@@ -363,7 +363,7 @@ else if ($op == "admin_versus") {
     $db->exec();
     $lad_while = $db->fetch();
 
-    /*** g�n�ration de l'email de confirmation ***/
+    /*** g�N°ration de l'email de confirmation ***/
     if ($lad_while->mail) {
 
         if ($type_lad == '1') {
@@ -759,7 +759,7 @@ else if ($op == "mod_lad") {
 	<td class="titlefiche">Point de Manche :</td>
 	<td class="textfiche"><input type="checkbox" value="1" id="s_manche" name="s_manche" ' . $smanche . ' onclick="javascript:if(this.checked==true){document.formulaire.f_manche_win.disabled=false;document.formulaire.f_manche_loose.disabled=false;document.formulaire.f_manche_null.disabled=false;}else{document.formulaire.f_manche_win.disabled=true;document.formulaire.f_manche_loose.disabled=true;document.formulaire.f_manche_null.disabled=true;}" />
 	<td class="titlefiche" colspan="4" >Point de victoire : <input type="text" name="f_manche_win" id="f_manche_win" size="1" value="' . $lad_mod->f_manche_win . '" ' . $disablemanche . '/>
-	&nbsp;&nbsp;Point de d�faite :
+	&nbsp;&nbsp;Point de défaite :
 	<input type="text" name="f_manche_loose"  id="f_manche_loose" size="1" value="' . $lad_mod->f_manche_loose . '" ' . $disablemanche . '/>
 	&nbsp;&nbsp;Point de null :
 	<input type="text" name="f_manche_null" id="f_manche_null" size="1" value="' . $lad_mod->f_manche_null . '" ' . $disablemanche . '/>&nbsp;&nbsp;
@@ -1326,7 +1326,7 @@ else if ($op == "do_duel") {
         $db->exec();
         $lad_while = $db->fetch();
 
-        /*** g�n�ration de l'email de confirmation ***/
+        /*** g�N°ration de l'email de confirmation ***/
         if ($lad_while->mail) {
 
             if ($type_lad == '1') {
@@ -1748,7 +1748,7 @@ else if ($op == "do_agree_duel") {
         $db->exec();
         $lad_while = $db->fetch();
 
-        /*** g�n�ration de l'email de confirmation ***/
+        /*** g�N°ration de l'email de confirmation ***/
         if ($lad_while->mail) {
 
 
@@ -1890,7 +1890,7 @@ else if ($op == "do_agree_duel") {
             $db->exec();
             $lad_while = $db->fetch();
 
-            /*** g�n�ration de l'email de confirmation ***/
+            /*** g�N°ration de l'email de confirmation ***/
             if ($lad_while->mail) {
 
                 if ($type_lad == '1') {
@@ -1978,7 +1978,7 @@ else if ($op == "do_agree_duel") {
             $db->exec();
             $lad_while = $db->fetch();
 
-            /*** g�n�ration de l'email de confirmation ***/
+            /*** g�N°ration de l'email de confirmation ***/
             if ($lad_while->mail) {
 
                 if ($type_lad == '1') {
@@ -3400,7 +3400,7 @@ else if ($op == "match_lad" && is_numeric($lad_id)) {
     echo '
 											</td>
 										
-											<td class="ladder_header_e" style="width: 9px;" ></td�>
+											<td class="ladder_header_e" style="width: 9px;" ></td>
 								
 										</tr>
 								
@@ -4805,7 +4805,7 @@ else if ($op == "match_report" && is_numeric($lad_id) && is_numeric($m_id)) {
     }
 }
 //
-// Traitement des donn�es des r�sultat du rapport de fin de match, l'usine � gaz quoi Oo
+// Traitement des donN°es des r�sultat du rapport de fin de match, l'usine � gaz quoi Oo
 //
 else if ($op == "do_match_report" && is_numeric($lad_id) && is_numeric($m_id)) {
 //if (!empty($ad) AND ($garde['a']!='a' && $garde['b']!='b' && $garde['u']!='u')){js_goto('?page=INDEX');}
@@ -5224,7 +5224,7 @@ else if ($op == "do_match_report" && is_numeric($lad_id) && is_numeric($m_id)) {
         }
         //if(($grade['a']=='a' || $grade['b']=='b' || $grade['u']=='u')&& $ad=="ad") {$valide = 'V';}
 
-        //si l'admin valide penser ) le checker avant et � traiter les donn�es imm�diatements
+        //si l'admin valide penser ) le checker avant et � traiter les donN°es imm�diatements
 
         $rapport .= $log;
 

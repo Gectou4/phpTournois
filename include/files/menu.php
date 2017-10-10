@@ -6,7 +6,7 @@
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | This file is part of phpTournois.                                   |
    |                                                                     |
@@ -31,7 +31,7 @@
    +---------------------------------------------------------------------+
 */
 /********************************************************
- * S&eacute;curit&eacute;
+ * Sécurité
  */
 
 if (preg_match("/menu/i", $_SERVER['PHP_SELF'])) {
@@ -75,7 +75,7 @@ if ($op == "addmenu") {
         $db->exec();
         */
         $sqladd = "INSERT INTO ${dbprefix}menu(id,titre,align,orde) Values('','$titre','$align','orde')";
-        $reqadd = mysql_query($sqladd) or die('Erreur SQL !<br>' . $sqladd . '<br>' . mysql_error());
+        $reqadd = $db->query($sqladd) or die('Erreur SQL !<br>' . $sqladd . '<br>' . $db->getError());
 
         /*** redirection ***/
         js_goto("?page=index");
@@ -94,7 +94,7 @@ if ($op == "delmenu") {
     }
 
     $sqldel = "DELETE FROM `${dbprefix}menu` WHERE id='$id'";
-    $reqdel = mysql_query($sqldel) or die('Erreur SQL !<br>' . $sqldel . '<br>' . mysql_error());
+    $reqdel = $db->query($sqldel) or die('Erreur SQL !<br>' . $sqldel . '<br>' . $db->getError());
 
     /*** redirection ***/
     js_goto("?page=index");
@@ -126,7 +126,7 @@ if ($op == "modmenu") {
     } else {
 
         $sqldel = "UPDATE `${dbprefix}menu` SET titre = '$titre', align = '$align', orde = '$orde' WHERE id = $id";
-        $reqdel = mysql_query($sqldel) or die('Erreur SQL !<br>' . $sqldel . '<br>' . mysql_error());
+        $reqdel = $db->query($sqldel) or die('Erreur SQL !<br>' . $sqldel . '<br>' . $db->getError());
 
         /*$db->update("menu");
         $db->set("titre = '$titre'");
@@ -189,9 +189,9 @@ if ($_GET['op'] == "modif") {
         if ($id == '' || $id == NULL) $id = $_GET['id'];
 
         $sql = "SELECT * FROM ${dbprefix}menu WHERE id='$id'";
-        $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+        $req = $db->query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . $db->getError());
 
-        while ($data = mysql_fetch_array($req)) {
+        while ($data = $db->fetch_array($req)) {
 
             echo "<form method=post name=\"formulaire\" action=?page=menu&op=modmenu&id=" . $data['id'] . ">";
             echo "<table border=0 cellpadding=0 cellspacing=0 class=bordure2><tr><td>";
@@ -249,12 +249,12 @@ if ($_GET['op'] == "list") {
         echo "<table cellspacing=0 cellpadding=3 border=0 width=100%>";
 
         $sqlx = "SELECT id,titre FROM ${dbprefix}menu GROUP BY titre";
-        $reqx = mysql_query($sqlx) or die('Erreur SQL !<br>' . $sqlx . '<br>' . mysql_error());
+        $reqx = $db->query($sqlx) or die('Erreur SQL !<br>' . $sqlx . '<br>' . $db->getError());
 
         $i2 = '1';
         $notlist = 'N';
 
-        while ($datax = mysql_fetch_array($reqx)) {
+        while ($datax = $db->fetch_array($reqx)) {
             if ($i2 == "1") {
                 echo "<tr>";
                 $notlist = 'O';

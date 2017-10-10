@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -40,7 +40,7 @@
 // gestion des dates
 define('DAY_POS','2'); // en fr, le position du jour est 1 => 27/xx/xxxx
 define('MONTH_POS','1'); // en fr, le position du mois est 2 => xx/02/xxxx
-define('YEAR_POS','3'); // en fr, le position de l'ann�e est 3 => xx/xx/2002
+define('YEAR_POS','3'); // en fr, le position de l'anN°e est 3 => xx/xx/2002
 
 // date d'affichage
 define('DATESTRING','%m/%d/%Y %H:%M');
@@ -445,7 +445,7 @@ $strConnexion = 'Log in';
 $strConnexionImpossible = 'Database connection failed!';
 $strConsignes = 'Tips';
 $strContact = 'Contact';
-$strContactDown = "<u>ClubRezo</u><br>Ecole Polytechnique de l'Universit� de Nantes<br>rue Christian Pauc<br>44300 Nantes FRANCE<br>Email : <a href=\"mailto: $config[emailcontact]\"><b><u>$config[emailcontact]</u></b></a>";
+$strContactDown = "<u>ClubRezo</u><br>Ecole Polytechnique de l'Université de Nantes<br>rue Christian Pauc<br>44300 Nantes FRANCE<br>Email : <a href=\"mailto: $config[emailcontact]\"><b><u>$config[emailcontact]</u></b></a>";
 $strContactUp = 'To contact us, you can use your favorite email client <a href="mailto: %email%"><img src="images/icon_email.gif" border="0" align="absmiddle"></a> or you can fill this form:';
 $strContenu = 'Contents';
 $strCouleur = 'Color';
@@ -867,16 +867,16 @@ $strMODSC='Note : Each \'modify\' button treats every MOD';
 $strMod='Mods Panel';
 $strServerTeam='Add teams servers';
 
-// auto validation d'&eacute;quipe par le manager
+// auto validation d'équipe par le manager
 $strValid_My_Team ='Validate my team';
 $strManag_team ='Manager validates team (if..see line below)';
 $strTABmanaging='Mods team validation';
 $strManag_team_num ='Number of players needed';
 $strOk_validation='<b><span style="color:green">Your team has been validated</span></b>';
-$strNOOk_validation='<b><span style="color:red;font-size:12">Your team could not be validated.<br>There are still players missing.<br>If its not the case, make sure you\'re registered in one of the games<br>in which your team is participating. Otherwise, contact an admin.</span></b>';
+$strNOOk_validation='<b><span style="color:red;font-size:12px">Your team could not be validated.<br>There are still players missing.<br>If its not the case, make sure you\'re registered in one of the games<br>in which your team is participating. Otherwise, contact an admin.</span></b>';
 $strREQ_player='Number of players needed to validate a team :';
 $strAuto_valid_def='Team validated at their creation';
-// end auto validation d'&eacute;quipe par le manager
+// end auto validation d'équipe par le manager
 
 $strSIDINV='Please enter your SteamID to register ';
 $strSIDINV2='Your SteamID must be written like this : STEAM_X:X:XXXXXX';
@@ -973,13 +973,12 @@ the &quot;pipe&quot; (symbole &quot;|&quot;) found on its right.</font></font><b
 want to remove the <font color="#0000FF"><strong>ID</strong></font> 6 so you set it to : 2|33|. Finally, downgrade the number of the next box by 1.<br>Example, for 2|6|33| it displayed \'3\' with 2|33| you downgrade 1 to 3 which gives 2.<br>You can also add but don\'t forget to increment also the next box</font></p><p align="left"><font size="-1">If you find this too difficult click on  <strong>
 <font color="#FF0000">RESET</font></strong>. This will erase everything.</font></p><p align="left">
 <font size="-1">Have A Good Lan Party!</font></p>';
-$strAc_artfin='\'??|��</font>\'is your item status &quot;<font color="#FF0000">??</font>&quot; If your item has been payed or not. &quot;<font color="#FF0000">��</font>&quot; 
+$strAc_artfin='\'??|..</font>\'is your item status &quot;<font color="#FF0000">??</font>&quot; If your item has been payed or not. 
 If your order has arrived or not.<br></em></font>';
 $strAc_nocmdsry='- No items -';
 $strAc_youneedloginfirst='You have to be logged in first';
 $strAc_pannier='Your bag';
 $strAc_commander='Order';
-$strAc_jecpukoimettre='??|��';
 $strACAlredyExist = 'Order already exists';
 $strAC_podevirg='use . than , for the prize ! And use numeric format';
 $strAC_fermerlafenetre='Close the window';
@@ -1363,7 +1362,7 @@ $strL_BBCODE_A_HELP='Close all the open BBCode Buoys';
 $strL_BBCODE_N_HELP='The BBCode wont be interpreted between these buoys [noBBcode][B]not in bold[/B][/nobbcode]';
 $strL_BBCODE_CLOSE_TAGS='Close the buoys';
 $strL_EMPTY_MESSAGE='There is no content !';
-$strL_STYLES_TIP='Hint: Une mise en forme peut �tre appliqu&eacute;e au texte s&eacute;lectionn&eacute;';
+$strL_STYLES_TIP='Hint: Une mise en forme peut être appliquée au texte sélectionné';
 $strAlignHelp='Text Alignement: [align=center]Text center[/align]';
 $strAlign='Align';
 $strLeft='To Left';

@@ -2,7 +2,7 @@
 /*
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
    | phpTournoisG4 �2004 by Gectou4 <le_gardien_prime@hotmail.com>       |

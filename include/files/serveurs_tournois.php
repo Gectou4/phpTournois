@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -41,7 +41,7 @@ if(empty($s_tournois)) js_goto("?page=index");
 verif_admin_tournois($s_joueur,$s_tournois,$grade['a'],$grade['b'],$grade['t']);
 
 /********************************************************
- * Modifier les serveurs utilis&eacute;s au tournois en cours
+ * Modifier les serveurs utilisés au tournois en cours
  */
 if ($op == "modify") {
 

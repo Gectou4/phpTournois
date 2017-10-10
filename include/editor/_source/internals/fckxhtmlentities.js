@@ -206,7 +206,7 @@ if ( FCKConfig.ProcessHTMLEntities )
 			'æ':'aelig',
 			'ç':'ccedil',
 			'è':'egrave',
-			'&eacute;':'eacute',
+			'é':'eacute',
 			'ê':'ecirc',
 			'ë':'euml',
 			'ì':'igrave',

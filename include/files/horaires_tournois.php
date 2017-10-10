@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -47,7 +47,7 @@ verif_admin_tournois($s_joueur, $s_tournois, $grade['a'], $grade['b'], $grade['t
  */
 if ($op == "modify") {
 
-    // si il y a des horaires selection&eacute;s
+    // si il y a des horaires selectionés
     if (count($_POST) != 0) {
 
         foreach ($_POST as $key => $value) {
@@ -69,7 +69,7 @@ if ($op == "modify") {
                 if (preg_match("/([0-9]{2}|[0-9]{4}).([0-9]{2}).([0-9]{2}|[0-9]{4})[^0-9]*([0-9]{2}):([0-9]{2})/i", $value, $datetmp)) {
                     $timestamp = mktime($datetmp[4], $datetmp[5], 0, $datetmp[MONTH_POS], $datetmp[DAY_POS], $datetmp[YEAR_POS]);
 
-                    // Check des mois/jours/ann&eacute;es pour la date saisie
+                    // Check des mois/jours/années pour la date saisie
                     if (!checkdate($datetmp[MONTH_POS], $datetmp[DAY_POS], $datetmp[YEAR_POS]) && $datetmp[YEAR_POS] >= 1970)
                         $timestamp = '';
 

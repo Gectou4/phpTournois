@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -48,7 +48,7 @@ if ($op == "activer") {
 
     $msg = "";
 
-    // si il y a de matche selection&eacute;s
+    // si il y a de matche selectionés
     if (count($tab_matches) != 0) {
 
         /*** recup des matchs dans le tableau d'id a lancer ***/
@@ -104,7 +104,7 @@ if ($op == "start") {
 
     $msg = "";
 
-    // si il y a de matche selection&eacute;s
+    // si il y a de matche selectionés
     if (count($tab_matches) != 0) {
 
         if ($modescore_tournois == 'M4') {
@@ -126,7 +126,7 @@ if ($op == "start") {
             $dbab->connect($abdbhost, $abdbuser, $abdbpass, $abdbname);
 
             /** choix des prolong !!! ATTENTION diff de M4**/
-            /** IMPOSSIBLE A GERER avec ADMINBOT car les matchs de prolong sont ind&eacute;pendants et donc irr&eacute;cup&eacute;rable automatiquement ***/
+            /** IMPOSSIBLE A GERER avec ADMINBOT car les matchs de prolong sont indépendants et donc irrécupérable automatiquement ***/
             if ($abprolongation) $abprolongation = 0;
             else $abprolongation = 1;
 
@@ -307,7 +307,7 @@ elseif ($op == "recup") {
 
     $msg = "";
 
-    // si il n'y a pas de matche selection&eacute;, on recup tous les match en D
+    // si il n'y a pas de matche selectioné, on recup tous les match en D
     if (count($tab_matches) == 0) {
 
         $db->select("id");
@@ -357,7 +357,7 @@ elseif ($op == "recup") {
 
                         $matchm4 = $db->fetch($res1);
 
-                        // si le match est commenc&eacute;, on recup d'abord juste les scores
+                        // si le match est commencé, on recup d'abord juste les scores
                         if ($matchm4->etape > 0) {
 
                             $match = match($id);
@@ -639,7 +639,7 @@ elseif ($op == "modify") {
     if (preg_match("/([0-9]{2}|[0-9]{4}).([0-9]{2}).([0-9]{2}|[0-9]{4})[^0-9]*([0-9]{2}):([0-9]{2})/i", $date, $datetmp)) {
         $timestamp = mktime($datetmp[4], $datetmp[5], 0, $datetmp[MONTH_POS], $datetmp[DAY_POS], $datetmp[YEAR_POS]);
 
-        // Check des mois/jours/ann&eacute;es pour la date saisie
+        // Check des mois/jours/années pour la date saisie
         if (!checkdate($datetmp[MONTH_POS], $datetmp[DAY_POS], $datetmp[YEAR_POS]) && $datetmp[YEAR_POS] >= 1970)
             $timestamp = '';
 

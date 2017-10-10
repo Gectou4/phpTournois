@@ -7,7 +7,7 @@
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
    +---------------------------------------------------------------------+
@@ -42,17 +42,19 @@ if (preg_match("/alerte.php/i", $_SERVER['PHP_SELF'])) {
 $pseudodrrX = '' . nom_joueur($s_joueur) . '';
 $pev = '';
 
+/** @var database $db */
 $sqln12X = "SELECT article_config FROM ${dbprefix}config";
-$reqn12X = mysql_query($sqln12X) or die('Erreur SQL !<br>' . $sqln12X . '<br>' . mysql_error());
-while ($datad12X = mysql_fetch_array($reqn12X)) {
+$reqn12X = $db->query($sqln12X);
+
+while ($datad12X = $db->fetch_array($reqn12X)) {
     $ccidX = $datad12X['article_config'];
 }
 
 $sqlnX = "SELECT * FROM ${dbprefix}article ORDER BY id";
-$reqnX = mysql_query($sqlnX) or die('Erreur SQL !<br>' . $sqlnX . '<br>' . mysql_error());
+$reqnX = $db->query($sqlnX);
 $iX = 0;
 $okX = "no";
-while ($datadX = mysql_fetch_array($reqnX)) {
+while ($datadX = $db->fetch_array($reqnX)) {
     $iX++;
     $didX = $datadX['id'];
     $tcidX = $datadX['cid'];

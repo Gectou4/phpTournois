@@ -2,7 +2,7 @@
 /*
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
    +---------------------------------------------------------------------+
@@ -327,7 +327,7 @@ else {
 
 		echo "<td>";
 
-		// contruction du tableau de poules non tri&eacute;
+		// contruction du tableau de poules non trié
 		$db->select("id, $champX, status, IFNULL(seed,10000) as seed");
 		$db->from("${dbprefix}$equipesX, ${dbprefix}participe");
 		$db->where("${dbprefix}$equipesX.id = ${dbprefix}participe.equipe");

@@ -126,7 +126,7 @@ FontFormats			: "Normal;Formatejat;Adreça;Capçalera 1;Capçalera 2;Capçalera 
 ProcessingXHTML		: "Processant XHTML. Si us plau esperi...",
 Done				: "Fet",
 PasteWordConfirm	: "El text que voleu enganxar sembla provenir de Word. Voleu netejar aquest text abans que sigui enganxat?",
-NotCompatiblePaste	: "Aquesta funció &eacute;s disponible per a Internet Explorer versió 5.5 o superior. Voleu enganxar sense netejar?",
+NotCompatiblePaste	: "Aquesta funció és disponible per a Internet Explorer versió 5.5 o superior. Voleu enganxar sense netejar?",
 UnknownToolbarItem	: "Element de la Barra d'eines desconegut \"%1\"",
 UnknownCommand		: "Nom de comanda desconegut \"%1\"",
 NotImplemented		: "Mètode no implementat",
@@ -149,7 +149,7 @@ DlgGenLangDir		: "Direcció Idioma",
 DlgGenLangDirLtr	: "Esquerra a Dreta (LTR)",
 DlgGenLangDirRtl	: "Dreta a Esquerra (RTL)",
 DlgGenLangCode		: "Codi de Llengua",
-DlgGenAccessKey		: "Clau d'acc&eacute;s",
+DlgGenAccessKey		: "Clau d'accés",
 DlgGenName			: "Nom",
 DlgGenTabIndex		: "Index de Tab",
 DlgGenLongDescr		: "Descripció Llarga URL",
@@ -333,7 +333,7 @@ DlgPasteCleanBox		: "Netejar camp",
 
 // Color Picker
 ColorAutomatic	: "Automàtic",
-ColorMoreColors	: "M&eacute;s Colors...",
+ColorMoreColors	: "Més Colors...",
 
 // Document Properties
 DocProps		: "Proprietats de document",
@@ -344,7 +344,7 @@ DlgAnchorName		: "Nom d'àncora",
 DlgAnchorErrorName	: "Si us plau, escrigui el nom de l'ancora",
 
 // Speller Pages Dialog
-DlgSpellNotInDic		: "No &eacute;s al diccionari",
+DlgSpellNotInDic		: "No és al diccionari",
 DlgSpellChangeTo		: "Canviar a",
 DlgSpellBtnIgnore		: "Ignorar",
 DlgSpellBtnIgnoreAll	: "Ignorar tot",
@@ -352,7 +352,7 @@ DlgSpellBtnReplace		: "Remplaçar",
 DlgSpellBtnReplaceAll	: "Replaçar tot",
 DlgSpellBtnUndo			: "Desfer",
 DlgSpellNoSuggestions	: "Cap suggestió",
-DlgSpellProgress		: "Comprovació de sintaxi en progr&eacute;s",
+DlgSpellProgress		: "Comprovació de sintaxi en progrés",
 DlgSpellNoMispell		: "Comprovació de sintaxi completada",
 DlgSpellNoChanges		: "Comprovació de sintaxi: cap paraulada canviada",
 DlgSpellOneChange		: "Comprovació de sintaxi: una paraula canviada",
@@ -468,5 +468,5 @@ DlgAboutAboutTab	: "Sobre",
 DlgAboutBrowserInfoTab	: "Informació del navigador",
 DlgAboutVersion		: "versió",
 DlgAboutLicense		: "Sota els termes de la Llicència GNU Lesser General Public License",
-DlgAboutInfo		: "Per a m&eacute;s informació aneu a"
+DlgAboutInfo		: "Per a més informació aneu a"
 }

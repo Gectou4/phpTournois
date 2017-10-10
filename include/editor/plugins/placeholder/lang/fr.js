@@ -14,8 +14,8 @@
  * File Authors:
  * 		Hubert Garrido (liane@users.sourceforge.net)
  */
-FCKLang.PlaceholderBtn			= 'Ins&eacute;rer/Modifier Substitut' ;
-FCKLang.PlaceholderDlgTitle		= 'Propri&eacute;t&eacute;s de Substitut' ;
+FCKLang.PlaceholderBtn			= 'Insérer/Modifier Substitut' ;
+FCKLang.PlaceholderDlgTitle		= 'Propriétés de Substitut' ;
 FCKLang.PlaceholderDlgName		= 'Nom de Substitut' ;
 FCKLang.PlaceholderErrNoName	= 'Veuillez saisir le nom de Substitut' ;
-FCKLang.PlaceholderErrNameInUse	= 'Ce nom est d&eacute;jà utilis&eacute;' ;
+FCKLang.PlaceholderErrNameInUse	= 'Ce nom est déjà utilisé' ;

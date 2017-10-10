@@ -4,7 +4,7 @@
   | phpTournois                                                         |
   +---------------------------------------------------------------------+
   +---------------------------------------------------------------------+
-  | phpTournoisG4 �2004 by Gectou4 <le_gardien_prime@hotmail.com>       |
+  | phpTournoisG4 (c)2004 by Gectou4 <le_gardien_prime@hotmail.com>       |
   +---------------------------------------------------------------------+
         This version is based on phpTournois 3.5 realased by :
   | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -61,7 +61,7 @@ if (preg_match("/search.php/i", $_SERVER['PHP_SELF'])) {
 /* ---    JOUEUR    --- */
 if ($op == "searching") {
 
-// r&eacute;ception des donn&eacute;es
+// réception des données
     if ($_POST['howto'] == 'joueur') {
         $pseudo = $_POST['search'];
 
@@ -244,7 +244,7 @@ if ($op == "searching") {
 
     }
     /* ---    Steam    --- */
-// r&eacute;ception des donn&eacute;es
+// réception des données
     else if ($_POST['howto'] == 'steam') {
         $pseudo = $_POST['search'];
 

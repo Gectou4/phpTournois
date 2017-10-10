@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-  | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+  | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -38,7 +38,7 @@ if (preg_match("/block_shoutbox.php/i", $_SERVER['PHP_SELF'])) {
 theme_openblock("SHOUTBOX");
 		
 	?> <center><iframe frameborder="0" src="shoutbox.php" width="152" height="250" scrolling="yes">
-<p align="center">Votre Naviguateur ne reconnait pas les Frames ,Desol&eacute; !</p>
+<p align="center">Votre Naviguateur ne reconnait pas les Frames ,Desolé !</p>
 </iframe></center> <?php 
 			
 theme_closeblock();

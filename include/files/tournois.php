@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-  | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+  | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -422,7 +422,7 @@ elseif ($op == "cloturer_inscriptions") {
 }
 
 /********************************************************
- * Valider la cr&eacute;ation des poules du tournois en cours
+ * Valider la création des poules du tournois en cours
  */
 elseif ($op == "valider_poules") {
 
@@ -462,7 +462,7 @@ elseif ($op == "terminer_poules") {
 }
 
 /*****************************************************
- * Valider la cr&eacute;ation des finales du tournois en cours
+ * Valider la création des finales du tournois en cours
  */
 elseif ($op == "valider_finales") {
 

@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-  | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+  | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -47,7 +47,7 @@ if ($mode == 'J') {
         js_goto("?page=index");
     }
 
-    /*** recup&eacute;ration des param�tres ***/
+    /*** recupération des param�tres ***/
     $ficheX = joueur($id);
     $type = "joueurs";
 } elseif ($mode == 'E') {
@@ -57,7 +57,7 @@ if ($mode == 'J') {
         js_goto("?page=index");
     }
 
-    /*** recup&eacute;ration des param�tres ***/
+    /*** recupération des param�tres ***/
     $ficheX = equipe($id);
     $type = "equipes";
 
@@ -218,7 +218,7 @@ function avatar_upload($avatar_mode, &$current_avatar, &$current_type, $avatar_f
 
         $new_filename = uniqid(rand()) . $imgtype;
 
-        /*** si un avatar upload&eacute; existe deja pour l'entit&eacute;, on l'efface ***/
+        /*** si un avatar uploadé existe deja pour l'entité, on l'efface ***/
         if ($current_type == 'U' && $current_avatar != '') {
             if (file_exists($config['avatars_path'] . "/$current_avatar")) {
                 @unlink($config['avatars_path'] . "/$current_avatar");

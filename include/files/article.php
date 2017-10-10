@@ -7,7 +7,7 @@
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
-  | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+  | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
    +---------------------------------------------------------------------+
@@ -66,18 +66,18 @@ if ($_POST['commandes'] == "oui") {
     if ($article_pseudo != "") {
         $c_id = $_POST['commandearticle'];
         $sqlc3 = "SELECT id FROM ${dbprefix}joueurs WHERE pseudo='$article_pseudo'";
-        $reqc3 = mysql_query($sqlc3) or die('Erreur SQL !<br>' . $sqlc3 . '<br>' . mysql_error());
-        while ($datacid3 = mysql_fetch_array($reqc3)) {
+        $reqc3 = $db->query($sqlc3) or die('Erreur SQL !<br>' . $sqlc3 . '<br>' . $db->getError());
+        while ($datacid3 = $db->fetch_array($reqc3)) {
             $idj = $datacid3['id'];
         }
         $sqlc2 = "SELECT article_config FROM ${dbprefix}config";
-        $reqc2 = mysql_query($sqlc2) or die('Erreur SQL !<br>' . $sqlc2 . '<br>' . mysql_error());
-        while ($datacid = mysql_fetch_array($reqc2)) {
+        $reqc2 = $db->query($sqlc2) or die('Erreur SQL !<br>' . $sqlc2 . '<br>' . $db->getError());
+        while ($datacid = $db->fetch_array($reqc2)) {
             $cid = $datacid['article_config'];
         }
         $sqlc = "SELECT * FROM ${dbprefix}listarticle WHERE id='$c_id'";
-        $reqc = mysql_query($sqlc) or die('Erreur SQL !<br>' . $sqlc . '<br>' . mysql_error());
-        while ($datac = mysql_fetch_array($reqc)) {
+        $reqc = $db->query($sqlc) or die('Erreur SQL !<br>' . $sqlc . '<br>' . $db->getError());
+        while ($datac = $db->fetch_array($reqc)) {
             $article_id = $datac['id'];
             $article_article = $datac['article'];
             $article_ingred = $datac['ingred'];
@@ -108,7 +108,7 @@ if ($_GET['del'] != "") {
     if ($del_pseudo != "") {
         $del_id = $_GET['del'];
         $sqldel = "DELETE FROM `${dbprefix}article` WHERE id='$del_id'";
-        $reqdel = mysql_query($sqldel) or die('Erreur SQL !<br>' . $sqldel . '<br>' . mysql_error());
+        $reqdel = $db->query($sqldel) or die('Erreur SQL !<br>' . $sqldel . '<br>' . $db->getError());
         //exec(reqdel);
 
 
@@ -139,8 +139,8 @@ $res = $db->exec();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 $sqlst = "SELECT article FROM ${dbprefix}config";
-$reqst = mysql_query($sqlst) or die('Erreur SQL !<br>' . $sqlst . '<br>' . mysql_error());
-while ($datast = mysql_fetch_array($reqst)) {
+$reqst = $db->query($sqlst) or die('Erreur SQL !<br>' . $sqlst . '<br>' . $db->getError());
+while ($datast = $db->fetch_array($reqst)) {
     $status = $datast['article'];
 }
 if ($status == "on") {
@@ -160,8 +160,8 @@ if ($status == "on") {
             echo "$strAc_noagain";
         }
 
-        while ($data = mysql_fetch_array($res)) {
-            echo '<option value="' . $data['id'] . '">' . $data['article'] . ' - ' . $data['ingred'] . ' - ' . $data['prix'] . '�</option>';
+        while ($data = $db->fetch_array($res)) {
+            echo '<option value="' . $data['id'] . '">' . $data['article'] . ' - ' . $data['ingred'] . ' - ' . $data['prix'] . '€</option>';
         }
         echo '</select>';
         echo '<input type="hidden" name="commandes" value="oui">';
@@ -208,7 +208,7 @@ if ($status == "on") {
 
 //-----------------------------------------------
 //-----------------------------------------------
-//--D&eacute;ja commander ?
+//--Déja commander ?
 
 echo '<br><p>';
 echo '<table width="461" border="1" cellpadding="1">';
@@ -224,22 +224,19 @@ echo '</b></font></div></td>';
 echo '<td width="40"> <div align="center"><font color="#FFFFFF"><b>';
 echo "$strAc_euro";
 echo '</b></font></div></td>';
-echo '<td width="40" valign="middle" align="center">';
-echo "$strAc_jecpukoimettre";
-echo '</td>';
 echo '</tr></form>';
 
 $sqln12 = "SELECT article_config FROM ${dbprefix}config";
-$reqn12 = mysql_query($sqln12) or die('Erreur SQL !<br>' . $sqln12 . '<br>' . mysql_error());
-while ($datad12 = mysql_fetch_array($reqn12)) {
+$reqn12 = $db->query($sqln12) or die('Erreur SQL !<br>' . $sqln12 . '<br>' . $db->getError());
+while ($datad12 = $db->fetch_array($reqn12)) {
     $ccid = $datad12['article_config'];
 }
 
 $sqln = "SELECT * FROM ${dbprefix}article ORDER BY id";
-$reqn = mysql_query($sqln) or die('Erreur SQL !<br>' . $sqln . '<br>' . mysql_error());
+$reqn = $db->query($sqln) or die('Erreur SQL !<br>' . $sqln . '<br>' . $db->getError());
 $i = 0;
 $ok = "no";
-while ($datad = mysql_fetch_array($reqn)) {
+while ($datad = $db->fetch_array($reqn)) {
     $i++;
     $did = $datad['id'];
     $tcid = $datad['cid'];
@@ -273,7 +270,7 @@ while ($datad = mysql_fetch_array($reqn)) {
 							</form></td></tr>');
             } //=> commande passer
             else if ($passer == "O") {
-                print('<br><font color="red" size="-1"><center><b>commande N�' . $tcid . '</b></center></font></td>
+                print('<br><font color="red" size="-1"><center><b>commande N°' . $tcid . '</b></center></font></td>
 							<td width="40"><div align="center">' . $datad['prix'] . '</div></td>
 							<td width="40" valign="middle" align="center"><img src="images/G4/non.gif" alt="' . $strAC_impossibleannuler . '" border="0"><img alt="' . $strAC_impossibleannuler . '" src="images/G4/non.gif" border="0"></div>						  </td></tr>');
             }
@@ -341,8 +338,8 @@ echo "$strAc_artfin";
 
 //////////////////////////ADMIN
 //$sqla = "SELECT admin FROM ${dbprefix}joueurs WHERE pseudo='$pseudodrr'";
-//$reqa = mysql_query($sqla) or die('Erreur SQL !<br>'.$sqla.'<br>'.mysql_error());
-//while($dataa = mysql_fetch_array($reqa))
+//$reqa = $db->query($sqla) or die('Erreur SQL !<br>'.$sqla.'<br>'.$db->getError());
+//while($dataa = $db->fetch_array($reqa))
 //{$admin=$dataa['admin'];}
 /*** verification securite ***/
 if ($grade['a'] == 'a' || $grade['b'] == 'b') {

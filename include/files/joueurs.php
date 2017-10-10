@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -100,7 +100,6 @@ if ($op == "rech") {
     } else {
         $db->select("id, pseudo");
         $db->from("${dbprefix}joueurs WHERE pseudo='$pseudo'");
-        //$db->where("pseudo = $pseudo"); => mais pk �a marche po !!!
         $res = $db->exec();
 
         while ($rech_joueur = $db->fetch($res)) {
@@ -115,42 +114,10 @@ if ($op == "rech") {
             if ($erreur == 1) {
                 show_erreur_saisie($str);
             }
-            //---
-            /*$db->select("id, pseudo");
-            $db->from("${dbprefix}joueurs WHERE LIKE pseudo='$pseudo'");
-
-            $res = $db->exec();
-
-
-            $erreur=1; $str.="- $strRechInvalide2<br>";
-            if($erreur==1) {show_erreur_saisie($str);}
-
-             echo '<table border=0 cellpadding="0" cellspacing="0" class="bordure2"><tr><td>';
-             echo '<table cellspacing="1" cellpadding="0" border="0">';
-             echo "<tr><td class=\"headerfiche\">$strRechercherJoueur</td></tr>";
-             echo '<tr><td>';
-             echo '<table cellspacing="0" cellpadding="3" border="0" width="100%">';
-
-            while ($rech_joueur = $db->fetch($res)) {
-
-             echo '<tr>';
-             echo "<td class=\"titlefiche\">$strPseudo :</td>";
-             echo '<td class="textfiche"><a href="?page=joueurs&id=$rech_joueur->id&op=admin">$rech_joueur->pseudo</a></td>';
-             echo '</tr>';
-
-            }
-
-             echo "<tr><td class=\"footerfiche\" align=\"center\" colspan=\"2\"><input type=\"submit\" class=\"action\" value=\"$strRechecrher\"></td></tr>";
-             echo '</table>';
-             echo '</td></tr></table>';
-             echo '</td></tr></table>';*/
-
-
         } else {
 
             /*** redirection ***/
             js_goto("?page=joueurs&id=$rech_id&op=admin");
-
         }
     }
 }
@@ -269,7 +236,7 @@ elseif ($op == "do_inscription") {
             $str .= "- $strElementsVilleInvalide<br>";
         }
     }
-    if (!$email || !preg_match("/^[a-z0-9\._-]+@+[a-z0-9\._-]+\.+[a-z]{2,3}$/i", $email)) {
+    if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $erreur = 1;
         $str .= "- $strElementsEmailInvalide<br>";
     }
@@ -329,7 +296,7 @@ elseif ($op == "do_inscription") {
         $db->values("$nextid, '$pseudo', md5('$passwd'), '$nom', '$prenom', '$email', '$age', '$ville', '$origine', '$langue', '$date', '$steamid'");
         $db->exec();
 
-        /*** g&eacute;n&eacute;ration de l'email de confirmation ***/
+        /*** génération de l'email de confirmation ***/
         $link = "<a href=\"" . $config['urlsite'] . "/?page=joueurs&op=activation&key=" . urlencode(base64_encode($nextid + 10000)) . "\" target=\"_blank\">$strConfirm</a>";
         $array1 = array("%nomsite%", "%urlsite%", "%login%", "%password%", "%email%", "%link%");
         $array2 = array($config['nomsite'], $config['urlsite'], $pseudo, $passwd, $email, $link);
@@ -708,7 +675,7 @@ elseif ($op == "do_envoi_passwd") {
         } else {
             $code_t = substr($joueur->passwd, 0, 8);
 
-            // le code de confirmation n'est pas pr&eacute;sent, on l'envoi d'abord par mail
+            // le code de confirmation n'est pas présent, on l'envoi d'abord par mail
             if (!$code) {
 
                 // envoi du mail contenant le code
@@ -736,10 +703,10 @@ elseif ($op == "do_envoi_passwd") {
                     echo "<br><input type=button class=action value=\"$strOK\" onclick=back()><br>";
                 }
             } else {
-                // le code rentr&eacute; est le bon,
+                // le code rentré est le bon,
                 if ($code == $code_t) {
 
-                    // g&eacute;n&eacute;ration du nouveau pass
+                    // génération du nouveau pass
                     $nv_pass = make_pass();
 
                     // envoi du mail contenant le nouveau pass
@@ -797,7 +764,7 @@ elseif ($op == "reset_passwd") {
     if ($db->num_rows() != 1) {
         show_erreur($strElementsJoueurInvalide);
     } else {
-        // g&eacute;n&eacute;ration du nouveau pass
+        // génération du nouveau pass
         $nv_pass = make_pass();
         $array1 = array("%nomsite%", "%urlsite%", "%passwd%");
         $array2 = array($config['nomsite'], $config['urlsite'], $nv_pass);
@@ -985,7 +952,7 @@ elseif ($op == "inscription") {
         $fd = opendir("lang/");
         while ($file = readdir($fd)) {
             if ($file != "." && $file != "..") {
-                $file = ereg_replace(".inc.php", "", $file);
+                $file = preg_replace("/.inc.php/", "", $file);
                 echo "<option value=$file";
                 if ($file == $config['default_lang']) echo " SELECTED";
                 echo ">$file";
@@ -1585,7 +1552,7 @@ else {
                 $fd = opendir('lang/');
                 while ($file = readdir($fd)) {
                     if ($file != '.' && $file != '..') {
-                        $file = ereg_replace('.inc.php', '', $file);
+                        $file = preg_replace('/.inc.php/', '', $file);
                         echo "<option value=\"$file\"";
                         if ($file == $joueur->langue) echo ' SELECTED';
                         echo ">$file";
@@ -1611,7 +1578,7 @@ else {
                 $fd = opendir("images/cartons/");
                 while ($file = readdir($fd)) {
                     if ($file != "." && $file != "..") {
-                        $file = ereg_replace(".gif", "", $file);
+                        $file = preg_replace("/.gif/", "", $file);
                         echo "<option value=$file";
                         if ($file == $joueur->carton) echo " SELECTED";
                         echo ">$file";

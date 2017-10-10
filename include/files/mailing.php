@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -84,7 +84,7 @@ if ($op == "envoi") {
 
             if ($config['mail'] != 'N') {
 
-                /*** g&eacute;n&eacute;ration de l'email ***/
+                /*** génération de l'email ***/
                 $mail = new phpTMailer();
                 $from = joueur($s_joueur);
                 $mail->From = $from->email;
@@ -440,9 +440,9 @@ else {
 
                 }
                 /*$sql_fuck_unwork_db2 = "SELECT type FROM ${dbprefix}tournois WHERE id = ".echo 'id'."";
-                $req_fuck_unwork_db2 = mysql_query($sql_fuck_unwork_db2) or die('Erreur SQL !<br>'.$sql_fuck_unwork_db2.'<br>'.mysql_error());
+                $req_fuck_unwork_db2 = $db->query($sql_fuck_unwork_db2) or die('Erreur SQL !<br>'.$sql_fuck_unwork_db2.'<br>'.$db->getError());
 
-                while($data_fuck_unwork_db2_2 = mysql_fetch_array($req_fuck_unwork_db2))
+                while($data_fuck_unwork_db2_2 = $db->fetch_array($req_fuck_unwork_db2))
                 {
                 $type_find=$data_fuck_unwork_db2_2['type'];
                 }*
@@ -571,25 +571,6 @@ else {
         echo "</select>";
     }
 
-    //$db->select("id,nom");
-    //$db->from("${dbprefix}tournois");
-    //$db->order_by("nom");
-    //$tournois=$db->exec();
-    /* Note : le code en comme ne renvoie QU'UN SEUL tournois en select. Petite merde !!! */
-    /*$sql_fuck_unwork_db = "SELECT id,nom FROM ${dbprefix}tournois ORDER BY nom";
-    $req_fuck_unwork_db = mysql_query($sql_fuck_unwork_db) or die('Erreur SQL !<br>'.$sql_fuck_unwork_db.'<br>'.mysql_error());
-
-    if (mysql_fetch_row($req_fuck_unwork_db) != 0) {
-        echo "<select name=tournois onchange=\"selectTournois(this.form['list1'],this.value)\">";
-        echo "<option value=0 selected>$strTournois...";
-
-        while($data_fuck_unwork_db = mysql_fetch_array($req_fuck_unwork_db))
-                    {
-        //while ($tournois = $db->fetch($tournois)) {
-            echo '<option value="'.$data_fuck_unwork_db['id'].'">'.$data_fuck_unwork_db['nom'].'</option>';
-        }
-        echo "</select>";
-    }*/
     echo "<br><input TYPE=button VALUE=\"$strTous\" ONCLICK=\"selectAllOptions(this.form['list1'])\">";
     echo "&nbsp;<input TYPE=button VALUE=\"$strEffacer\" ONCLICK=\"unselectAllOptions(this.form['list1'])\">";
     echo "</td>";

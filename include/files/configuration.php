@@ -4,7 +4,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
+   | phpTournoisG4 ©2005 by Gectou4 <Gectou4 Gectou4@hotmail.com>        |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -122,7 +122,7 @@ else {
 	echo "<td class=textfiche><input type=text name=logo value=\"$configuration->logo\">";
 	echo "</td></tr>";
 
-	/*** page de d&eacute;marrage ***/
+	/*** page de démarrage ***/
 	$tab_pagestart=array(array('page'=>'accueil', 'nom'=>$strAccueil),array('page'=>'news', 'nom' =>$strNews),array('page'=>'informations', 'nom'=>$strPresentation));
 	echo "<tr><td class=titlefiche>$strPageDemarrage :</td>";
 	echo "<td class=textfiche>";
@@ -175,7 +175,7 @@ else {
 	$fd = opendir("lang/");
 	while($file = readdir($fd)) {
 		if ($file != "." && $file != "..") {
-			$file = ereg_replace(".inc.php","",$file);
+			$file = preg_replace("/.inc.php/","",$file);
 			echo "<option value=$file";
 			if ($file == $configuration->default_lang) echo " SELECTED";
 			echo ">$file";

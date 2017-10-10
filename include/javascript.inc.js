@@ -3,7 +3,7 @@
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
    +---------------------------------------------------------------------+
-   | phpTournoisG4 ©2004 by Gectou4 <le_gardien_prime@hotmail.com>       |
+   | phpTournoisG4 ï¿½2004 by Gectou4 <le_gardien_prime@hotmail.com>       |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    | Copyright(c) 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
@@ -541,7 +541,7 @@ function AffBulle(texte) {
 }
 function getMousePos(e) {
   if (document.all) {
-  posX=event.x+document.body.scrollLeft; //modifs CL 09/2001 - IE : regrouper l'&eacute;vènement
+  posX=event.x+document.body.scrollLeft; //modifs CL 09/2001 - IE : regrouper l'Ã©vï¿½nement
   posY=event.y+document.body.scrollTop;
   }
   else {
