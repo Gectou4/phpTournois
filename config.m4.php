@@ -36,10 +36,10 @@ if (preg_match('`config.m4.php`i', $_SERVER['PHP_SELF'])) {
 
 /*****************************/
 /*** M4 DATABASE***/
-$m4dbhost = 'localhost';
-$m4dbuser = 'root';
+$m4dbhost = '';
+$m4dbuser = '';
 $m4dbpass = '';
-$m4dbname = 'm4';
+$m4dbname = '';
 $m4dbdebug = 1;
 $m4url='';
 

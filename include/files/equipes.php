@@ -201,7 +201,7 @@ elseif ($op == "do_rejoindre") {
         $db->where("id = '$id'");
         $db->where("passwd = md5('$passwd')");
         $res = $db->exec();
-        $equipe = $db->fetch($res);
+        $equipe = $db->fetch_array($res);
 
         if ($db->num_rows($res) != 1) {
             show_erreur($strElementsPasswordInvalide);
@@ -1045,7 +1045,7 @@ elseif ($op == "rejoindre") {
         $res = $db->exec();
 
         while ($equipe = $db->fetch($res)) {
-            echo '<option value="' . $equipe->id . '">' . stripslashes($equipe->tag) . '';
+            echo '<option value="' . $equipe['id'] . '">' . stripslashes($equipe['tag']) . '';
         }
         echo "</select>";
     } else {
@@ -1284,7 +1284,7 @@ else {
         if (equipe_manager($id, $s_joueur)) $is_manager = 1;
         else $is_manager = 0;
 
-        echo "<p class=title>.:: $strEquipe $equipe->tag - $equipe->nom ::.</p>";
+        echo "<p class=title>.:: $strEquipe {$equipe['tag']} - {$equipe['avatar']} ::.</p>";
 
         echo '<table cellspacing="0" cellpadding="0" border="0">';
         echo '<tr><td class="title" align="center">';
@@ -1302,7 +1302,7 @@ else {
             else echo "<form method=post action=?page=equipes&op=modify_manager>";
 
             echo "<input type=hidden name=id value=$id>
-			<input type = 'hidden' value='$equipe->manager' name='oldmanager' >";
+			<input type = 'hidden' value='{$equipe['manager']}' name='oldmanager' >";
 
             /*** table de l'equipe ***/
             echo "<table border=0 cellpadding=0 cellspacing=0 class=bordure1 width=300><tr><td>";
@@ -1316,14 +1316,14 @@ else {
             echo "<td class=textfiche>";
 
             if ($is_manager || $op == 'admin')
-                echo "<input type=text name=nom value=\"" . stripslashes($equipe->nom) . "\">";
+                echo "<input type=text name=nom value=\"" . stripslashes($equipe['nom']) . "\">";
             else
-                echo "<b>$equipe->nom</b>";
+                echo "<b>{$equipe['nom']}</b>";
             echo "</td>";
 
             echo "<td class=textfiche rowspan=4>";
             if ($config['avatar'] == 'E' || $config['avatar'] == 'A') {
-                echo "<div style=\"float: right;\">" . show_avatar($equipe->avatar_img) . "</div>";
+                echo "<div style=\"float: right;\">" . show_avatar($equipe['avatar_img']) . "</div>";
             }
             echo "</td></tr>";
 
@@ -1331,8 +1331,8 @@ else {
             echo "<tr><td class=titlefiche>$strTag :</td>";
             echo "<td class=textfiche>";
 
-            if ($op == 'admin' || $is_manager) echo "<input type=text name=tag value=\"" . stripslashes($equipe->tag) . "\">";
-            else echo "$equipe->tag";
+            if ($op == 'admin' || $is_manager) echo "<input type=text name=tag value=\"" . stripslashes($equipe['tag']) . "\">";
+            else echo $equipe['tag'];
             echo "</td></tr>";
 
             /*** origine ***/
@@ -1341,14 +1341,14 @@ else {
             echo "<td class=textfiche>";
 
             if ($op == 'admin' || $is_manager) {
-                echo "<select name=origine value='$equipe->origine'>";
+                echo "<select name=origine value='{$equipe['origine']}'>";
 
                 for ($i = 0; $i < count($tab_countrys); $i++) {
                     $tab_country = preg_split('/,/', $tab_countrys[$i]);
                     $country_code = $tab_country[0];
                     $country_name = $tab_country[1];
                     echo "<option value=$country_code";
-                    if ($country_code == $equipe->origine) echo " SELECTED";
+                    if ($country_code == $equipe['origine']) echo " SELECTED";
                     echo ">$country_name";
                 }
                 echo "</select>";
@@ -1357,7 +1357,7 @@ else {
                     $tab_country = preg_split('/,/', $tab_countrys[$i]);
                     $country_code = $tab_country[0];
                     $country_name = $tab_country[1];
-                    if ($country_code == $equipe->origine) break;
+                    if ($country_code == $equipe['origine']) break;
                 }
                 echo "<img src=\"images/flags/$country_code.gif\" align=absmiddle>&nbsp;$country_name";
             }
@@ -1379,12 +1379,12 @@ else {
 
                 while ($joueurs = $db->fetch()) {
                     echo "<option value=$joueurs->id";
-                    if ($equipe->manager == $joueurs->id) echo " SELECTED";
+                    if ($equipe['manager'] == $joueurs->id) echo " SELECTED";
                     echo '>' . stripslashes($joueurs->pseudo) . '';
                 }
                 echo "</select>";
             } else {
-                echo show_joueur($equipe->manager);
+                echo show_joueur($equipe['manager']);
             }
             echo "</td></tr>";
 
@@ -1392,9 +1392,9 @@ else {
             echo "<tr><td class=titlefiche>$strEMail :</td>";
             echo "<td class=textfiche colspan=2>";
             if ($is_manager || $op == 'admin')
-                echo "<input type=text size=40 name=email value='$equipe->email'>";
+                echo "<input type=text size=40 name=email value='{$equipe['email']}'>";
             else {
-                if ($equipe->email) echo "<img src=images/p_mail.gif align=absmiddle> <a href='mailto:$equipe->email'>$equipe->email</a>";
+                if ($equipe['email']) echo "<img src=images/p_mail.gif align=absmiddle> <a href='mailto:{$equipe['email']}'>{$equipe['email']}</a>";
                 else echo "N/A";
             }
             echo "</td></tr>";
@@ -1420,10 +1420,10 @@ else {
             echo "<tr><td class=titlefiche>$strWWW :</td>";
             echo "<td class=textfiche colspan=2>";
             if ($is_manager || $op == 'admin') {
-                if (!$equipe->url) $equipe->url = 'http://';
-                echo "<input type=text  size=30 name=url value='$equipe->url'>";
+                if (!$equipe['url']) $equipe['url'] = 'http://';
+                echo "<input type=text  size=30 name=url value='{$equipe['url']}'>";
             } else {
-                if ($equipe->url) echo "<a href=\"" . stripslashes($equipe->url) . "\" target=_blank>" . stripslashes($equipe->url) . "</a>";
+                if ($equipe['url']) echo "<a href=\"" . stripslashes($equipe['url']) . "\" target=_blank>" . stripslashes($equipe['url']) . "</a>";
                 else echo "N/A";
             }
             echo "</td></tr>";
@@ -1432,15 +1432,15 @@ else {
             echo "<tr><td class=titlefiche>$strIrc :</td>";
             echo "<td class=textfiche colspan=2>";
             if ($is_manager || $op == 'admin')
-                echo "<input type=text size=30 name=irc value=\"" . stripslashes($equipe->irc) . "\">";
+                echo "<input type=text size=30 name=irc value=\"" . stripslashes($equipe['irc']) . "\">";
             else {
-                if ($equipe->irc) echo "$equipe->irc";
+                if ($equipe['irc']) echo $equipe['irc'];
                 else echo "N/A";
             }
             echo "</td></tr>";
 
             /*** custom champs ***/
-            $tab_vars = get_object_vars($equipe);
+            $tab_vars = array_keys($equipe);
 
             reset($tab_vars);
             while (!is_null($key = key($tab_vars))) {
@@ -1465,32 +1465,32 @@ else {
                 if ($is_manager) {
                     echo "<tr><td class=titlefiche>$strServerName :</td>";
                     echo "<td class=textfiche colspan=2>";
-                    echo "<input type=text size=30 name=servername value=\"" . stripslashes($equipe->servername) . "\">";
+                    echo "<input type=text size=30 name=servername value=\"" . stripslashes($equipe['servername']) . "\">";
                     echo "</td></tr>";
 
                     echo "<tr><td class=titlefiche>$strIp :</td>";
                     echo "<td class=textfiche colspan=2>";
-                    echo "<input type=text size=30 name=serverip value=\"" . stripslashes($equipe->serverip) . "\">";
+                    echo "<input type=text size=30 name=serverip value=\"" . stripslashes($equipe['serverip']) . "\">";
                     echo "</td></tr>";
 
 
                     if ($config['serveur']) {
-                        if ($equipe->servername != '' && $equipe->serverip != '') {
+                        if ($equipe['servername'] != '' && $equipe['serverip']!= '') {
                             echo "<tr><td class=titlefiche></td>";
                             echo "<td class=textfiche colspan=2>";
-                            echo "<input type=\"button\" class=\"action\" value=\"$strADD_t_server\" onclick=\"location='?page=team_serveurs&id_s=$equipe->id_s&id_t=$id'\">";
+                            echo "<input type=\"button\" class=\"action\" value=\"$strADD_t_server\" onclick=\"location='?page=team_serveurs&id_s={$equipe['id_s']}&id_t=$id'\">";
                             echo "</td></tr>";
                         }
                     }
                 } else {
                     echo "<tr><td class=titlefiche>$strServerName :</td>";
                     echo "<td class=textfiche colspan=2>";
-                    echo stripslashes($equipe->servername);
+                    echo stripslashes($equipe['servername']);
                     echo "</td></tr>";
 
                     echo "<tr><td class=titlefiche>$strIp :</td>";
                     echo "<td class=textfiche colspan=2>";
-                    echo stripslashes($equipe->serverip);
+                    echo stripslashes($equipe['serverip']);
                     echo "</td></tr>";
                 }
             }
@@ -1511,7 +1511,7 @@ else {
                     if ($file != "." && $file != "..") {
                         $file = Preg_replace("/.gif/", "", $file);
                         echo "<option value=$file";
-                        if ($file == $equipe->carton) echo " SELECTED";
+                        if ($file == $equipe['carton']) echo " SELECTED";
                         echo ">$file";
                     }
                 }
@@ -1520,39 +1520,39 @@ else {
                 echo "</select>";
                 echo " Carton";
                 echo "</td></tr><tr><td class=textfiche>";
-                echo "<input type=text size=20 name=sanction value=\"" . stripslashes($equipe->sanction) . "\">";
+                echo "<input type=text size=20 name=sanction value=\"" . stripslashes($equipe['sanction']) . "\">";
                 echo " Motif</td></tr></table>";
             } else {
-                if ($equipe->carton == 'aucun') {
+                if ($equipe['carton'] == 'aucun') {
                     echo $strAucune;
                 } else {
-                    echo "<A href=\"?page=reglements\" onMouseOver=\"AffBulle('<b>Carton $equipe->carton </b>: $equipe->sanction')\" onMouseOut=\"HideBulle()\"><img src=\"images/cartons/$equipe->carton.gif\" border=0 align=absmiddle></A>";
+                    echo "<A href=\"?page=reglements\" onMouseOver=\"AffBulle('<b>Carton {$equipe['carton']} </b>: {$equipe['sanction']}')\" onMouseOut=\"HideBulle()\"><img src=\"images/cartons/{$equipe['carton']}.gif\" border=0 align=absmiddle></A>";
                 }
             }
             echo "</td></tr>";
             echo "<tr><td class=\"titlefiche\">$strEtat :</td>";
             echo '<td class="textfiche" colspan="3">';
-            $date = strftime(DATESTRING1, $equipe->dateinscription);
+            $date = strftime(DATESTRING1, $equipe['dateinscription']);
             $date = "&nbsp;$strLe " . $date;
 
             if ($op == 'admin') {
                 echo '<select name="etat">';
                 echo '<option value="C"';
-                if ($equipe->etat == 'C') echo ' SELECTED';
+                if ($equipe['etat'] == 'C') echo ' SELECTED';
                 echo ">$strCachee";
                 echo '<option value="A"';
-                if ($equipe->etat == 'A') echo ' SELECTED';
+                if ($equipe['etat'] == 'A') echo ' SELECTED';
                 echo ">$strEnAttente";
                 echo '<option value="V"';
-                if ($equipe->etat == 'V') echo ' SELECTED';
+                if ($equipe['etat'] == 'V') echo ' SELECTED';
                 echo ">$strValidee";
                 echo "</select>$date";
-            } else if (($is_manager) && ($equipe->etat == 'A' || $equipe->etat == 'C') && $mods['m_team_valid']) {
-                echo "<input type=\"button\" class=\"action\" value=\"$strValid_My_Team\" onclick=\"location='?page=equipes&id=$equipe->id&op=autoval&oldop=$op'\">";
+            } else if (($is_manager) && ($equipe['etat'] == 'A' || $equipe['etat'] == 'C') && $mods['m_team_valid']) {
+                echo "<input type=\"button\" class=\"action\" value=\"$strValid_My_Team\" onclick=\"location='?page=equipes&id={$equipe['id']}&op=autoval&oldop=$op'\">";
             } else {
-                if ($equipe->etat == 'C') echo "<font color=\"orange\"><b>$strCachee</b></font>";
-                elseif ($equipe->etat == 'A') echo "<font color=\"red\">$strEnAttente</b></font>$date";
-                elseif ($equipe->etat == 'V') echo "<font color=\"green\">$strValidee</b></font>$date";
+                if ($equipe['etat'] == 'C') echo "<font color=\"orange\"><b>$strCachee</b></font>";
+                elseif ($equipe['etat'] == 'A') echo "<font color=\"red\">$strEnAttente</b></font>$date";
+                elseif ($equipe['etat'] == 'V') echo "<font color=\"green\">$strValidee</b></font>$date";
             }
             echo '</td></tr>';
 
@@ -1580,7 +1580,7 @@ else {
 			<tr><td>
 			<table cellspacing=0 cellpadding=2 border=0 width=100%>
 			<tr><td class=partfiche align="center"><div align="center">';
-                echo "<br><textarea cols=60 rows=10 id=remarque name=remarque wrap=virtual>$equipe->remarque</textarea></td></tr>";
+                echo "<br><textarea cols=60 rows=10 id=remarque name=remarque wrap=virtual>{$equipe['remarque']}</textarea></td></tr>";
                 echo "<tr><td class=footerfichemods colspan=2><hr><input type=submit value=\" - $strOK - \"></td></tr>";
                 echo '</td></tr></table>
 			<tr><td class=modsfiche>&nbsp;</td></tr>

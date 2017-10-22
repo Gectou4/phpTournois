@@ -837,7 +837,7 @@ elseif ($stage == 3) {
         if (!$fd = @fopen($filename, "a+")) {
             $erreur = 1;
             show_erreur("$strOuvertureInvalideConfigFile : $filename");
-        } elseif (!fputs($fd, "define('PHPTOURNOIS_INSTALLED',true);")) {
+        } elseif (!fputs($fd, "define('PHPTOURNOIS_INSTALLED',true);define('PHPTOURNOIS_DEV',false);")) {
             $erreur = 1;
             show_erreur("$strEcritureInvalideConfigFile : $filename");
         } else {

@@ -673,7 +673,7 @@ elseif ($op == "do_envoi_passwd") {
         if ($db->num_rows() != 1) {
             show_erreur($strElementsJoueurInvalide);
         } else {
-            $code_t = substr($joueur->passwd, 0, 8);
+            $code_t = substr($joueur['passwd'], 0, 8);
 
             // le code de confirmation n'est pas présent, on l'envoi d'abord par mail
             if (!$code) {
@@ -682,7 +682,7 @@ elseif ($op == "do_envoi_passwd") {
                 $array1 = array("%nomsite%", "%urlsite%", "%code%");
                 $array2 = array($config['nomsite'], $config['urlsite'], $code_t);
 
-                $to = $joueur->email;
+                $to = $joueur['email'];
                 $from = $config['emailcontact'];
                 $subject = $strPasswordEmailCode;
                 $subject = str_replace($array1, $array2, $subject);
@@ -713,7 +713,7 @@ elseif ($op == "do_envoi_passwd") {
                     $array1 = array("%nomsite%", "%urlsite%", "%passwd%");
                     $array2 = array($config['nomsite'], $config['urlsite'], $nv_pass);
 
-                    $to = $joueur->email;
+                    $to = $joueur['email'];
                     $from = $config['emailcontact'];
                     $subject = $strPasswordEmail;
                     $subject = str_replace($array1, $array2, $subject);
@@ -733,7 +733,7 @@ elseif ($op == "do_envoi_passwd") {
                         // mise a jour du pass dans la base
                         $db->update("${dbprefix}joueurs");
                         $db->set("passwd = md5('$nv_pass')");
-                        $db->where("id = $joueur->id");
+                        $db->where("id = {$joueur['id']}");
                         $db->exec();
 
                         show_notice($strPasswordMessage);
@@ -772,7 +772,7 @@ elseif ($op == "reset_passwd") {
         if ($config['mail'] != 'N') {
 
             // envoi du mail contenant le nouveau pass
-            $to = $joueur->email;
+            $to = $joueur['email'];
             $from = $config['emailcontact'];
             $subject = $strPasswordEmail;
             $subject = str_replace($array1, $array2, $subject);
@@ -1205,7 +1205,7 @@ else {
 
         $joueur = joueur($id);
 
-        echo "<p class=\"title\">.:: $strJoueur $joueur->pseudo::.</p>";
+        echo "<p class=\"title\">.:: $strJoueur {$joueur['pseudo']}::.</p>";
 
         echo '<table cellspacing="0" cellpadding="0" border="0">';
         echo '<tr><td class="title" align="center">';
@@ -1234,16 +1234,16 @@ else {
             echo '<td class="textfiche" colspan="2" align=right>';
             if ($op == 'admin') {
                 echo "$strPseudo :";
-                echo "<input type=\"text\" name=\"pseudo\" value=\"" . stripslashes($joueur->pseudo) . "\" maxlength=\"20\">";
+                echo "<input type=\"text\" name=\"pseudo\" value=\"" . stripslashes($joueur['pseudo']) . "\" maxlength=\"20\">";
             } else {
-                echo "<b><font size=5px>$joueur->pseudo</b>";
+                echo "<b><font size=5px>{$joueur['pseudo']}</b>";
             }
 
             echo '</td>';
             /*** avatar ***/
             echo '<td class="textfiche" colspan="2" style="vertical-align:top">';
             if ($config['avatar'] == 'J' || $config['avatar'] == 'A') {
-                echo '<span style="float: right;" >' . show_avatar($joueur->avatar_img) . '</span>';
+                echo '<span style="float: right;" >' . show_avatar($joueur['avatart_img']) . '</span>';
             }
             echo '</td></tr>';
 
@@ -1253,7 +1253,7 @@ else {
                 if ($op == 'admin') {
                     echo "<tr><td width=\"30%\" class=\"titlefiche\">$strNom :</td>";
                     echo '<td class="textfiche" colspan="6">';
-                    echo "<input type=\"text\" name=\"nom\" value=\"" . stripslashes($joueur->nom) . "\" maxlength=\"20\">";
+                    echo "<input type=\"text\" name=\"nom\" value=\"" . stripslashes($joueur['nom']) . "\" maxlength=\"20\">";
                     echo '</td></tr>';
                 }
             }
@@ -1263,7 +1263,7 @@ else {
                 if ($op == 'admin') {
                     echo "<tr><td class=\"titlefiche\">$strPrenom :</td>";
                     echo '<td class="textfiche" colspan="4">';
-                    echo "<input type=\"text\" name=\"prenom\" value=\"" . stripslashes($joueur->prenom) . "\" maxlength=\"20\">";
+                    echo "<input type=\"text\" name=\"prenom\" value=\"" . stripslashes($joueur['prenom']) . "\" maxlength=\"20\">";
                     echo '</td></tr>';
                 }
             }
@@ -1274,9 +1274,9 @@ else {
                 echo '<td class="textfiche" colspan="4">';
 
                 if ($op == 'admin')
-                    echo "<input type=\"text\" name=\"ville\" value=\"" . stripslashes($joueur->ville) . "\" size=\"30\">";
+                    echo "<input type=\"text\" name=\"ville\" value=\"" . stripslashes($joueur['ville']) . "\" size=\"30\">";
                 else
-                    echo $joueur->ville;
+                    echo $joueur['ville'];
                 echo '</td></tr>';
             }
 
@@ -1286,10 +1286,10 @@ else {
                 echo '<td class="textfiche" colspan="4">';
 
                 if ($op == 'admin')
-                    echo "<input type=\"text\" name=\"age\" value=\"" . stripslashes($joueur->age) . "\" size=\"3\">";
+                    echo "<input type=\"text\" name=\"age\" value=\"" . stripslashes($joueur['age']) . "\" size=\"3\">";
                 else {
-                    echo $joueur->age;
-                    if ($joueur->age) echo "&nbsp;$strAn";
+                    echo $joueur['age'];
+                    if ($joueur['age']) echo "&nbsp;$strAn";
                 }
                 echo '</td></tr>';
             }
@@ -1307,7 +1307,7 @@ else {
                     $country_code = $tab_country[0];
                     $country_name = $tab_country[1];
                     echo "<option value=\"$country_code\"";
-                    if ($country_code == $joueur->origine) echo ' SELECTED';
+                    if ($country_code == $joueur['origine']) echo ' SELECTED';
                     echo ">$country_name";
                 }
                 echo '</select>';
@@ -1316,7 +1316,7 @@ else {
                     $tab_country = preg_split('/,/', $tab_countrys[$i]);
                     $country_code = $tab_country[0];
                     $country_name = $tab_country[1];
-                    if ($country_code == $joueur->origine) break;
+                    if ($country_code == $joueur['origine']) break;
                 }
                 echo "<img src=\"images/flags/$country_code.gif\" align=\"absmiddle\" border=\"0\">&nbsp;$country_name";
             }
@@ -1328,9 +1328,9 @@ else {
             echo '<td class="textfiche" colspan="3">';
 
             if ($op == 'admin' || $id == $s_joueur)
-                echo "<input type=\"text\" name=\"email\" value=\"$joueur->email\" size=\"40\">";
-            elseif ($joueur->email)
-                echo "<a href=\"mailto:$joueur->email\">$joueur->email</a>";
+                echo "<input type=\"text\" name=\"email\" value=\"{$joueur['email']}\" size=\"40\">";
+            elseif ($joueur['email'])
+                echo "<a href=\"mailto:{$joueur['email']}\">{$joueur['email']}</a>";
             echo '</td></tr>';
 
 
@@ -1354,12 +1354,12 @@ else {
                 if ($op == 'admin') {
                     echo "<tr><td class=\"titlefiche\">$strSID :</td>";
                     echo '<td class="textfiche" colspan="4">';
-                    echo "<input type=\"text\" name=\"steamid\" value=\"" . stripslashes($joueur->steam) . "\"> <i>STEAM_X:X:XXXXX</i>";
+                    echo "<input type=\"text\" name=\"steamid\" value=\"" . stripslashes($joueur['steam']) . "\"> <i>STEAM_X:X:XXXXX</i>";
                     echo '</td></tr>';
                 } else {
                     echo "<tr><td class=\"titlefiche\">$strSID :</td>";
                     echo '<td class="textfiche" colspan="4">';
-                    echo "" . stripslashes($joueur->steam) . "";
+                    echo "" . stripslashes($joueur['steam']) . "";
                     echo '</td></tr>';
                 }
             }
@@ -1370,7 +1370,7 @@ else {
                 echo '<td class=textfiche colspan=4>';
 
                 echo '<select name="jointeam">';
-                echo ($joueur->jointeam == 1) ? "<option value='1' selected>$strAllowJoinTeam</option>" : "<option value='0'selected>$strUnAllowJoinTeam</option>";
+                echo ($joueur['jointeam'] == 1) ? "<option value='1' selected>$strAllowJoinTeam</option>" : "<option value='0'selected>$strUnAllowJoinTeam</option>";
                 echo '<option value="1">' . $strAllowJoinTeam . '</option>';
                 echo '<option value="0">' . $strUnAllowJoinTeam . '</option>';
                 echo '</select>';
@@ -1378,7 +1378,7 @@ else {
             } else {
                 echo "<tr><td class=\"titlefiche\">$strAutoajoutTeam :</td>";
                 echo '<td class="textfiche" colspan="4">';
-                echo ($joueur->jointeam == 1) ? $strAllowJoinTeam : $strUnAllowJoinTeam;
+                echo ($joueur['jointeam'] == 1) ? $strAllowJoinTeam : $strUnAllowJoinTeam;
                 echo '</td></tr>';
             }
 
@@ -1388,7 +1388,7 @@ else {
                 echo '<td class=textfiche colspan=4>';
 
                 echo '<select name="allowmp">';
-                if ($joueur->allowmp == 1) {
+                if ($joueur['allowmp'] == 1) {
                     echo "<option value='1' selected>$strAllowPrivateMessage</option>";
                 } else {
                     echo "<option value='0' selected>$strUnAllowPrivateMessage</option>";
@@ -1400,7 +1400,7 @@ else {
             } else {
                 echo "<tr><td class=\"titlefiche\">$strAutoMp :</td>";
                 echo '<td class="textfiche" colspan="4">';
-                echo ($joueur->allowmp == 1) ? $strAllowPrivateMessage : $strUnAllowPrivateMessage;
+                echo ($joueur['allowmp'] == 1) ? $strAllowPrivateMessage : $strUnAllowPrivateMessage;
                 echo '</td></tr>';
             }
 
@@ -1409,57 +1409,18 @@ else {
                 if ($op == 'admin') {
                     echo "<tr><td class=\"titlefiche\">$strRkforum :</td>";
                     echo '<td class="textfiche" colspan="4">';
-                    echo "<input type=\"text\" name=\"forum_userrank\" value=\"" . stripslashes($joueur->forum_userrank) . "\">";
+                    echo "<input type=\"text\" name=\"forum_userrank\" value=\"" . stripslashes($joueur['forum_userrank']) . "\">";
                     echo '</td></tr>';
                 }
 
             }
-
-            /*if ($op == 'admin' ) {
-                echo "<tr>";
-                echo '<td class="textfiche" colspan="4" align=center>';
-                echo '<form method="post" action="?page=rang&op=modify&id_j='.$joueur->id.'">';
-                echo "<input type=\"submit\" class=\"action\" value=\"$strEdit_rang\">";
-                echo "</form>";
-                echo '</td></tr>';
-            }
-            */
-            /*** admin ***
-             * if ($op == 'admin' ) {
-             * echo "<tr><td class=\"titlefiche\">$strAdmin :</td>";
-             * echo '<td class="textfiche" colspan="3">';
-             *
-             * echo '<input type="radio" name="admin" value="O" style="border: 0px;background-color:transparent;"';if ($joueur->admin == 'O') echo ' CHECKED';echo "> $strOui ";
-             * echo '<input type="radio" name="admin" value="N" style="border: 0px;background-color:transparent;"';if ($joueur->admin == 'N') echo ' CHECKED';echo "> $strNon";
-             * echo '</td></tr>';
-             * }
-             *
-             * /*** newser ***
-             * if ($op == 'admin' ) {
-             * echo "<tr><td class=\"titlefiche\">$strNewseur :</td>";
-             * echo '<td class="textfiche" colspan="3">';
-             *
-             * echo '<input type="radio" name="newseur" value="O" style="border: 0px;background-color:transparent;"';if ($joueur->newseur == 'O') echo ' CHECKED';echo "> $strOui ";
-             * echo '<input type="radio" name="newseur" value="N" style="border: 0px;background-color:transparent;"';if ($joueur->newseur == 'N') echo ' CHECKED';echo "> $strNon";
-             * echo '</td></tr>';
-             * }
-             *
-             * /*** modo ***
-             * if ($op == 'admin' ) {
-             * echo "<tr><td class=\"titlefiche\">$strModo :</td>";
-             * echo '<td class="textfiche" colspan="3">';
-             *
-             * echo '<input type="radio" name="modo" value="O" style="border: 0px;background-color:transparent;"';if ($joueur->modo == 'O') echo ' CHECKED';echo "> $strOui ";
-             * echo '<input type="radio" name="modo" value="N" style="border: 0px;background-color:transparent;"';if ($joueur->modo == 'N') echo ' CHECKED';echo "> $strNon";
-             * echo '</td></tr>';
-             * }*/
 
             /*** admin ***/
             if ($op == 'admin') {
                 echo "<tr><td class=\"titlefiche\">$strAdmin :</td>";
                 echo '<td class="textfiche" colspan="3">';
                 echo "<input type=\"button\" class=\"action\" value=\"$strResetPass\" onclick=\"location='?page=joueurs&op=reset_passwd&id=$id'\">";
-                echo "<input type=\"button\" class=\"action\" value=\"$strEdit_rang\" onclick=\"location='?page=rang&op=edit&id_j=$joueur->id'\">";
+                echo "<input type=\"button\" class=\"action\" value=\"$strEdit_rang\" onclick=\"location='?page=rang&op=edit&id_j={$joueur['id']}'\">";
                 echo '</td></tr>';
             } elseif ($id == $s_joueur) {
                 echo "<tr><td class=\"titlefiche\">$strPassword :</td>";
@@ -1480,19 +1441,19 @@ else {
             if ($op == 'admin' || $id == $s_joueur) {
                 echo "<tr><td class=\"titlefiche\">$strICQ :</td>";
                 echo '<td class="textfiche">';
-                echo "<input type=\"text\" name=\"icq\" value=\"$joueur->icq\" size=\"15\">";
+                echo "<input type=\"text\" name=\"icq\" value=\"{$joueur['icq']}\" size=\"15\">";
                 echo '</td>';
                 echo "<td class=\"titlefiche\" width=\"25%\">$strAIM :</td>";
                 echo '<td class="textfiche" width="25%">';
-                echo "<input type=\"text\" name=\"aim\" value=\"$joueur->aim\" size=\"15\">";
+                echo "<input type=\"text\" name=\"aim\" value=\"{$joueur['aim']}\" size=\"15\">";
                 echo '</td></tr>';
                 echo "<tr><td class=\"titlefiche\">$strYIM :</td>";
                 echo '<td class="textfiche" width="25%">';
-                echo "<input type=\"text\" name=\"yim\" value=\"$joueur->yim\" size=\"15\">";
+                echo "<input type=\"text\" name=\"yim\" value=\"{$joueur['yim']}\" size=\"15\">";
                 echo '</td>';
                 echo "<td class=\"titlefiche\" width=\"25%\">$strMSN :</td>";
                 echo '<td class="textfiche" width="25%">';
-                echo "<input type=\"text\" name=\"msn\" value=\"$joueur->msn\" size=\"15\">";
+                echo "<input type=\"text\" name=\"msn\" value=\"{$joueur['msn']}\" size=\"15\">";
                 echo '</td></tr>';
             } else {
                 echo "<tr><td class=\"titlefiche\">$strICQ :</td>";
@@ -1500,22 +1461,22 @@ else {
 
                 echo '<table cellspacing="0" cellpadding="0" border="0" width="100%"><tr>';
                 echo '<td class="textfiche">';
-                if ($joueur->icq) echo "<a href=\"http://people.icq.com/whitepages/about_me/1,,,00.html?Uin=" . $joueur->icq . "\" target=\"_blank\"><img src=\"http://web.icq.com/whitepages/online?icq=$joueur->icq&img=5\" alt=\"$joueur->icq\" border=0></a>";
+                if ($joueur['icq']) echo "<a href=\"http://people.icq.com/whitepages/about_me/1,,,00.html?Uin=" . $joueur['icq']. "\" target=\"_blank\"><img src=\"http://web.icq.com/whitepages/online?icq={$joueur['icq']}&img=5\" alt=\"{$joueur['icq']}\" border=0></a>";
                 else echo 'N/A';
                 echo '</td>';
                 echo "<td class=\"titlefiche\">$strAIM :</td>";
                 echo '<td class="textfiche">&nbsp;';
-                if ($joueur->aim) echo "<a href=\"aim:goim?screenname=" . $joueur->aim . "&amp;message=Hello\"><img src=\"images/p_aim.gif\" align=\"absmiddle\" border=\"0\" alt=\"$joueur->aim\"></a>";
+                if ($joueur['aim']) echo "<a href=\"aim:goim?screenname=" . $joueur['aim'] . "&amp;message=Hello\"><img src=\"images/p_aim.gif\" align=\"absmiddle\" border=\"0\" alt=\"{$joueur['aim']}\"></a>";
                 else echo 'N/A';
                 echo '</td>';
                 echo "<td class=\"titlefiche\">$strYIM :</td>";
                 echo '<td class="textfiche">&nbsp;';
-                if ($joueur->yim) echo "<a href=\"http://edit.yahoo.com/config/send_webmesg?.target=" . $joueur->yim . "&amp;.src=pg\" target=\"_blank\"><img src=images/p_yim.gif align=\"absmiddle\" border=\"0\" alt=\"$joueur->yim\"></a>";
+                if ($joueur['yim']) echo "<a href=\"http://edit.yahoo.com/config/send_webmesg?.target=" . $joueur['yim'] . "&amp;.src=pg\" target=\"_blank\"><img src=images/p_yim.gif align=\"absmiddle\" border=\"0\" alt=\"{$joueur['yim']}\"></a>";
                 else echo 'N/A';
                 echo '</td>';
                 echo "<td class=\"titlefiche\">$strMSN :</td>";
                 echo '<td class="textfiche">&nbsp;';
-                if ($joueur->msn) echo "<a href=\"mailto: $joueur->msn\"><img src=\"images/p_msn.gif\" align=\"absmiddle\" border=\"0\"  alt=\"$joueur->msn\"></a>";
+                if ($joueur['msn']) echo "<a href=\"mailto: {$joueur['msn']}\"><img src=\"images/p_msn.gif\" align=\"absmiddle\" border=\"0\"  alt=\"{$joueur['msn']}\"></a>";
                 else echo 'N/A';
                 echo '</tr></table>';
                 echo '</td></tr>';
@@ -1523,7 +1484,7 @@ else {
 
 
             /*** custom champs ***/
-            $tab_vars = get_object_vars($joueur);
+            $tab_vars = array_keys($joueur);
 
             reset($tab_vars);
             while (!is_null($key = key($tab_vars))) {
@@ -1554,7 +1515,7 @@ else {
                     if ($file != '.' && $file != '..') {
                         $file = preg_replace('/.inc.php/', '', $file);
                         echo "<option value=\"$file\"";
-                        if ($file == $joueur->langue) echo ' SELECTED';
+                        if ($file == $joueur['lang']) echo ' SELECTED';
                         echo ">$file";
                     }
                 }
@@ -1580,7 +1541,7 @@ else {
                     if ($file != "." && $file != "..") {
                         $file = preg_replace("/.gif/", "", $file);
                         echo "<option value=$file";
-                        if ($file == $joueur->carton) echo " SELECTED";
+                        if ($file == $joueur['carton']) echo " SELECTED";
                         echo ">$file";
                     }
                 }
@@ -1589,41 +1550,41 @@ else {
                 echo "</select> ";
                 echo $strCarton;
                 echo "</td></tr><tr><td class=textfiche>";
-                echo "<input type=text size=20 name=sanction value=\"" . stripslashes($joueur->sanction) . "\">";
+                echo "<input type=text size=20 name=sanction value=\"" . stripslashes($joueur['sanction']) . "\">";
                 echo $strMotif . "</td></tr></table>";
             } else {
-                if ($joueur->carton == 'aucun') {
+                if ($joueur['carton'] == 'aucun') {
                     echo $strAucune;
                 } else {
-                    echo "<A href=\"?page=reglements\" onMouseOver=\"AffBulle('<b>$strCarton $joueur->carton </b>: $joueur->sanction')\" onMouseOut=\"HideBulle()\"><img src=\"images/cartons/$joueur->carton.gif\" border=0 align=absmiddle></A>";
+                    echo "<A href=\"?page=reglements\" onMouseOver=\"AffBulle('<b>$strCarton {$joueur['carton']} </b>: {$joueur['sanction']}')\" onMouseOut=\"HideBulle()\"><img src=\"images/cartons/{$joueur['carton']}.gif\" border=0 align=absmiddle></A>";
                 }
             }
             echo "</td></tr>";
             echo "<tr><td class=\"titlefiche\">$strEtat :</td>";
             echo '<td class="textfiche" colspan="3">';
-            $date = strftime(DATESTRING1, $joueur->dateinscription);
+            $date = strftime(DATESTRING1, $joueur['dateinscription']);
             $date = "&nbsp;$strLe " . $date;
 
             if ($op == 'admin') {
                 echo '<select name="etat">';
                 echo '<option value="C"';
-                if ($joueur->etat == 'C') echo ' SELECTED';
+                if ($joueur['etat'] == 'C') echo ' SELECTED';
                 echo ">$strCache";
                 echo '<option value="M"';
-                if ($joueur->etat == 'M') echo ' SELECTED';
+                if ($joueur['etat'] == 'M') echo ' SELECTED';
                 echo ">$strAttenteMail";
                 echo '<option value="P"';
-                if ($joueur->etat == 'P') echo ' SELECTED';
+                if ($joueur['etat'] == 'P') echo ' SELECTED';
                 echo ">$strPreinscrit";
                 echo '<option value="I"';
-                if ($joueur->etat == 'I') echo ' SELECTED';
+                if ($joueur['etat'] == 'I') echo ' SELECTED';
                 echo ">$strInscrit";
                 echo "</select>$date";
             } else {
-                if ($joueur->etat == 'C') echo "<font color=\"orange\"><b>$strCache</b></font>";
-                elseif ($joueur->etat == 'M') echo "<font color=\"orange\"><b>$strAttenteMail</b></font>";
-                elseif ($joueur->etat == 'P') echo "<font color=\"red\"><b>$strPreinscrit</b></font>$date";
-                elseif ($joueur->etat == 'I') echo "<font color=\"green\"><b>$strInscrit</b></font>$date";
+                if ($joueur['etat'] == 'C') echo "<font color=\"orange\"><b>$strCache</b></font>";
+                elseif ($joueur['etat'] == 'M') echo "<font color=\"orange\"><b>$strAttenteMail</b></font>";
+                elseif ($joueur['etat'] == 'P') echo "<font color=\"red\"><b>$strPreinscrit</b></font>$date";
+                elseif ($joueur['etat'] == 'I') echo "<font color=\"green\"><b>$strInscrit</b></font>$date";
             }
             echo '</td></tr>';
 
@@ -1631,7 +1592,7 @@ else {
             /*** last visit **/
             echo "<tr><td class=\"titlefiche\">$strlastvisit </td>";
             echo '<td class="textfiche" colspan="3">';
-            $date = strftime(DATESTRING1, $joueur->datelogin);
+            $date = strftime(DATESTRING1, $joueur['datelogin']);
             echo "$date";
             echo '</td></tr>';
 
@@ -1652,7 +1613,7 @@ else {
 			<tr><td>
 			<table cellspacing=0 cellpadding=2 border=0 width=100%>
 			<tr><td class=partfiche align="center"><div align="center">';
-                echo "<br><textarea cols=60 rows=10 id=remarque name=remarque wrap=virtual>$joueur->remarque</textarea></td></tr>";
+                echo "<br><textarea cols=60 rows=10 id=remarque name=remarque wrap=virtual>{$joueur['remarque']}</textarea></td></tr>";
                 echo "<tr><td class=footerfichemods colspan=2><hr><input type=submit value=\" - $strOK - \"></td></tr>";
                 echo '</td></tr></table>
 			<tr><td class=modsfiche>&nbsp;</td></tr>
