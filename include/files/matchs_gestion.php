@@ -1043,38 +1043,38 @@ else {
 
         for ($i = 1; $i <= $db->num_rows($manches) + 1; $i++) {
 
-            $manche = $db->fetch($manches);
+            $manche = $db->fetch_array($manches);
 
             if ($op != 'admin' && !$manche->map) break;
 
             if ($i == $db->num_rows($manches) + 1) {
-                $manche->id = 0;
-                $manche->status = 'C';
+                $manche['id'] = 0;
+                $manche['status'] = 'C';
             }
 
             echo "<tr>";
             echo "<td class=text align=center>$manche->id</td>";
             echo "<td class=text align=center>";
-            echo "<input type=checkbox name=mancheencours value=$manche->id";
-            if ($manche->status == "A") echo " CHECKED";
+            echo "<input type=checkbox name=mancheencours value=".$manche['id'];
+            if ($manche['status'] == "A") echo " CHECKED";
             if ($op != 'admin') echo " DISABLED";
             echo " onclick=\"oneOrNoCheckboxGroup(this);\" style=\"border: 0px;background-color:transparent;\">";
             echo "</td>";
 
             echo "<td class=text>";
-            if ($op == 'admin') echo "<input type=text name=map_$manche->id value=\"$manche->map\" maxlength=20 size=20> <a href=javascript:ouvrir_fenetre('?page=maps&op=list&input=map_$manche->id&header=win','maps',100,400)>[...]</a>";
-            elseif ($report_type == 1) echo "<input type=hidden name=map_$manche->id value=\"$manche->map\">$manche->map";
-            else echo $manche->map;
+            if ($op == 'admin') echo "<input type=text name=map_{$manche['id']} value=\"{$manche['map']}\" maxlength=20 size=20> <a href=javascript:ouvrir_fenetre('?page=maps&op=list&input=map_{$manche['id']}&header=win','maps',100,400)>[...]</a>";
+            elseif ($report_type == 1) echo "<input type=hidden name=map_{$manche['id']} value=\"{$manche['map']}\">{$manche['map']}";
+            else echo $manche['map'];
             echo "</td>";
 
             echo "<td class=text align=center>";
-            if ($op == 'admin' || $report_type == 1) echo "<input type=text size=2 name=\"score1_$manche->id\" value=\"$manche->score1\">";
+            if ($op == 'admin' || $report_type == 1) echo "<input type=text size=2 name=\"score1_{$manche['id']}\" value=\"{$manche['score1']}\">";
             else echo $manche->score1;
             echo "</td>";
 
             echo "<td class=text align=center>";
-            if ($op == 'admin' || $report_type == 1) echo "<input type=text size=2 name=\"score2_$manche->id\" value=\"$manche->score2\">";
-            else echo $manche->score2;
+            if ($op == 'admin' || $report_type == 1) echo "<input type=text size=2 name=\"score2_{$manche['id']}\" value=\"{$manche['score2']}\">";
+            else echo $manche['score2'];
             echo "</td>";
             echo "</tr>";
         }

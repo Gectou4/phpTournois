@@ -100,15 +100,15 @@ if(empty($s_tournois)) js_goto("index.php");
 		$last_finale=0;
 	}
 	$export .="<!-- DEBUT DE LA GENERATION DE L'ARBRE -->";
+
 	// affichage winner/looser
-	
 	if($op) $op_str="&op=$op";
 	else $op_str='';
 	
 	// affichage du navigateur
-	$export ="
-        <br>
-		<table cellspacing='0' cellpadding='0' border='0'>
+	$export .="
+        <img src=\"images/story-7px.gif\" width=\"7\" height=\"7\"><br>
+		<table cellspacing='0' cellpadding='0' border='0' >
 		<tr>";
 	
 	//les headers
@@ -139,7 +139,7 @@ if(empty($s_tournois)) js_goto("index.php");
 			$finale /= 2;
 		}	
 		else 
-			$export .= '<td align="center"><img src="images/spacer.gif"></td>'; 
+			$export .= '<td align="center"><img src="images/spacer.gif">&nbsp;</td>';
 		
 	}
 	$export .= "</tr>
@@ -150,9 +150,8 @@ if(empty($s_tournois)) js_goto("index.php");
 	for ($e = 1 ; $e <= $nb_row ; $e++) {
 		$finale = $nb_finales_winner;
 
-		//if($e==$nb_row_winner+1) echo "<tr colspan='".($nb_col+2)."'><td background=images/arbre_ligneH.gif align=center><img src=images/arbre_ligneH.gif></td></tr>";
-
-		$export .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';	
+		//$export .= '<table cellspacing="0" cellpadding="0" border="0">';
+		$export .= '<tr>';
 
 		// parcours par colonne du tableau
 		for ($f=1; $f < $nb_col/2+1; $f++) {
@@ -160,7 +159,6 @@ if(empty($s_tournois)) js_goto("index.php");
 			$finale=floor($finale);
 			//${"numero$finale"}='';
 			//echo $finale;
-
 			// WINNER
 			if($e<=$nb_row_winner) {
 				
@@ -174,10 +172,10 @@ if(empty($s_tournois)) js_goto("index.php");
 						// case match winner
 						$export .= '<td align="left">
 								<table cellspacing="0" cellpadding="0" border="0" width="100%">
-								<tr><td class="info" align="center">';						
+								<tr><td class="info" align="center">';
 						$id=id_match_finale('W',$finale,$numero,$s_tournois,$op,$status);
-						show_match_finale_exp($id,$op);						
-						$export .= "</td>";						
+                        $export .= show_match_finale_exp($id,$op);
+						$export .= "</td>";
 						
 						if ($numero %2 == 1 )
 							$export .= '<td background="images/arbre_ligneH.gif" style="background-repeat: repeat-x;background-position: bottom;" width=100%><img src="images/spacer.gif"></td>';
@@ -191,7 +189,7 @@ if(empty($s_tournois)) js_goto("index.php");
 						// calcul du tree (et du vaingeur si besoin est)
 						if($finale>1) {
 							if ($numero %2 == 1 )
-								$export .=  '<td background="images/arbre_coinhaut.gif" style="background-repeat: no-repeat;background-position: bottom;"><img src="images/spacer.gif"></td>';
+								$export .= '<td background="images/arbre_coinhaut.gif" style="background-repeat: no-repeat;background-position: bottom;"><img src="images/spacer.gif"></td>';
 							else 
 								$export .= '<td background="images/arbre_coinbas.gif" style="background-repeat: no-repeat;background-position: top;"><img src="images/spacer.gif"></td>';
 						}
@@ -288,7 +286,7 @@ if(empty($s_tournois)) js_goto("index.php");
 							$export .= '<table cellspacing="0" cellpadding="0" border="0" width="100%"><tr>';
 							$export .= '<td>';
 							$id=id_match_finale('L',$finale,$numero,$s_tournois,$op,$status);
-							show_match_finale_exp($id,$op);
+                            $export .= show_match_finale_exp($id,$op);
 							$export .= '</td>';
 							// end case match 1
 
@@ -297,7 +295,7 @@ if(empty($s_tournois)) js_goto("index.php");
 							 // case match looser 2
 							$export .= '<td align="left">';
 							$id=id_match_finale('L',$finale,$numero2,$s_tournois,$op,$status);
-							show_match_finale_exp($id,$op);
+                            $export .= show_match_finale_exp($id,$op);
 							$export .= '</td>';
 							
 							// end match
@@ -341,18 +339,17 @@ if(empty($s_tournois)) js_goto("index.php");
 			//$finale /= 2;
 			$finale=$finale/2;
 		}
-	
+		$export .= '</tr>';
+    }
 	$export .= '</table>';
 	$export .= '<!-- FIN DE LA GENERATION DE L\'ARBRE -->';
 
-}
+	if (!is_dir("include/export")) {
+		mkdir('include/export');
+	}
 
-//if(!file_exists("export/$s_tournois.php")){
-	fwrite( fopen("include/export/f_$s_tournois.html","w"), $export);
-   // fclose("export/$s_tournois.php");
-	//}else{
-	
-	//}
+	file_put_contents("include/export/f_$s_tournois.html", $export);
+
 	echo '<br><div align=""center>'.$strEXPORT_done.$s_tournois.'.html</div><br><br>'.$strEXPORT_done2.' <br><code>&lt;a href="?page=e&id=f_'.$s_tournois.'"&gt;'.$strEXPORT_name.'&lt;/a&gt;</code><br>';
-	//echo $export;
-?>
+	echo $export;
+

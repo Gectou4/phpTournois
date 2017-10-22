@@ -139,7 +139,7 @@ else {
     else echo "<p class=title>.:: $strResultatsFinales ::.</p>";
 
     if (!isset($status)) $status = '';
-    if (!isset($x)) $x = '';
+    if (!isset($x)) $x ='';
 
     // calcul global des parametres de l'arbre
     $nb_x_total = log($nb_finales_winner_tournois) / log(2);
@@ -269,21 +269,15 @@ else {
     echo '<table cellspacing="0" cellpadding="2" border="0">';
     echo '<tr>';
     echo "<td class=\"text\"><a href=\"?page=matchs_finales&x=0$op_str\"><img src=\"images/back.gif\" border=\"0\"><img src=\"images/back.gif\" border=\"0\"></a></td>";
-    echo "<td class=\"text\"><a href=\"?page=matchs_finales&x=" . ($x - 1) . "$op_str\"><img src=\"images/back.gif\" border=\"0\"></a></td>";
+    echo "<td class=\"text\"><a href=\"?page=matchs_finales&x=" . (((int)$x) - 1) . "$op_str\"><img src=\"images/back.gif\" border=\"0\"></a></td>";
     echo "<td class=\"header\"><small><a href=\"?page=matchs_finales$op_str\">$strTout</a></small></td>";
-    echo "<td class=\"text\"><a href=\"?page=matchs_finales&x=" . ($x + 1) . "$op_str\"><img src=\"images/next.gif\" border=\"0\"></a></td>";
+    echo "<td class=\"text\"><a href=\"?page=matchs_finales&x=" . (((int)$x) + 1) . "$op_str\"><img src=\"images/next.gif\" border=\"0\"></a></td>";
     echo "<td class=\"text\"><a href=\"?page=matchs_finales&x=" . $nb_x_total . "$op_str\"><img src=\"images/next.gif\" border=\"0\"><img src=\"images/next.gif\" border=\"0\"></a></td>";
     echo '</tr>';
     echo '</table>';
 
     echo '<img src="images/story-7px.gif" width="7" height="7"><br>';
 
-    /*echo '<table cellspacing="0" cellpadding="0" border="0">';
-    echo '<tr>';
-     if($x>0) echo "<td class=\"navigation_arbre_gauche\" onclick=\"document.location='?page=matchs_finales&x=".($x-1)."$op_str'\">&nbsp;&nbsp;</TD>";
-      else echo '<td>&nbsp;</td>';
-
-    echo '<td>';*/
     echo '<table cellspacing="0" cellpadding="0" border="0">';
     echo '<tr>';
 
@@ -323,8 +317,6 @@ else {
     // parcours par ligne du tableau
     for ($e = 1; $e <= $nb_row; $e++) {
         $finale = $nb_finales_winner;
-
-        //if($e==$nb_row_winner+1) echo "<tr colspan='".($nb_col+2)."'><td background=images/arbre_ligneH.gif align=center><img src=images/arbre_ligneH.gif></td></tr>";
 
         echo '<tr>';
 
@@ -500,6 +492,7 @@ else {
             //$finale /= 2;
             $finale = $finale / 2;
         }
+        echo '</tr>';
     }
     echo '</table>';
     /*echo '</td>';

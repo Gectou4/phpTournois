@@ -461,9 +461,9 @@ function nom_equipe($id)
     $db->from("${dbprefix}equipes");
     $db->where("id = $id");
     $res = $db->exec();
-    $equipe = $db->fetch($res);
+    $equipe = $db->fetch_array($res);
 
-    return $equipe->nom;
+    return $equipe['nom'];
 }
 
 function tag_equipe($id)
@@ -476,9 +476,9 @@ function tag_equipe($id)
     $db->from("${dbprefix}equipes");
     $db->where("id = $id");
     $res = $db->exec();
-    $equipe = $db->fetch($res);
+    $equipe = $db->fetch_array($res);
 
-    return $equipe->tag;
+    return $equipe['tag'];
 }
 
 function id_equipe($tag)
@@ -489,10 +489,10 @@ function id_equipe($tag)
     $db->from("${dbprefix}equipes");
     $db->where("tag = '$tag'");
     $res = $db->exec();
-    $equipe = $db->fetch($res);
+    $equipe = $db->fetch_array($res);
 
-    if (!$equipe->id) return 0;
-    else return $equipe->id;
+    if (!$equipe['id']) return 0;
+    else return $equipe['id'];
 }
 
 function joueur($id)
@@ -505,28 +505,27 @@ function joueur($id)
     $db->from("${dbprefix}joueurs");
     $db->where("id = $id");
     $res = $db->exec();
-    $joueur = $db->fetch($res);
+    $joueur = $db->fetch_array($res);
 
     $avatar_img = '';
 
-    if ($joueur->avatar_type != 'N') {
-
-        switch ($joueur->avatar_type) {
+    if ($joueur['avatar_type'] != 'N') {
+        switch ($joueur['avatar_type']) {
             case 'U':
-                $avatar_img = ($config['avatar_upload']) ? "<img src=\"./images/avatars/$joueur->avatar\" alt=\"\" style=\"border: 1px solid #000000;padding: 1px;\">" : '';
+                $avatar_img = ($config['avatar_upload']) ? "<img src=\"./images/avatars/{$joueur['avatar']}\" alt=\"\" style=\"border: 1px solid #000000;padding: 1px;\">" : '';
                 break;
             case 'R':
-                $avatar_img = ($config['avatar_remote']) ? "<img src=\"$joueur->avatar\" alt=\"\" style=\"border: 1px solid #000000;padding: 1px;\">" : '';
+                $avatar_img = ($config['avatar_remote']) ? "<img src=\"{$joueur['avatar']}\" alt=\"\" style=\"border: 1px solid #000000;padding: 1px;\">" : '';
                 break;
             case 'G':
-                $avatar_img = ($config['avatar_gallerie']) ? "<img src=\"./images/avatars/gallerie/$joueur->avatar\" alt=\"\" style=\"border: 1px solid #000000;padding: 1px;\">" : '';
+                $avatar_img = ($config['avatar_gallerie']) ? "<img src=\"./images/avatars/gallerie/{$joueur['avatar']}\" alt=\"\" style=\"border: 1px solid #000000;padding: 1px;\">" : '';
                 break;
         }
-        if ((!file_exists($avatar_img) && !$joueur->avatar_type == 'R') || (!$joueur->avatar && $joueur->avatar_type != 'N'))
+        if ((!file_exists($avatar_img) && !$joueur['avatar_type'] == 'R') || (!$joueur['avatar'] && $joueur['avatar_type'] != 'N'))
             $avatar_img = '<img src="./images/avatars/unknown.gif" alt="" style="border: 1px solid #000000;padding: 1px;">';
     }
 
-    $joueur->avatar_img = $avatar_img;
+    $joueur['avatar_img'] = $avatar_img;
 
     return $joueur;
 }
@@ -541,28 +540,28 @@ function equipe($id)
     $db->from("${dbprefix}equipes");
     $db->where("id = $id");
     $res = $db->exec();
-    $equipe = $db->fetch($res);
+    $equipe = $db->fetch_array($res);
 
     $avatar_img = '';
 
-    if ($equipe->avatar_type != 'N') {
+    if ($equipe['avatar_type'] != 'N') {
 
-        switch ($equipe->avatar_type) {
+        switch ($equipe['avatar_type']) {
             case 'U':
-                $avatar_img = ($config['avatar_upload']) ? "<img src=\"./images/avatars/$equipe->avatar\" alt=\"\" style=\"border: 1px solid #000000;padding: 1px;\">" : '';
+                $avatar_img = ($config['avatar_upload']) ? "<img src=\"./images/avatars/{$equipe['avatar']}\" alt=\"\" style=\"border: 1px solid #000000;padding: 1px;\">" : '';
                 break;
             case 'R':
-                $avatar_img = ($config['avatar_remote']) ? "<img src=\"$equipe->avatar\" alt=\"\" style=\"border: 1px solid #000000;padding: 1px;\">" : '';
+                $avatar_img = ($config['avatar_remote']) ? "<img src=\"{$equipe['avatar']}\" alt=\"\" style=\"border: 1px solid #000000;padding: 1px;\">" : '';
                 break;
             case 'G':
-                $avatar_img = ($config['avatar_gallerie']) ? "<img src=\"./images/avatars/gallerie/$equipe->avatar\" alt=\"\" style=\"border: 1px solid #000000;padding: 1px;\">" : '';
+                $avatar_img = ($config['avatar_gallerie']) ? "<img src=\"./images/avatars/gallerie/{$equipe['avatar']}\" alt=\"\" style=\"border: 1px solid #000000;padding: 1px;\">" : '';
                 break;
         }
-        if ((!file_exists($avatar_img) && !$equipe->avatar_type == 'R') || (!$equipe->avatar && $equipe->avatar_type != 'N'))
+        if ((!file_exists($avatar_img) && !$equipe['avatar_type'] == 'R') || (!$equipe['avatar'] && $equipe['avatar_type'] != 'N'))
             $avatar_img = '<img src="./images/avatars/unknown.gif" alt="" style="border: 1px solid #000000;padding: 1px;">';
     }
 
-    $equipe->avatar_img = $avatar_img;
+    $equipe['avatar_img'] = $avatar_img;
 
     return $equipe;
 }
@@ -581,8 +580,8 @@ function equipes_joueur($joueur)
     $db->order_by('tag');
     $res = $db->exec();
 
-    while ($equipe = $db->fetch($res)) {
-        $equipes[] = array("nom" => $equipe->nom, "tag" => $equipe->tag, "id" => $equipe->id, "origine" => $equipe->origine);
+    while ($equipe = $db->fetch_array($res)) {
+        $equipes[] = array("nom" => $equipe['nom'], "tag" => $equipe['tag'], "id" => $equipe['id'], "origine" => $equipe['origine']);
     }
     return $equipes;
 }
@@ -602,7 +601,7 @@ function equipes_manager($joueur)
     $res = $db->exec();
 
     while ($equipe = $db->fetch($res)) {
-        $equipes[] = array("nom" => $equipe->nom, "tag" => $equipe->tag, "id" => $equipe->id, "origine" => $equipe->origine);
+        $equipes[] = array("nom" => $equipe['nom'], "tag" => $equipe['tag'], "id" => $equipe['id'], "origine" => $equipe['origine']);
     }
     return $equipes;
 }
@@ -694,7 +693,7 @@ function show_joueur($id, $op = '', $status = '', $seed = 10000, $align = 'left'
 
     if (!$id) return;
 
-    $joueur = joueur($id);
+    $joueur = (object) joueur($id);
 
     if ($seed && $seed != 10000)
         $seed = "(#$seed)";
@@ -715,8 +714,8 @@ function show_joueur($id, $op = '', $status = '', $seed = 10000, $align = 'left'
         $onclick = '';
     }
 
-    $pseudo = stripslashes($joueur->pseudo);
 
+    $pseudo = stripslashes($joueur->pseudo);
     if ($align == 'right') {
         if ($status == 'F')
             return "<span class=\"warning\">$strForfait</span> $seed <a href=\"$href\" $onclick><strike><span class=\"$class\">$pseudo</span></strike></a> $img";
@@ -780,7 +779,8 @@ function show_equipe($id, $op = '', $status = '', $seed = 10000, $align = 'left'
 
     if (!$id) return;
 
-    $equipe = equipe($id);
+    $equipe = (object) equipe($id);
+    $href= '';
 
     if ($seed && $seed != 10000)
         $seed = "(#$seed)";
@@ -791,7 +791,7 @@ function show_equipe($id, $op = '', $status = '', $seed = 10000, $align = 'left'
     else $op = '';
 
     if ($equipe->origine)
-        $img = "<img src=\"images/flags/$equipe->origine.gif\" border=\"0\" align=\"absmiddle\" alt=\"$equipe->origine\">";
+        $img = "<img src=\"images/flags/{$equipe->origine}.gif\" border=\"0\" align=\"absmiddle\" alt=\"{$equipe->origine}\">";
 
     if ($header == 'win') {
         $href = '#';
@@ -1019,53 +1019,37 @@ function show_match_finale($id, $op = '')
 
 function show_match_finale_exp($id, $op = '')
 {
-    global $db, $dbprefix, $s_joueur;
-    global $strCache, $strActif, $strEnCours, $strValidation, $strConflit, $strTermine, $grade;
+    global $s_joueur, $strCache, $strActif, $strEnCours, $strValidation, $strConflit, $strTermine, $grade;
 
-    $match = match($id);
-
-    /*** verification securite ***/
-    //if($op=='admin') verif_admin_tournois($s_joueur,$match->tournois);
-    if ($op == "admin") verif_admin_tournois($s_joueur, $match->tournois, $grade['a'], $grade['b'], $grade['t']);
-
+    $match = (object) match($id);
     /*** récupération des infos ***/
     $seed1 = seed($match->equipe1, $match->tournois);
     $seed2 = seed($match->equipe2, $match->tournois);
     $modeequipe_tournois = modeequipe_tournois($match->tournois);
-    $modescore_tournois = modescore_tournois($match->tournois);
 
-    if ($modeequipe_tournois == 'E') $show = "show_equipe";
+    if ($modeequipe_tournois === 'E') $show = "show_equipe";
     else $show = "show_joueur";
 
     if ($op) $op_str = "&op=$op";
     else $op_str = '';
 
-    if ($match->status == "C") $title = $strCache;
-    if ($match->status == "A") $title = $strActif;
-    if ($match->status == "D") $title = $strEnCours;
-    if ($match->status == "V") $title = $strValidation;
-    if ($match->status == "F") $title = $strConflit;
-    if ($match->status == "T") $title = $strTermine;
+    if ($match->status === "C") $title = $strCache;
+    if ($match->status === "A") $title = $strActif;
+    if ($match->status === "D") $title = $strEnCours;
+    if ($match->status === "V") $title = $strValidation;
+    if ($match->status === "F") $title = $strConflit;
+    if ($match->status === "T") $title = $strTermine;
 
     $ret_exp = '<table cellspacing="0" cellpadding="0" border="0"><tr><td>';
 
     // info du match
     $ret_exp .= '<table cellspacing="0" cellpadding="0" border="0">';
-    if ($op == 'admin') {
-        $ret_exp .= "<tr valign=\"center\"><td class=\"info\" align=\"center\">$match->status</td></tr>";
-        $hauteur = 400;
-    } else
-        $hauteur = 300;
+    $hauteur = 300;
 
     $ret_exp .= "<tr valign=\"center\"><td class=\"info\" align=\"center\">";
     if ($match) $ret_exp .= "<input type=\"radio\" name=\"match\" value=\"$match->id\" onclick=\"javascript:ouvrir_fenetre('?page=matchs_gestion$op_str&id=$match->id&header=win','match',$hauteur,500)\" style=\"border: 0px;background-color:transparent;\" title=\"$title\">";
     else $ret_exp .= "<input type=\"radio\" name=\"match_off\" disabled>";
     $ret_exp .= "</td></tr>";
-
-
-    if ($op == 'admin' && ($match->status == 'C' || $match->status == 'A' || ($match->status == 'D' && ($modescore_tournois == 'M4' || $modescore_tournois == 'AB'))))
-        $ret_exp .= "<tr valign=\"center\"><td class=\"info\" align=\"center\"><input type=\"checkbox\" name=\"tab_matches[]\" value=\"$match->id\" style=\"border: 0px;background-color:transparent;\"></td></tr>";
-
     $ret_exp .= '</table>';
 
     $ret_exp .= '</td><td>';
@@ -1088,12 +1072,12 @@ function show_match_finale_exp($id, $op = '')
     /** manche en cours **/
     $mancheactive = manche_active($match->id);
 
+    $map = '';
     if ($mancheactive->map && ($match->status == 'D')) {
         $map = "- $mancheactive->map";
 
         if (nb_manches($match->id) > 1) $map .= " - $match->score1_manche:$match->score2_manche";
-
-    } else $map = '';
+    }
 
     /** date **/
     $date_now = time();
@@ -1112,9 +1096,11 @@ function show_match_finale_exp($id, $op = '')
     // ekip2
     $ret_exp .= '<tr height="20" valign="middle">';
     $ret_exp .= '<td class="text" width="120">';
+
     if ($match->statusequipe == 'F2') $ret_exp .= $show($match->equipe2, $op, 'F', $seed2);
     elseif ($match->statusequipe == 'D2') $ret_exp .= $show($match->equipe2, $op, 'D', $seed2);
     else $ret_exp .= $show($match->equipe2, $op, '', $seed2);
+
     $ret_exp .= '</td>';
     $ret_exp .= show_score2($match->score1, $match->score2, $match->frags1, $match->frags2, $match->type, $match->status, $match->statusequipe, $match->modematchscore);
     $ret_exp .= '</tr>';
@@ -2282,8 +2268,8 @@ function nb_tournois_equipe($id)
     $db->group_by("equipe");
     $db->exec();
     $equipe = $db->fetch();
-    if (!$equipe->nbtournois) return 0;
-    else return $equipe->nbtournois;
+    if (!$equipe['nbtournois']) return 0;
+    else return $equipe['nbtournois'];
 }
 
 function nb_joueurs_equipe($id, $etat = '', $jeu = '')
@@ -2301,8 +2287,8 @@ function nb_joueurs_equipe($id, $etat = '', $jeu = '')
     $db->group_by("equipe");
     $db->exec();
     $equipe = $db->fetch();
-    if (!$equipe->nbjoueurs) return 0;
-    else return $equipe->nbjoueurs;
+    if (!$equipe['nbjoueurs']) return 0;
+    else return $equipe['nbjoueurs'];
 }
 
 function nb_equipes_joueur($id)

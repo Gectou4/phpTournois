@@ -269,7 +269,7 @@ elseif ($op == "admin") {
 
         if ($db->num_rows($res) != 0) {
             $i = 0;
-            while ($participant = $db->fetch($res)) {
+            while ($participant = $db->fetch($res)) {// all fetch to ARRAY
                 $tab_participants[$i] = $participant;
                 $i++;
             }
@@ -344,7 +344,7 @@ elseif ($op == "admin") {
                 for ($j = $i; $j < count($tab_participants); $j = $j + $config['col_' . $equipesX]) {
                     echo "<tr>";
                     echo "<td class=textliste align=center>" . $tab_participants[$j]->id . "</td>";
-                    echo "<td class=textliste width=120>" . $show($tab_participants[$j]->id, $op) . "</td>";
+                    echo "<td class=textliste width=120>" .$show($tab_participants[$j]->id, $op) . "</td>";
 
                     if ($tab_participants[$j]->seed && $tab_participants[$j]->seed != 10000) echo "<td class=textliste align=center>#" . $tab_participants[$j]->seed . "</td>";
                     else echo "<td class=textliste></td>";

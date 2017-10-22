@@ -36,10 +36,10 @@ if (preg_match('`config.ab.php`i', $_SERVER['PHP_SELF'])) {
 
 /***************************************/
 /*** AdminBot-MX DATABASE ***/
-$abdbhost = 'localhost';
-$abdbuser = 'root';
+$abdbhost = '';
+$abdbuser = '';
 $abdbpass = '';
-$abdbname = 'adminbot';
+$abdbname = '';
 $abdbdebug = 1;
 $aburl = '';
 $aburle = 'mr15';

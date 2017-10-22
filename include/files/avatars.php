@@ -263,7 +263,7 @@ if ($op == "modify") {
     if ((!empty($avatar_upload) || !empty($avatar_name)) && $config['avatar_upload']) {
 
         if (!empty($avatar_upload)) {
-            $avatar_sql = avatar_upload($avatar_mode, $ficheX->avatar, $ficheX->avatar_type, $avatar_upload, $avatar_name, $avatar_size, $avatar_filetype, $avatar_error);
+            $avatar_sql = avatar_upload($avatar_mode, $ficheX['avatar'], $ficheX['avatar_type'], $avatar_upload, $avatar_name, $avatar_size, $avatar_filetype, $avatar_error);
         } elseif (!empty($avatar_name)) {
             $avatar_error = true;
             show_erreur($strAvatarErreurFileSize);
@@ -271,15 +271,15 @@ if ($op == "modify") {
     } /*** si l'avatar est de type REMOTE ***/
     elseif ($avatar_remoteurl != '' && $config['avatar_remote']) {
 
-        if (@file_exists($config['avatars_path'] . '/' . $ficheX->avatar)) {
-            @unlink($config['avatars_path'] . '/' . $ficheX->avatar);
+        if (@file_exists($config['avatars_path'] . '/' . $ficheX['avatar'])) {
+            @unlink($config['avatars_path'] . '/' .$ficheX['avatar']);
         }
         $avatar_sql = avatar_url($avatar_remoteurl, $avatar_error);
     } /*** si l'avatar est de type GALLERIE ***/
     elseif ($avatar_gallerie != '' && $config['avatar_gallerie']) {
 
-        if (@file_exists($config['avatars_path'] . '/' . $ficheX->avatar)) {
-            @unlink($config['avatars_path'] . '/' . $ficheX->avatar);
+        if (@file_exists($config['avatars_path'] . '/' . $ficheX['avatar'])) {
+            @unlink($config['avatars_path'] . '/' . $ficheX['avatar']);
         }
 
         $avatar_sql = avatar_gallery($avatar_gallerie);
@@ -306,7 +306,7 @@ if ($op == "modify") {
  */
 elseif ($op == "delete") {
 
-    $avatar_sql = avatar_delete($ficheX->avatar_type, $ficheX->avatar);
+    $avatar_sql = avatar_delete($ficheX['avatar_type'], $ficheX['avatar']);
 
     $db->update("${dbprefix}$type");
     $db->set("$avatar_sql");
@@ -427,8 +427,8 @@ else {
     echo "<table cellspacing=0 cellpadding=3 border=0 width=100%>";
     echo "<form method=post action=?page=avatars&op=modify enctype=\"multipart/form-data\">";
 
-    if ($ficheX->avatar_img) {
-        echo "<tr><td class=textfiche colspan=4 align=center>$ficheX->avatar_img";
+    if ($ficheX['avatar_img']) {
+        echo "<tr><td class=textfiche colspan=4 align=center>{$ficheX['avatar_img']}";
         echo "<br><input type=button class=action value=\"$strEffacer\" onclick=\"confirm('$strConfirmEffacerAvatar');location.href='?page=avatars&op=delete&id=$id&mode=$mode'\">";
         echo "</td></tr>";
     }

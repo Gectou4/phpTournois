@@ -690,7 +690,7 @@ elseif ($stage == 3) {
         if (!$fd = @fopen($filename, "a+")) {
             $erreur = 1;
             show_erreur("$strOuvertureInvalideConfigFile : $filename");
-        } elseif (!fputs($fd, "define('PHPTOURNOIS_INSTALLED',true);")) {
+        } elseif (!fputs($fd, "define('PHPTOURNOIS_INSTALLED',true);define('PHPTOURNOIS_DEV',false);")) {
             $erreur = 1;
             show_erreur("$strEcritureInvalideConfigFile : $filename");
         } else {
@@ -702,15 +702,17 @@ elseif ($stage == 3) {
         echo "pensez à visiter les forum phpTournois http://forum.phptournois.net/ !";
 
         /** tentative d'effacage **/
-        @unlink('install.php');
-        if (is_file('install.php')) show_warning("$strInstallStage3DelInstall<br>");
-        @unlink('update.php');
-        if (is_file('update.php')) show_warning("$strInstallStage3Delupdatel<br>");
-        if (!file_exists("g4.g4")) {
-            try {
-                fwrite(fopen("g4.g4", "w"), "phpTG4 installed");
-            } catch (Exception $e) {
-                echo "can't create g4.g4 files on root to prevent install exploit";
+        if (!defined('PHPTOURNOIS_DEV') or !PHPTOURNOIS_DEV) {
+            @unlink('install.php');
+            if (is_file('install.php')) show_warning("$strInstallStage3DelInstall<br>");
+            @unlink('update.php');
+            if (is_file('update.php')) show_warning("$strInstallStage3Delupdatel<br>");
+            if (!file_exists("g4.g4")) {
+                try {
+                    fwrite(fopen("g4.g4", "w"), "phpTG4 installed");
+                } catch (Exception $e) {
+                    echo "can't create g4.g4 files on root to prevent install exploit";
+                }
             }
         }
 

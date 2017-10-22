@@ -19,6 +19,14 @@ JS, PHP, HTML et CSS ont vue le jours, d'autre CMS et produits open source.
 phpTournois est tout de même compatible jusqu'en PHP 7. Cependant nous recommandons
 un usage le plus limité possible et le plus possible en LAN. Le temps qu'un jours il soit revue entièrement.
 
+Instalation
+==================
+Requiert une base de donnée déjà créée.
+
+Ex pour Mysql, une base "phptournois".
+Uploader les fichiers dans un dossier Web d'un serveur PHP.
+Rendez-vous sur l'url et suivez l'instalation pas à pas.
+
 Team
 ==================
 
