@@ -84,7 +84,7 @@ if ($db->num_rows($sponsors) != 0) {
 	$str='';
 	echo "var g_asponsors = new Array(";
 
-	while ($sponsor = $db->fetch($sponsors)) {
+	while ($sponsor = (object) $db->fetch($sponsors)) {
 
 		$img="images/sponsors/$sponsor->image";
 		$str.= "new Array('$sponsor->nom','$img','?page=sponsors&id=$sponsor->id'),";
@@ -489,24 +489,24 @@ else {
 		}
 		else {
 
-			while($sponsor = $db->fetch($sponsors)) {
+			while($sponsor = $db->fetch_array($sponsors)) {
 				$tab_sponsors[]=$sponsor;
 			}
 		
 			echo "<table cellspacing=0 cellpadding=0 border=0 class=liste><tr valign=top><td>";
 			echo "<table cellspacing=10 cellpadding=2 border=0>";
 
-			for($i=0;$i<count($tab_sponsors);$i++) {
+			for($i=0,$max=count($tab_sponsors);$i<$max;$i++) {
 				if($i%$config['col_sponsors'] == 0) echo "<tr>";
 
-				$sponsor->nom=stripslashes($tab_sponsors[$i]->nom);
+                $tab_sponsors[$i]['nom']=stripslashes($tab_sponsors[$i]['nom']);
 				echo "<td height=100% align=center>";
 				echo "<table cellspacing=0 cellpadding=0 border=0 height=100% >";
 				echo "<tr>";
-				echo "<td class=text2 align=center height=100%><a href=\"?page=sponsors&id=".$tab_sponsors[$i]->id."\"><img border=0 src=\"images/sponsors/".$tab_sponsors[$i]->image."\" title=\"".$tab_sponsors[$i]->nom."\"></a></td>";
+				echo "<td class=text2 align=center height=100%><a href=\"?page=sponsors&id=".$tab_sponsors[$i]['id']."\"><img border=0 src=\"images/sponsors/".$tab_sponsors[$i]['image']."\" title=\"".$tab_sponsors[$i]['nom']."\"></a></td>";
 				echo "</tr>";
 				echo "<tr>";
-				echo "<td class=text2 valign=bottom align=center><li class=lib><b>$sponsor->nom</b><br>";
+				echo "<td class=text2 valign=bottom align=center><li class=lib><b>".$tab_sponsors[$i]['nom']."</b></li><br>";
 				echo "</td>";
 				echo "</tr></table>";
 				echo "</td>";
