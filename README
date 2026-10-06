@@ -22,42 +22,42 @@
   +--------------------------------------------------------------------------+
    
 
-phpTournois est un outil sous licence GPL d'aide à l'organisation de tournois 
-divers, plus spécialisé cependant dans les tournois de jeux vidéo en LAN ou 
+phpTournois est un outil sous licence GPL d'aide Ã  l'organisation de tournois 
+divers, plus spÃ©cialisÃ© cependant dans les tournois de jeux vidÃ©o en LAN ou 
 online. 
 
-L'intégration de MatchMod (dJeyL.net) et de AdminBot-MX (neXen.org) permet de 
-lancer et de récupérer directement les matchs Counter-Strike sur les serveurs 
-avec la map et les paramètres voulus.
+L'intÃ©gration de MatchMod (dJeyL.net) et de AdminBot-MX (neXen.org) permet de 
+lancer et de rÃ©cupÃ©rer directement les matchs Counter-Strike sur les serveurs 
+avec la map et les paramÃ¨tres voulus.
 
 Voici la grande famille phpTournois:
 
-Team Développement:
+Team DÃ©veloppement:
 -Li0n (code leader),
 -RV (project leader),
 
 Version phpTG4:
 -Gectou4 
 
-Team Béta-testeurs:
--Killercool (béta-testeur ++),
--S4ruman (béta-testeur),
--Fatboy (béta-testeur),
+Team BÃ©ta-testeurs:
+-Killercool (bÃ©ta-testeur ++),
+-S4ruman (bÃ©ta-testeur),
+-Fatboy (bÃ©ta-testeur),
 
 Contributeurs:
 -Ben64 (M. Algo),
--Nono (M4 intégrat0r),
+-Nono (M4 intÃ©grat0r),
 -Florian95 (multi-addons),
--Gimlur, PsYcO, OlyM4rs (idées et soutient).
+-Gimlur, PsYcO, OlyM4rs (idÃ©es et soutient).
 
-Nous sommes ouvert à toutes formes de contribution (comme des packs de langages 
+Nous sommes ouvert Ã  toutes formes de contribution (comme des packs de langages 
 ou des aides en ligne), pour cela il suffit de prendre contact avec nous: 
 contact@phptournois.com
 
-Vous pouvez aussi nous faire part de vos idées sur le forum, nous sommes à votre
-écoute: http://forum.phpTournois.com et par IRC sur Quakenet: #phpTournois
+Vous pouvez aussi nous faire part de vos idÃ©es sur le forum, nous sommes Ã  votre
+Ã©coute: http://forum.phpTournois.com et par IRC sur Quakenet: #phpTournois
 
 Merci d'utiliser phpTournois!!
 Have Fun !
 
-L'équipe phpTournois.
+L'Ã©quipe phpTournois.
