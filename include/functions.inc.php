@@ -1828,7 +1828,7 @@ function calcul_finales($id)
 					echo "equipe gagnante: $equipe_g<BR>";
 					echo "next final: 1/$next_finale W <BR>";
 					echo "next N°: $next_no<BR>";
-					echo "next pos�: $next_pos<BR>";
+					echo "next pos°: $next_pos<BR>";
 					*/
 
                     $next_id = id_match_finale('W', $next_finale, $next_no, $s_tournois, 'admin');
@@ -1850,7 +1850,7 @@ function calcul_finales($id)
                     /*echo "equipe perdante: $equipe_p<BR><BR>";
 					echo "next final: 1/$next_finale L<BR>";
 					echo "next N°: $next_no<BR>";
-					echo "next pos�: $next_pos<BR>";
+					echo "next pos°: $next_pos<BR>";
 					*/
 
                     $next_id = id_match_finale('L', $next_finale, $next_no, $s_tournois, 'admin');
@@ -1870,7 +1870,7 @@ function calcul_finales($id)
                     /*echo "equipe perdante: $equipe_p<BR><BR>";
 					echo "next final: 1/$next_finale L<BR>";
 					echo "next N°: $next_no<BR>";
-					echo "next pos�: $next_pos<BR>";
+					echo "next pos°: $next_pos<BR>";
 					*/
 
                     $next_id = id_match_finale('L', $next_finale, $next_no, $s_tournois, 'admin');
@@ -1896,7 +1896,7 @@ function calcul_finales($id)
                         /*echo "equipe gagnante: $equipe_g<BR>";
 						echo "next final: 1/$next_finale L <BR>";
 						echo "next N°: $next_no<BR>";
-						echo "next pos�: $next_pos<BR>";
+						echo "next pos°: $next_pos<BR>";
 						*/
 
                         $next_id = id_match_finale('L', $next_finale, $next_no, $s_tournois, 'admin');
@@ -1916,7 +1916,7 @@ function calcul_finales($id)
                         /*echo "equipe gagnante: $equipe_g<BR>";
 						echo "next final: 1/$next_finale L <BR>";
 						echo "next N°: $next_no<BR>";
-						echo "next pos�: $next_pos<BR>";
+						echo "next pos°: $next_pos<BR>";
 						*/
 
                         $next_id = id_match_finale('L', $next_finale, $next_no, $s_tournois, 'admin');
@@ -2865,15 +2865,15 @@ function subing($texte)
 // Le terme BBCode est la propriété de phpBB : http://www.phpBB.com/
 //
 // Ce code est protégé par les lois sur la propriété intellectuelle et
-// ne peut �tre vendu ni utilisé a des fins commerciales.
-// Il doit �tre redistribué gratuitement, et toute modification lors de
-// sa diffusion doit �tre signalée dans l'ent�te du code.
+// ne peut être vendu ni utilisé a des fins commerciales.
+// Il doit être redistribué gratuitement, et toute modification lors de
+// sa diffusion doit être signalée dans l'entête du code.
 
 
-// Appelé � l'ouverture d'un tag XML
+// Appelé à l'ouverture d'un tag XML
 function startTag($parser, $name, $att)
 {
-    // On récup�res les tableaux
+    // On récupères les tableaux
     global $bbTags;
     global $htmlTags;
     global $xmlstack;
@@ -2887,15 +2887,15 @@ function startTag($parser, $name, $att)
             // On rajoute le tag aux tags BBCode
             array_push($bbTags, $curtag);
             // Pour différencier les comportements avec parametre et
-            // sans param�tre, on rajoute un identifiant -param
+            // sans paramètre, on rajoute un identifiant -param
             if ($att["PARAM"] == "yes") {
                 $curtag .= "-param";
             }
             // Le tag courant est initialisé
             $xmlcurtag = $curtag;
-            // On crée une entrée dans les param�tres HTML du tag
-            //  - close : Dit si le tag doit �tre fermé
-            //  - parent : Dit si le tag doit obligatoirement �tre imbriqué
+            // On crée une entrée dans les paramètres HTML du tag
+            //  - close : Dit si le tag doit être fermé
+            //  - parent : Dit si le tag doit obligatoirement être imbriqué
             //             dans un autre
             //  - keep : Sit si on conserve le texte contenu entre le tag d'ouverture
             //           et le tag de fermeture
@@ -2912,7 +2912,7 @@ function startTag($parser, $name, $att)
     }
 }
 
-// Appelé � la fermeture d'un tag XML
+// Appelé à la fermeture d'un tag XML
 function endTag($parser, $name)
 {
     global $xmlstack;
@@ -2930,7 +2930,7 @@ function cdataTag($parser, $data)
     // Recupere la pile de tags XML ouverts
     global $xmlstack;
     global $xmlcurtag;
-    // Récup�re les données HTML
+    // Récupère les données HTML
     global $htmlTags;
     // Si c'est le remplacement du tag d'ouverture
     // on renseigne la propriété "begin" des données HTML
@@ -2944,14 +2944,14 @@ function cdataTag($parser, $data)
     }
 }
 
-// Fonction pouvant servir � retourner une chaine identique
+// Fonction pouvant servir à retourner une chaine identique
 function identity($str)
 {
     return $str;
 }
 
-// Récup�re les données BBCode a partir d'un fichier XML dont
-// le chemin est donné en param�tre
+// Récupère les données BBCode a partir d'un fichier XML dont
+// le chemin est donné en paramètre
 function getBBTags($fil)
 {
 
@@ -2990,21 +2990,21 @@ function parseBBTags(&$str)
     $result = Array();
     // Stack est un pile contenant les tags ouverts
     $stack = Array();
-    // On géN°re la chaine de caract�re a rechercher
-    // On concat�ne les valeurs du tableau bbTags
+    // On génère la chaine de caractère a rechercher
+    // On concatène les valeurs du tableau bbTags
     // avec un operateur "ou" : |
     $srch = "";
     for ($i = 0; $i < count($bbTags); $i++) {
         $srch .= preg_quote($bbTags[$i]) . "|";
     }
-    // On enl�ve le dernier |
+    // On enlève le dernier |
     $srch = substr($srch, 0, -1);
-    // je rajoute les crochets � ma recherche, et le texte qui suit jusqu'au prochain tag
+    // je rajoute les crochets à ma recherche, et le texte qui suit jusqu'au prochain tag
     $srchall = "\[(/)?(" . $srch . ")(=(?:.*?))?\](.*?)(?=(?:\[(/)?(" . $srch . ")(=(?:.*?))?\])|$)";
-    // Je récup�re ma chaine en "morceaux" de la regexp
+    // Je récupère ma chaine en "morceaux" de la regexp
     preg_match_all("#" . $srchall . "#is", $str, $result);
-    // Je récup�re le texte du début de la chaine jusqu'au premier tag
-    // et j'initialise la chaine qui va �tre retournée : $ret
+    // Je récupère le texte du début de la chaine jusqu'au premier tag
+    // et j'initialise la chaine qui va être retournée : $ret
     $begin = Array();
     if (preg_match("#^(.*?)(?=(?:\[(/)?(" . $srch . ")(=(?:.*?))?\])|$)#is", $str, $begin)) {
         $ret = $begin[1];
@@ -3016,7 +3016,7 @@ function parseBBTags(&$str)
     //  0 : colonne contenant les exepressions trouvées
     //  1 : Barre de fermeture (si elle existe)
     //  2 : Nom du tag (b, u, etc...)
-    //  3 : Param�tre du tag (avec un '=' au debut)
+    //  3 : Paramètre du tag (avec un '=' au debut)
     //  4 : Texte qui suit le tag (jusqu'au prochain)
     $norender = 0;
     for ($i = 0; $i < count($result[1]); $i++) {
@@ -3031,11 +3031,11 @@ function parseBBTags(&$str)
             // partant du dernier tag ouvert puis en remontant la pile
             for ($k = count($stack) - 1; $k >= 0; $k--) {
                 $lastTag = $stack[$k];
-                // Si le tag ouvert est le m�me que celui que je ferme,
+                // Si le tag ouvert est le même que celui que je ferme,
                 // J'attribue a mon tag de fermeture le meme id
                 // que le tag ouvrant et j'arrete la boucle
                 if ($lastTag["tag"] == $curTag["tag"]) {
-                    // Si le tag est ouvert, je regarde s'il peut �tre fermé
+                    // Si le tag est ouvert, je regarde s'il peut être fermé
                     // Si c'est le cas, je donne l'identifiant du tag d'ouverture
                     // au tag de fermeture
                     if ($lastTag["canclose"]) {
@@ -3043,7 +3043,7 @@ function parseBBTags(&$str)
                     }
                     // Je supprime le tag d'ouverture de la pile
                     array_splice($stack, $k, 1);
-                    // Si c'était un tag qui ep�mchait le parsage des BBCode
+                    // Si c'était un tag qui epêmchait le parsage des BBCode
                     // de son contenu, je diminue le nombre de tag de "non-rendu".
                     if ($htmlTags[$curTag["tag"]]["render"] == "no") {
                         $norender--;
@@ -3052,7 +3052,7 @@ function parseBBTags(&$str)
                     break;
 
                     // Sinon, c'est un chevauchement de tag, le tag courant
-                    // ne pourra pas �tre fermé.
+                    // ne pourra pas être fermé.
                 } else {
                     $stack[$k]["canclose"] = false;
                 }
@@ -3060,16 +3060,16 @@ function parseBBTags(&$str)
 
             // Si c'est un tag d'ouverture
         } else {
-            // S'il a besoin d'�tre ferme, je lui crée un identifiant unique
+            // S'il a besoin d'être ferme, je lui crée un identifiant unique
             // de longueur 10 (ca devrait suffire)
             if ($htmlTags[$curTag["tag"]]["close"] != "no") {
-                // Je géN°re un ID aléatoire et je l'attribue
+                // Je génère un ID aléatoire et je l'attribue
                 // au tag d'ouverture
                 $uid = md5(mt_rand());
                 $uid = substr($uid, 0, 10);
                 $curTag["uid"] = $uid;
                 // Si on est dans un tag de "non-rendu", le tag
-                // ne peut �tre fermé (il ne sera donc pas interprété)
+                // ne peut être fermé (il ne sera donc pas interprété)
                 $curTag["canclose"] = ($norender == 0);
                 // Je rajoute le tag dans ma pile
                 array_push($stack, $curTag);
@@ -3083,7 +3083,7 @@ function parseBBTags(&$str)
         // Quoi qu'il arrive, je rajoute mon tag a la progression
         array_push($progress, $curTag);
     }
-    // Je reconstruit ma cha�ne � partir de ma progression
+    // Je reconstruit ma chaîne à partir de ma progression
     for ($i = 0; $i < count($progress); $i++) {
         $ret .= "[";
         $ret .= $progress[$i]["close"] ? "/" : "";
@@ -3101,8 +3101,8 @@ function parseBBTags(&$str)
 // Fonction qui transforme les BBCode en HTML
 function renderBBCode(&$str)
 {
-    // Je rend les tableaux de param�tres disponibles
-    // � ma fonction
+    // Je rend les tableaux de paramètres disponibles
+    // à ma fonction
     global $bbTags;
     global $htmlTags;
 
@@ -3110,20 +3110,20 @@ function renderBBCode(&$str)
 
     // Je parse les BBCode pour leur attribuer un id unique
     $tmp = parseBBTags($str);
-    // Pour chaque tag BBCode de mes aram�tres HTML
+    // Pour chaque tag BBCode de mes aramètres HTML
     reset($htmlTags);
     foreach ($htmlTags as $key => $val) {
-        // Je récup�re le nom et les propriétés de mon tag
+        // Je récupère le nom et les propriétés de mon tag
         $curtagname = $key;
         $curtagprops = $val;
-        // Si c'est un tag avec param�tres, je dois enlever
-        // le '-param' qui est � la fin.
+        // Si c'est un tag avec paramètres, je dois enlever
+        // le '-param' qui est à la fin.
         if ($curtagprops["param"] == "yes") {
             $curtagname = substr($curtagname, 0, -6);
         }
-        // Il s'agit maintenant de générer l'expression réguli�re ... :D
+        // Il s'agit maintenant de générer l'expression régulière ... :D
         //  - before : regexp pour un contenu éventuel AVANT le tag
-        //  - tagsrch : regexp pour le tag lui-m�me
+        //  - tagsrch : regexp pour le tag lui-même
         //  - contsrch : regexp pour le contenu du tag
         //  - endsrch : regexp pour le tag de fermeture
         //  - after : regexp pour un contenu eventuel APRES le tag de fermeture
@@ -3134,9 +3134,9 @@ function renderBBCode(&$str)
         $after = "";
 
         // Idinces des regexp
-        //  - idind : Indice dans la regexp de l'ID du tag (utile pour les références arri�res)
+        //  - idind : Indice dans la regexp de l'ID du tag (utile pour les références arrières)
         //  - contind : Indice du contenu du tag
-        //  - paramind : Indice du param�tre du tag (s'il en faut un)
+        //  - paramind : Indice du paramètre du tag (s'il en faut un)
         $idind = 0;
         $contind = 1;
         $paramind = 0;
@@ -3150,9 +3150,9 @@ function renderBBCode(&$str)
         $afterrepl = "";
 
         // Il s'agit de donner les bonnes valeurs aux indices et regexp maintenant
-        // SI le tag prend un param�tre
+        // SI le tag prend un paramètre
         if ($curtagprops["param"] == "yes") {
-            // On rajoute le param�tre � la regexp du tag d'ouverture
+            // On rajoute le paramètre à la regexp du tag d'ouverture
             $tagsrch .= "(?:=(.*?))";
             // Le parametre a un indice
             $paramind++;
@@ -3160,15 +3160,15 @@ function renderBBCode(&$str)
             $idind++;
             $contind++;
         }
-        // Si le tag doit �tre fermé, il a un ID
+        // Si le tag doit être fermé, il a un ID
         if ($curtagprops["close"] != "no") {
-            // On rajoute l'ID � la regexp du tag d'ouverture
+            // On rajoute l'ID à la regexp du tag d'ouverture
             $tagsrch .= "(:[0-9a-z]{10})";
             // Du coup, l'ID a un indice
             $idind++;
             // Et le contenu est encore décalé d'un cran
             $contind++;
-            // Le tag de fermeture doit �tre recherché avec le meme ID
+            // Le tag de fermeture doit être recherché avec le meme ID
             // que celui d'ouverture
             $endsrch = "\[/" . preg_quote($curtagname) . "\\" . $idind . "\]";
         } else {
@@ -3196,12 +3196,12 @@ function renderBBCode(&$str)
         // Maintenant que tous les indices de position sont bons, on peut chercher
         // le tag de fermeture (si besoin est)
         if ($curtagprops["close"] != "no") {
-            // Le tag de fermeture doit �tre recherché avec le meme ID
+            // Le tag de fermeture doit être recherché avec le meme ID
             // que celui d'ouverture
             $endsrch = "\[/" . preg_quote($curtagname) . "\\" . $idind . "\]";
         }
-        // On remplace les valeurs {PARAM} et {VALUE} qui peuvent appara�tre
-        // dans le HTML de remplacement. {PARAM} ets remplacé par le param�tre
+        // On remplace les valeurs {PARAM} et {VALUE} qui peuvent apparaître
+        // dans le HTML de remplacement. {PARAM} ets remplacé par le paramètre
         // du tag BBCode, et {VALUE} par son contenu
         // On en profite pour commencer la chaine de remplacement par le HTML de debut
         $repl =$curtagprops["begin"];
@@ -3214,7 +3214,7 @@ function renderBBCode(&$str)
 
         // Si on veut garder le contenu entre le HTML de début et le HTML de fin
         if ($curtagprops["keep"] != "no") {
-            // Si le contenu doit �tre parsé par une fonction, on y fait appel
+            // Si le contenu doit être parsé par une fonction, on y fait appel
             if ($curtagprops["function"]) {
                 $repl .= $curtagprops["function"] . "(\"$" . $contind . "\")";
 
@@ -3263,7 +3263,7 @@ function renderBBCode(&$str)
     }
 
     // Si jamais il reste des tags avec id qui n'ont pas été remplacés
-    // on enl�ve l'id. Le pricipe de recherche est le m�me que pour parseBBTags
+    // on enlève l'id. Le pricipe de recherche est le même que pour parseBBTags
     $srch = "";
     for ($i = 0; $i < count($bbTags); $i++) {
         $srch .= preg_quote($bbTags[$i]) . "|";
@@ -3370,7 +3370,7 @@ function codeBB($texte)
     }
 
 
-    //G4 BBCODE ADD ne nécéssite pas de 'sub' (car ne marcherais de toute fa�on pas
+    //G4 BBCODE ADD ne nécéssite pas de 'sub' (car ne marcherais de toute façon pas
     while (preg_match("#(\[flash=)(\S+?)(\,)(\S+?)(\])(\S+?)(\[\/flash\])#i", $texte)) {
         $texte = preg_replace('#(\[flash=)(\S+?)(\,)(\S+?)(\])(\S+?)(\[\/flash\])#i', 'flash(\'\\2\',\'\\4\',\'\\6\')', $texte);
     }
@@ -3562,7 +3562,7 @@ function buttonBB($BBtext)
 <!--
 // BBCode intégration java multi navigateur
 // l\'appellation BBcode est déposé par phpBB
-// ce parsing JAVA est issue de phpBB 2.0 et est censé �tre compatible 
+// ce parsing JAVA est issue de phpBB 2.0 et est censé être compatible 
 // pour la majorité des navigateur. 
 // réadapter par Gectou4 pour phpTG4
 

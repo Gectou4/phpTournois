@@ -247,7 +247,7 @@ function theme_menu_left()
 	include("include/blocks/block_donation.php");
 	if($config['shoutbox']){include("include/blocks/block_shoutbox.php");}
 	
-	// module TOP 10 � repositionné au besoin ;)
+	// module TOP 10 à repositionné au besoin ;)
 	if($mods['topdl']){include("include/blocks/block_dl10.php");}
 	if($mods['topplayer']){include("include/blocks/block_10player.php");}
 	//if($config['sondage'])
@@ -302,7 +302,7 @@ function theme_menu_right()
 	
 	//include("include/blocks/block_admin.php");
 	
-	// module des 10 derni�re news � placer ou vous voulez ^^
+	// module des 10 dernière news à placer ou vous voulez ^^
 	if($mods['lastnews']==1){include("include/blocks/block_10news.php");}
 	
 	include("include/blocks/block_partenaires.php");

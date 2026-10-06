@@ -127,7 +127,7 @@ if ($_GET['op'] == "admin") {
 
     }
     /********************************************************
-     * A prit �a commande
+     * A prit ça commande
      */
     if ($_GET['act'] == "prixp") {
 
@@ -942,7 +942,7 @@ if ($_GET['op'] == "admin") {
 
 
         /********************************************************
-         * A prit �a commande 2
+         * A prit ça commande 2
          */
 
         $rchaine_req = $_POST['rchaindel'];

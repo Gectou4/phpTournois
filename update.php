@@ -30,7 +30,7 @@
    |          Gougou                                                     |
    +---------------------------------------------------------------------+
 */
-// test de s�curit�
+// test de sécurité
 if (file_exists('g4.g4')) {
     echo $install_error;
     exit();
@@ -46,7 +46,7 @@ $filenameab = 'config.ab.php';
 /*** inclusion des globals ***/
 include('globals.php');
 
-/*** chargement de la classe base de donN°e ***/
+/*** chargement de la classe base de donnée ***/
 include("db/mysql.inc.php");
 
 /*** chargement du fichier de fonctions ***/
@@ -459,7 +459,7 @@ elseif ($stage == 2) {
     $erreur = 0;
 
 
-    /*** configuration g�N°rale ***/
+    /*** configuration générale ***/
     if ($useconfig == "1" || $useconfig == 1) {
         $str = "<?php
 /*
@@ -576,7 +576,7 @@ include('config.m4.php');
 include('config.ab.php');
 
 ";
-        /*** ecriture de la config g�N°rale ***/
+        /*** ecriture de la config générale ***/
         if (!$fd = @fopen($filename, "w+")) {
             $erreur = 1;
             show_erreur("$strOuvertureInvalideConfigFile : $filename");

@@ -8,7 +8,7 @@
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    +---------------------------------------------------------------------+
-   | phpTournoisG4 �2004 by Gectou4 <le_gardien_prime@hotmail.com>       |
+   | phpTournoisG4 ©2004 by Gectou4 <le_gardien_prime@hotmail.com>       |
    +---------------------------------------------------------------------+
          This version is based on phpTournois 3.5 realased by :
    +---------------------------------------------------------------------+

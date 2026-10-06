@@ -546,7 +546,7 @@ $req = "
 
 
 
-			INSERT INTO `${dbprefix}livredor` VALUES (1, 'admin', 'yop les gentils monsieurs, un ptit post sur notre forum pour nous dire si vous aimez utiliser phpTournois... \r\nca nous ferait très plaisir pour prendre le dev des prochaines versions � coeur :wub:', 1066557163);
+			INSERT INTO `${dbprefix}livredor` VALUES (1, 'admin', 'yop les gentils monsieurs, un ptit post sur notre forum pour nous dire si vous aimez utiliser phpTournois... \r\nca nous ferait très plaisir pour prendre le dev des prochaines versions à coeur :wub:', 1066557163);
 
 
 

@@ -46,7 +46,7 @@ global $last_post_topic_i, $last_post_cat_i;
  */
 
 
-// On récup�re les nouveaux messages
+// On récupère les nouveaux messages
 if ($s_joueur != "") {
 
     //if ($last_post_topic_i==''||$last_post_topic_i==NULL||$last_post_topic_i=='0') {
@@ -160,7 +160,7 @@ if ($_GET['op'] == "" || $_GET['op'] == NULL) {
 
         if ($datar->cattitle != '' || $datar->cattitle != NULL) {
 
-            // je fait trois requ�te et oui c pas bien paske si je met et incrémente des champs PHP et SQL ne veulent ni afficher C champ ni les incrémenter (c a en devenir fou Oo)
+            // je fait trois requête et oui c pas bien paske si je met et incrémente des champs PHP et SQL ne veulent ni afficher C champ ni les incrémenter (c a en devenir fou Oo)
             $db->select("COUNT(id) FROM ${dbprefix}forum WHERE ((cattopic = $datar->cattopic) AND cattitle = '')");
             $db->order_by("id");
             $res = $db->exec();

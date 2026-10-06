@@ -38,16 +38,16 @@
    +---------------------------------------------------------------------------------------------------------------+
    | 30/12/05 => ligne 5060 : virgule manquante                                                                    |
    | 31/12/05 => ligne 1924 : 'status' remplacer par 'valide' dans les criteres de selections                      |
-   | 31/12/05 => correction du bug du ladder ferm� apr�s sa cr�ation                                               |
-   | 31/12/05 => correction du bug des maps supprim�e lors d'une modification du ladder                            |
-   | 01/01/06 => cocher/decocher les cases round/manche/frags si elles �taient utilis�e                            |
-   | 01/01/06 => correction du bug qui empechait la modification des points gagN°s/perdus                          |
+   | 31/12/05 => correction du bug du ladder fermé après sa création                                               |
+   | 31/12/05 => correction du bug des maps supprimée lors d'une modification du ladder                            |
+   | 01/01/06 => cocher/decocher les cases round/manche/frags si elles étaient utilisée                            |
+   | 01/01/06 => correction du bug qui empechait la modification des points gagnés/perdus                          |
    | 01/01/06 => correction du bug des dates et des heures de choix du matchs : minutes                            |
-   |                       commence $ 00 et fini � 59 (au lieu de 01 et 60 avant), modification du                 |
-   |                       code entier, il n'y a plus la date imm�diate mise en premier et selectionN°,            |
-   |                       mais elle est toujours selectionN°es, mais dans l'ordre de la liste.                    |
+   |                       commence $ 00 et fini à 59 (au lieu de 01 et 60 avant), modification du                 |
+   |                       code entier, il n'y a plus la date immédiate mise en premier et selectionN°,            |
+   |                       mais elle est toujours selectionnées, mais dans l'ordre de la liste.                    |
    |                      + autres corrections mineures sur la date                                                |
-   | 01/01/06 => correction du bug des minutes qui ne pouvait �tre '00'                                            |
+   | 01/01/06 => correction du bug des minutes qui ne pouvait être '00'                                            |
    +---------------------------------------------------------------------------------------------------------------+
 */
 /*
@@ -363,7 +363,7 @@ else if ($op == "admin_versus") {
     $db->exec();
     $lad_while = $db->fetch();
 
-    /*** g�N°ration de l'email de confirmation ***/
+    /*** génération de l'email de confirmation ***/
     if ($lad_while->mail) {
 
         if ($type_lad == '1') {
@@ -905,7 +905,7 @@ else if ($op == "do_mod_rep") {
 
 }
 //
-// Requ�te d'effacement du ladder
+// Requête d'effacement du ladder
 //
 else if ($op == "del_lad") {
     if ($grade['a'] != 'a' && $grade['b'] != 'b' && $grade['u'] != 'u') {
@@ -932,7 +932,7 @@ else if ($op == "del_lad") {
 
 }
 //
-// Requ�te d'effacement du ladder
+// Requête d'effacement du ladder
 //
 else if ($op == "del_m") {
     if ($grade['a'] != 'a' && $grade['b'] != 'b' && $grade['u'] != 'u') {
@@ -1286,7 +1286,7 @@ else if ($op == "do_duel") {
 
             $t1_id = $lad_t1->teamid;
 
-            //ici on re�oit l'id team il faut l'id manager
+            //ici on reçoit l'id team il faut l'id manager
             $db->select("joueur_id");
             $db->from("${dbprefix}lad_part");
             $db->where("ladder_id = '$lad_id' and teamid = $adv");
@@ -1326,7 +1326,7 @@ else if ($op == "do_duel") {
         $db->exec();
         $lad_while = $db->fetch();
 
-        /*** g�N°ration de l'email de confirmation ***/
+        /*** génération de l'email de confirmation ***/
         if ($lad_while->mail) {
 
             if ($type_lad == '1') {
@@ -1748,7 +1748,7 @@ else if ($op == "do_agree_duel") {
         $db->exec();
         $lad_while = $db->fetch();
 
-        /*** g�N°ration de l'email de confirmation ***/
+        /*** génération de l'email de confirmation ***/
         if ($lad_while->mail) {
 
 
@@ -1890,7 +1890,7 @@ else if ($op == "do_agree_duel") {
             $db->exec();
             $lad_while = $db->fetch();
 
-            /*** g�N°ration de l'email de confirmation ***/
+            /*** génération de l'email de confirmation ***/
             if ($lad_while->mail) {
 
                 if ($type_lad == '1') {
@@ -1978,7 +1978,7 @@ else if ($op == "do_agree_duel") {
             $db->exec();
             $lad_while = $db->fetch();
 
-            /*** g�N°ration de l'email de confirmation ***/
+            /*** génération de l'email de confirmation ***/
             if ($lad_while->mail) {
 
                 if ($type_lad == '1') {
@@ -2147,7 +2147,7 @@ else if ($op == "do_maps" && is_numeric($lad_id)) {
 
 }
 //
-// Tableau de pr�sentation du ladder
+// Tableau de présentation du ladder
 //
 else if ($op == "check_lad" && is_numeric($lad_id)) {
 
@@ -2666,7 +2666,7 @@ else if ($op == "check_lad" && is_numeric($lad_id)) {
     }
 }
 //
-//END  Tableau de pr�sentation du ladder
+//END  Tableau de présentation du ladder
 //
 //
 // Tableau mylad
@@ -4115,7 +4115,7 @@ else if ($op == "match_report" && is_numeric($lad_id) && is_numeric($m_id)) {
 
 
     //si le status est en attente de saisie des score et que le visiteur n'est ni J1 ni J2 et qu'il n'est pas admin
-    //Alors d�sactiver le mod 'formulaire' et laisser simplement les '�crit'
+    //Alors désactiver le mod 'formulaire' et laisser simplement les 'écrit'
     if (($s_joueur != $lad_while->j1 AND $s_joueur != $lad_while->j2) AND ($grade['a'] != 'a' AND $grade['b'] != 'b' AND $grade['u'] != 'u') OR $lad_while->valide != 'B') {
         $hide_form = true;
     } else {
@@ -4450,7 +4450,7 @@ else if ($op == "match_report" && is_numeric($lad_id) && is_numeric($m_id)) {
 						
 							</tr>
 							';
-                // on sait qui gagne kel manche car c score_j1_$i  < ou == ou  > � score_j2_$i
+                // on sait qui gagne kel manche car c score_j1_$i  < ou == ou  > à score_j2_$i
                 //round : rs_j1_$i   et rs_j2_$i
 
 
@@ -4805,7 +4805,7 @@ else if ($op == "match_report" && is_numeric($lad_id) && is_numeric($m_id)) {
     }
 }
 //
-// Traitement des donN°es des r�sultat du rapport de fin de match, l'usine � gaz quoi Oo
+// Traitement des données des résultat du rapport de fin de match, l'usine à gaz quoi Oo
 //
 else if ($op == "do_match_report" && is_numeric($lad_id) && is_numeric($m_id)) {
 //if (!empty($ad) AND ($garde['a']!='a' && $garde['b']!='b' && $garde['u']!='u')){js_goto('?page=INDEX');}
@@ -5224,7 +5224,7 @@ else if ($op == "do_match_report" && is_numeric($lad_id) && is_numeric($m_id)) {
         }
         //if(($grade['a']=='a' || $grade['b']=='b' || $grade['u']=='u')&& $ad=="ad") {$valide = 'V';}
 
-        //si l'admin valide penser ) le checker avant et � traiter les donN°es imm�diatements
+        //si l'admin valide penser ) le checker avant et à traiter les données immédiatements
 
         $rapport .= $log;
 

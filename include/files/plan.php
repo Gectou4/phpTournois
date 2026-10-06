@@ -120,7 +120,7 @@ if ($op == "do_reserve") {
         show_consignes($strSelectionEquipeConsignes);
 
         echo "<img src=\"images/back.gif\" border=0 align=align=absmiddle> <a href=javascript:back() class=action>$strRetour</a><br>";
-    } /* si c un joueur, vérifier qu'il appartient � une équipe */
+    } /* si c un joueur, vérifier qu'il appartient à une équipe */
     else {
         js_goto("?page=equipe&op=rejoindre");
     }

@@ -7,10 +7,10 @@
 * @since: 15 december 2006
 * @version: 1.0
 *
-*  © phpTournois  
+*  Â© phpTournois  
 *
 ***/
-//TODO : Ajouter where clause de l'état de validation membre
+//TODO : Ajouter where clause de l'Ã©tat de validation membre
 //TODO : DATA VARS
 class Member{
  
@@ -32,7 +32,7 @@ class Member{
 		$this->m_ip = null;
 	}
 		
-		/***	Test de la présence d'une session  => Login/Purge ***/
+		/***	Test de la prÃ©sence d'une session  => Login/Purge ***/
 		$loguer = $this->member_check();
 		/*** Maj de la Session ***/
 		
@@ -59,7 +59,7 @@ class Member{
 	    $idip = md5($this->m_ip);
 		$r = false;
 		
-		// Renvoie le temps actuel - temps de session max, si la dernière date de login est inférieur à ce temps alors la session à expiré
+		// Renvoie le temps actuel - temps de session max, si la derniÃ¨re date de login est infÃ©rieur Ã  ce temps alors la session Ã  expirÃ©
 		$sess_out = time() - 3600; 
 		
 		/*** On purge la DB ***/
