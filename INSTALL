@@ -25,9 +25,9 @@
 ------------
 PREREQUIS
 ------------
-- phpTournois nÈcessite le support de PHP 4 ainsi qu'une base de donnÈes MySQL. 
-  > Assurez vous donc d'avoir la derniere version de PHP 4.x et un MySQL rÈcent qui tourne
-    sur votre machine serveur (avec un utilisateur qui a le droit de crÈer une base de donnÈes)
+- phpTournois n√©cessite le support de PHP 4 ainsi qu'une base de donn√©es MySQL. 
+  > Assurez vous donc d'avoir la derniere version de PHP 4.x et un MySQL r√©cent qui tourne
+    sur votre machine serveur (avec un utilisateur qui a le droit de cr√©er une base de donn√©es)
 
 - Si vous etes familier avec phpMyAdmin, cela peut etre un plus de l'installer au cas ou... :)
 
@@ -42,10 +42,10 @@ Note4: Attention aux versions des logiciels de gestion des matchs !
 INSTALLATION
 ------------
 
-1) DÈcompresser l'archive dans un rÈpertoire de votre serveur web (par ftp par exemple).
+1) D√©compresser l'archive dans un r√©pertoire de votre serveur web (par ftp par exemple).
 2) Lancez votre navigateur web et aller sur l'url de votre phpTournois.
-3) Suivez les insctructions ‡ l'Ècran pour installer phpTournois.
-(Attention, si l'install automatique ne parvient pas ‡ effacer le fichier install.php,
+3) Suivez les insctructions √† l'√©cran pour installer phpTournois.
+(Attention, si l'install automatique ne parvient pas √† effacer le fichier install.php,
  vous devrez le faire manuellement)
 5) Revenez sur l'url de phpTournois et logger vous en tant que :
  utilisateur : 'admin' 
@@ -57,39 +57,39 @@ Vous pouvez maintenant utiliser phpTournois!!
 -------------
 CONFIGURATION
 -------------
-1) Modifiez le nom de votre LAN dans le menu "Admin GÈnÈrale - Configuration" 
+1) Modifiez le nom de votre LAN dans le menu "Admin G√©n√©rale - Configuration" 
 (si vous ne l'aviez pas fait durant l'install)
 2) Indiquez le nom du fichier image de votre logo 
-(que vous aurez prÈalablement placÈ dans le rÈpertoire /images)
-3) SÈlectionnez la langue par dÈfaut ‡ utiliser.
+(que vous aurez pr√©alablement plac√© dans le r√©pertoire /images)
+3) S√©lectionnez la langue par d√©faut √† utiliser.
 
 -------------
 COMPLEMENTS
 -------------
 1) un utilisateur 'retroproj' permet de diffuser les pages de phpTournois sur un videoprojecteur.
-Logger vous en tant que 'retroproj' (mot de passe 'retroproj') pour dÈcouvrir les possibilitÈs de 
+Logger vous en tant que 'retroproj' (mot de passe 'retroproj') pour d√©couvrir les possibilit√©s de 
 videoprojection.
 
-2) phpTournois ne supporte que PARTIELLEMENT AdminBot-Mx. En effet, les prolongations gÈnÈrÈes par 
-AdminBot-MX Beta ne permetent pas d'Ítre tracÈes par des programmes externes (AdminBot gËre les 
-prolongations comme de nouveaux matchs sans lien direct et fiable avec le match prÈcÈdent).
-ExpÈrons que pour la prochaine version, les prolongations soient gÈrÈes dans le AMX comme avec M4.
+2) phpTournois ne supporte que PARTIELLEMENT AdminBot-Mx. En effet, les prolongations g√©n√©r√©es par 
+AdminBot-MX Beta ne permetent pas d'√™tre trac√©es par des programmes externes (AdminBot g√®re les 
+prolongations comme de nouveaux matchs sans lien direct et fiable avec le match pr√©c√©dent).
+Exp√©rons que pour la prochaine version, les prolongations soient g√©r√©es dans le AMX comme avec M4.
 
 3) Les serveurs utilisent le programme Qstat se trouvant dans le repertoire Qstat pour recuperer leur status. 
-2 versions compilÈes (Windows et Linux) sont disponibles mais il se peut que des hebergeurs gratuits 
-ne supportent pas l'exÈcution de programmes externes (fonction 'exec' dÈsactivÈe). Vous devrez alors
-dÈsactiver la fonction 'serveur' dans la configuration.
+2 versions compil√©es (Windows et Linux) sont disponibles mais il se peut que des hebergeurs gratuits 
+ne supportent pas l'ex√©cution de programmes externes (fonction 'exec' d√©sactiv√©e). Vous devrez alors
+d√©sactiver la fonction 'serveur' dans la configuration.
 
 4) Lorsque vous utilisez M4 ou AdminBot, n'oublier pas de cocher 'publier' ces serveurs pour les ajouter
-dans les bases de donnÈes M4 ou AdminBot. Faites attention quand vous utilisez les memes serveurs pour 
-des tournois diffÈrents (pour eviter que les matchs se chevauchent), ou si il n'y a pas assez de serveurs
-pour lancer un tour complet (ex: 1/8 de finales -> 8 serveurs diffÈrents si possible). 
+dans les bases de donn√©es M4 ou AdminBot. Faites attention quand vous utilisez les memes serveurs pour 
+des tournois diff√©rents (pour eviter que les matchs se chevauchent), ou si il n'y a pas assez de serveurs
+pour lancer un tour complet (ex: 1/8 de finales -> 8 serveurs diff√©rents si possible). 
 
 5) Le format des horaires sont de la forme : 'hh:mm' (ex: '18:18') ou 'jj/mm/aaaa hh:mm' (ex '19/10/2003 18:18')
 
-6) L'arborescence du systeme de fichiers attachÈs pour un match donnÈ (demos et screenshots par exemple)
-se trouve dans les rÈpertoires /matchs/id_du_matchs/
-Attention ‡ la taille des fichiers ‡ uploader (il faudra passer par un ftp classique pour ajouter des gros fichiers)
+6) L'arborescence du systeme de fichiers attach√©s pour un match donn√© (demos et screenshots par exemple)
+se trouve dans les r√©pertoires /matchs/id_du_matchs/
+Attention √† la taille des fichiers √† uploader (il faudra passer par un ftp classique pour ajouter des gros fichiers)
 
 
 -------
@@ -106,4 +106,4 @@ BUGS
 CONTACT
 -------
 Pour toute aide consultez le forum: http://www.phptournois.com
-Pour tout autre problËme: contact@phptournois.com
+Pour tout autre probl√®me: contact@phptournois.com

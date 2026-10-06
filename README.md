@@ -1,62 +1,41 @@
-phpTournois 
-==================
-Copyright (c) 2001-2004 Li0n, RV, Gougou  
-phpTG4 Copyright (c) 2005-2017 Li0n, RV, Gougou, Gectou4
-                                                                        
-*phpTournois is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.*
+# phpTournois (version phpTG4)
 
-*phpTournois est un outil CMS sous licence GPL d'aide à l'organisation de tournois divers, plus spécialisé cependant dans les tournois de jeux vidéo en LAN ou online.*
+CMS libre (GPL v2) d'aide à l'organisation de tournois, surtout de jeux vidéo, en LAN ou en ligne : inscriptions des joueurs et des équipes, matchs et résultats, galerie, shoutbox.
 
-MatchMod & AdminBot-MX
-==================
-L'intégration de MatchMod (dJeyL.net) et de AdminBot-MX (neXen.org) permet de 
-lancer et de récupérer directement les matchs Counter-Strike sur les serveurs 
-avec la map et les paramètres voulus.
+L'intégration de MatchMod (dJeyL.net) et d'AdminBot-MX (neXen.org) permet de lancer et de récupérer directement les matchs Counter-Strike sur les serveurs, avec la carte et les paramètres voulus.
 
-#Attention
-Le code principal date d'avant 2005. Depuis de nombreuse chose ont évolué, des librairies
-JS, PHP, HTML et CSS ont vue le jours, d'autre CMS et produits open source.
-phpTournois est tout de même compatible jusqu'en PHP 7. Cependant nous recommandons
-un usage le plus limité possible et le plus possible en LAN. Le temps qu'un jours il soit revue entièrement.
+## Historique
 
-Instalation
-==================
-Requiert une base de donnée déjà créée.
+| Période | Étape |
+|---|---|
+| 2001 - 2004 | phpTournois, par Li0n, RV et Gougou |
+| 2005 | phpTG4 : version maintenue par Gectou4 |
+| 2012 | Import sur GitHub, compatibilité PHP 5.4 |
+| 2017 | Portage PHP 7 : `ereg` et `split` remplacés, `mysql` vers `mysqli`, passage en UTF-8, PHPMailer à jour |
 
-Ex pour Mysql, une base "phptournois".
-Uploader les fichiers dans un dossier Web d'un serveur PHP.
-Rendez-vous sur l'url et suivez l'instalation pas à pas.
+## Statut
 
-Team
-==================
+Le code principal date d'avant 2005. Il fonctionne jusqu'à PHP 7, mais il n'a pas été conçu avec les pratiques de sécurité actuelles. Il est conservé ici comme projet historique : à utiliser de préférence en LAN, sur un réseau fermé.
 
-Team Développement
-------------------
+Piste à l'étude : une réécriture en PHP 8, avec une API séparée de l'interface.
 
-* ma-Li0n (code leader)
-* RV (project leader)
+## Installation
 
-Version phpTG4
-------------------
-* Gectou4 
+1. Créer une base de données MySQL, par exemple `phptournois`.
+2. Copier les fichiers dans un dossier web servi par PHP.
+3. Ouvrir l'URL du site et suivre l'installation pas à pas.
+4. Vérifier que les fichiers d'installation ont bien été supprimés à la fin.
 
-Team Bêta-testeurs
-------------------
-* Killercool (bêta-testeur ++)
-* S4ruman (bêta-testeur)
-* Fatboy (bêta-testeur)
+## Équipe
 
-Contributeurs
-------------------
-* Ben64 (M. Algo)
-* Nono (M4 intégrat0r)
-* Florian95 (multi-addons)
-* Gimlur, PsYcO, OlyM4rs (idées et soutient)
+**Développement** : Li0n (code leader), RV (project leader)
 
-Nous sommes ouvert à toutes formes de contribution.
-Vous pouvez aussi nous faire part de vos idées.
+**Version phpTG4** : Gectou4
 
-Merci d'utiliser phpTournois!!
-Have Fun !
+**Bêta-tests** : Killercool, S4ruman, Fatboy
 
-L'équipe phpTournois.
+**Contributeurs** : Ben64 (algorithmes), Nono (intégration M4), Florian95 (modules), Gimlur, PsYcO et OlyM4rs (idées et soutien)
+
+## Licence
+
+GNU General Public License v2 ou ultérieure, voir [LICENCE](LICENCE).
