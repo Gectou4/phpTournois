@@ -8,7 +8,7 @@
    +---------------------------------------------------------------------+
    | phpTournois                                                         |
    +---------------------------------------------------------------------+
-   | Copyright� 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
+   | Copyright© 2001-2004 Li0n, RV, Gougou (http://www.phptournois.net)|
    +---------------------------------------------------------------------+
    | This file is part of phpTournois.                                   |
    |                                                                     |
@@ -529,7 +529,7 @@ if ($_POST['act']=="E" || $_GET['act']=="E")
   {
 
    echo '<tr><td class="headerfiche" align="left">&nbsp;'.$datar->categorie.'&nbsp;</td><td class="textfiche">';
-   // j'ai matter le reoder de IBF ouer bas d�s que "j'aurais le temps" je ferrais pareil (bigre de bigre)
+   // j'ai matter le reoder de IBF ouer bas dès que "j'aurais le temps" je ferrais pareil (bigre de bigre)
  
   if ($p_test!=$cat_max)
    {

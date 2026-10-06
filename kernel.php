@@ -223,11 +223,11 @@ if ($s_joueur) {
         if (preg_match('`c`i', $grade_ch->grade)) {
             $grade['c'] = 'c';
         }
-        // D g�re les downloads
+        // D gère les downloads
         if (preg_match('`d`i', $grade_ch->grade)) {
             $grade['d'] = 'd';
         }
-        //E peut g�rer les équipe
+        //E peut gèrer les équipe
         if (preg_match('`e`i', $grade_ch->grade)) {
             $grade['e'] = 'e';
         }
@@ -238,15 +238,15 @@ if ($s_joueur) {
         if (preg_match('`g`i', $grade_ch->grade)) {
             $grade['g'] = 'g';
         }
-        //H peut g�rer les liens ( <a Href=''> )
+        //H peut gèrer les liens ( <a Href=''> )
         if (preg_match('`h`i', $grade_ch->grade)) {
             $grade['h'] = 'h';
         }
-        //I peut g�rer le livre d'or (???)
+        //I peut gèrer le livre d'or (???)
         if (preg_match('`i`i', $grade_ch->grade)) {
             $grade['i'] = 'i';
         }
-        //J peut g�rer les joueurs
+        //J peut gèrer les joueurs
         if (preg_match('`j`i', $grade_ch->grade)) {
             $grade['j'] = 'j';
         }
@@ -270,19 +270,19 @@ if ($s_joueur) {
         if (preg_match('`o`i', $grade_ch->grade)) {
             $grade['o'] = 'o';
         }
-        // P g�re les partenaire
+        // P gère les partenaire
         if (preg_match('`p`i', $grade_ch->grade)) {
             $grade['p'] = 'p';
         }
-        // Q g�re la gallerie
+        // Q gère la gallerie
         if (preg_match('`q`i', $grade_ch->grade)) {
             $grade['q'] = 'q';
         }
-        // S g�re les server
+        // S gère les server
         if (preg_match('`r`i', $grade_ch->grade)) {
             $grade['r'] = 'r';
         }
-        // S g�re les sponsors
+        // S gère les sponsors
         if (preg_match('`s`i', $grade_ch->grade)) {
             $grade['s'] = 's';
         }
@@ -290,7 +290,7 @@ if ($s_joueur) {
         if (preg_match('`t`i', $grade_ch->grade)) {
             $grade['t'] = 't';
         }
-        // U admin des ladder (créer, g�re..).
+        // U admin des ladder (créer, gère..).
         if (preg_match('`u`i', $grade_ch->grade)) {
             $grade['u'] = 'u';
         }

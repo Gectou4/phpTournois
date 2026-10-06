@@ -1,7 +1,7 @@
 <?
 /*
  ************************************************************************
- * © Sloppycode.net All rights reserved.
+ * Â© Sloppycode.net All rights reserved.
  *
  * This is a standard copyright header for all source code appearing
  * at sloppycode.net. This application/class/script may be redistributed,

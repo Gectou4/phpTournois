@@ -40,7 +40,7 @@
 // gestion des dates
 define('DAY_POS','2'); // en fr, le position du jour est 1 => 27/xx/xxxx
 define('MONTH_POS','1'); // en fr, le position du mois est 2 => xx/02/xxxx
-define('YEAR_POS','3'); // en fr, le position de l'anN°e est 3 => xx/xx/2002
+define('YEAR_POS','3'); // en fr, le position de l'année est 3 => xx/xx/2002
 
 // date d'affichage
 define('DATESTRING','%m/%d/%Y %H:%M');
