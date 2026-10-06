@@ -47,7 +47,7 @@ if ($mode == 'J') {
         js_goto("?page=index");
     }
 
-    /*** recupération des param�tres ***/
+    /*** recupération des paramètres ***/
     $ficheX = joueur($id);
     $type = "joueurs";
 } elseif ($mode == 'E') {
@@ -57,7 +57,7 @@ if ($mode == 'J') {
         js_goto("?page=index");
     }
 
-    /*** recupération des param�tres ***/
+    /*** recupération des paramètres ***/
     $ficheX = equipe($id);
     $type = "equipes";
 

@@ -83,7 +83,7 @@ function creer_tableau_r(&$tableau, $indice, $taille, $tour, $seed)
 
 /* $tableau :
 	Résultat - Variable de type tableau d'entier contenant les rencontres
-	$tableau[0] joue contre $tableau[1] puis en r�gle général $tableau[i] joue contre $tableau[i+1] avec i=2n
+	$tableau[0] joue contre $tableau[1] puis en règle général $tableau[i] joue contre $tableau[i+1] avec i=2n
 	$nb_team : Nombre de teams en phase finale. DOIT ETRE UNE PUISSANCE DE 2
 	CA PETE LA PHRASE HEIN ? AlgoMan64
 */

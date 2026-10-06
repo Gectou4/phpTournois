@@ -167,7 +167,7 @@ else if ($op == "edit") {
     }
 
 
-    /*** chargement de la variable des 'gardes' de l'utilisateur � modifier  ***/
+    /*** chargement de la variable des 'gardes' de l'utilisateur à modifier  ***/
     $db->select("id,grade");
     $db->from("${dbprefix}joueurs");
     $db->where("id = '$id_j'");

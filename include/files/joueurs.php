@@ -1076,7 +1076,7 @@ else {
                             echo '<td class="textliste" align="center">' . $tab_joueurs[$j]->id . '</td>';
                             echo '<td class="textliste">';
                             echo '<div style="clear: both"><div style="float: left">' . show_joueur($tab_joueurs[$j]->id, $op);
-                            //supression de l'�toile
+                            //supression de l'étoile
                             //if($tab_joueurs[$j]->admin=='O') echo '*';
                             if ($tab_joueurs[$j]->carton == 'aucun') {
                                 echo "";

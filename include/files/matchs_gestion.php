@@ -461,7 +461,7 @@ elseif ($op == "recup") {
 
                         $matchab = $db->fetch($res1);
 
-                        // si le match est commenc�, on recup d'abord juste les scores
+                        // si le match est commencé, on recup d'abord juste les scores
                         if ($matchab->Status > 0) {
 
                             /*** mise a jour des scores dans la manche en cours ***/
@@ -592,7 +592,7 @@ elseif ($op == "recup") {
                 }
             } // pas de manche active
             else $msg .= "$strMatch #$id : $strErreurMancheActive<br>";
-        } // match pas demarr�
+        } // match pas demarré
         else $msg .= "$strMatch #$id : $strErreurStatusDemarre<br>";
     }
 

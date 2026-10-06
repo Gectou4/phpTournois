@@ -53,7 +53,7 @@ $compteur=compteur();
 <META NAME="KEYWORDS" CONTENT="php, gestion, tournoi, tournois, lan, management, manager, lan party, tournament, organisation, ladder, ligue, league, coupe, championnat">
 <META NAME="OWNER" CONTENT="phpTournois - phpTG4">
 <META NAME="AUTHOR" CONTENT="RV, Li0n, Gectou4">
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 <META HTTP-EQUIV="CONTENT-LANGUAGE" CONTENT="French">
 <META NAME="ROBOTS" CONTENT="index,follow">
 <META NAME="REVISIT-AFTER" CONTENT="10">

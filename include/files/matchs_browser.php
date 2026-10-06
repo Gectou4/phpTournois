@@ -418,7 +418,7 @@ else {
     }
 
     ////////////////////////////////////////////////
-    // en t�te
+    // en tête
 
     echo "<table width=\"500+\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\">
 		<tr align=\"left\" valign=\"middle\">
